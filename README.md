@@ -40,6 +40,7 @@ You must be able to clone repository by shh connection. Make sure that you put y
 - CSS frameworks and preprocessors
   - [CASS/SCSS preprocessor](https://sass-lang.com/guide)
   - [CSS modules](https://devopedia.org/css-modules)
+  - [Smart-grid](https://www.npmjs.com/package/smart-grid)
  - Testing frameworks
     - [JEST](https://jestjs.io)
     - [Enzyme](https://airbnb.io/enzyme/)
