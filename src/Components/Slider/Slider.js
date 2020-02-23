@@ -1,25 +1,31 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types';
 import './Slider.scss'
 
+const ERROR_MESSAGE = 'SOME PROPS ARE INVALID! PLEASE CHECK SLIDER PROPS AND FIX THEM'
+/**
+ * Simple slider component
+ *
+ * @author [Mikhail Golovai](https://github.com/Mikhail-Golovai)
+ */
 export default function Slider (props) {
     const {
         children,
         style,
         showDots,
         dotsPosition,
-        overflow,
+        infinite,
         visibleCount
     } = props
 
-    let visCnt = visibleCount // validating visibleCount, to be between 1 and children.length
-    if (visCnt > children.length) {
-        visCnt = children.length
-    } else if (visCnt < 1) {
-        visCnt = 1
-    }
-
     const [slideIndex, setSlideIndex] = useState(0)
+    const [isValid, setIsValid] = useState(true)
+
+    useEffect(() => {
+        if (visibleCount > children.length || visibleCount < 1) {
+            setIsValid(false)
+        }
+    }, [children, visibleCount])
 
     function plusSlides(n) {
         setSlideIndex(preventOverflow(slideIndex + n))
@@ -29,12 +35,12 @@ export default function Slider (props) {
         setSlideIndex(preventOverflow(n))
     }
 
-    const visCoeff = 100 / visCnt
+    const visCoeff = 100 / visibleCount
 
     function preventOverflow(newIndex) {
         const length = children.length
-        if (newIndex >= length - visCnt + 1) {return overflow ? (newIndex % (length - visCnt + 1)) : slideIndex}
-        if (newIndex < 0) {return overflow ? length - (length - newIndex) % length - visCnt + 1 : slideIndex}
+        if (newIndex >= length - visibleCount + 1) {return infinite ? (newIndex % (length - visibleCount + 1)) : slideIndex}
+        if (newIndex < 0) {return infinite ? length - (length - newIndex) % length - visibleCount + 1 : slideIndex}
         return newIndex
     }
 
@@ -54,13 +60,14 @@ export default function Slider (props) {
         return {items, dots}
     }, {items: [], dots: []})
 
-    let leftControlShow = (overflow || (slideIndex > 0))  ? 'slider__control_show' : ''
-    let rightControlShow = (overflow || (slideIndex < children.length - visCnt))  ? 'slider__control_show' : ''
+    let leftControlShow = (infinite || (slideIndex > 0))  ? 'slider__control_show' : ''
+    let rightControlShow = (infinite || (slideIndex < children.length - visibleCount))  ? 'slider__control_show' : ''
 
-    return (
-        <div className="slider" style={style}>
+    return isValid ? 
+        (<div className="slider" data-testid="slider" style={style}>
             <div 
                 className="slider__wrapper" 
+                data-testid="wrapper"
                 style={({transform: `translateX(${-slideIndex * visCoeff}%)`})}
             >
                 {items}
@@ -79,15 +86,36 @@ export default function Slider (props) {
                     {showDots && dots}
             </div>
         </div>
-    )
+    ) : (<span className="error">{ERROR_MESSAGE}</span>)
 }
 
 Slider.propTypes = {
+    /**
+     * Elements to show in slider
+     */
     children: PropTypes.arrayOf(PropTypes.element).isRequired,
+    /**
+     * Additional style for slider element
+     */
     style: PropTypes.object,
+    /**
+     * Flag, determinate to show slider dots or not
+     */
     showDots: PropTypes.bool,
+    /**
+     * The position of the Slider dots
+     *
+     */
     dotsPosition: PropTypes.oneOf(['left', 'center' ,'right']),
-    overflow: PropTypes.bool,
+    /**
+     * Flad, determinate should slider has infinite scrolling or not
+     *
+     */
+    infinite: PropTypes.bool,
+    /**
+     * The count of items to show in one time
+     *
+     */
     visibleCount: PropTypes.number
 }
 
@@ -95,6 +123,6 @@ Slider.defaultProps = {
     style: {},
     showDots: true,
     dotsPosition: 'center',
-    overflow: true,
+    infinite: true,
     visibleCount: 1
 }
