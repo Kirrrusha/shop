@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
-class History extends Component
-{
-    constructor(props) {
-        super(props);
-    }
+class History extends Component {
 
     render() {
 

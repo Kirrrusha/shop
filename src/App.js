@@ -1,8 +1,8 @@
 import React, { Component }  from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
 import store from './redux/store';
+import history from './constants/history';
 
 import Contact from './Components/Contact';
 import History from './Components/History';
@@ -13,13 +13,7 @@ import ShowRoom from './Components/ShowRoom';
 
 import './styles/App.scss';
 
-const history = createBrowserHistory();
-
 class App extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render(){
         return (

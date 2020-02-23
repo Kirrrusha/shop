@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
-class ShowRoom extends Component
-{
-    constructor(props) {
-        super(props);
-    }
+class ShowRoom extends Component {
 
     render() {
 
