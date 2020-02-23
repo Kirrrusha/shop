@@ -1,4 +1,4 @@
-const smartgrid = require('smart-grid');
+import smartgrid from 'smart-grid';
 
 /* It's principal settings in smart grid project */
 const settings = {
