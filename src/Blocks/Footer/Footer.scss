@@ -1,0 +1,142 @@
+@import '../../styles/App.scss';
+
+.footer{
+    background-color: $background_color;
+    padding-top: 8%;
+}
+
+.footer_wrapper{
+    background-color: $background_color;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.footer_contact{
+    width: 17%;
+    text-align: left;
+}
+
+.footer_contact h2{
+    color: $text_color;
+    font-family: 'Montserrat-Regular';
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+}
+.footer_contact p a{
+    color: $main_color;
+    font-family: 'Montserrat-Regular';
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.375rem;
+    text-decoration: none;
+}
+
+.footer_info{
+    width: 30%;
+}
+
+.footer_info h2{
+    color: $text_color;
+    font-family: 'Montserrat-Regular';
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    text-align: left;
+}
+.footer_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-self: left;
+    max-height: 40%;
+    margin: 0;
+    padding: 0;
+}
+
+.info_items{    
+    list-style: none;
+    text-align: left;
+    box-sizing: border-box;
+             
+}
+.info_items a{
+    text-decoration: none;
+    color: $main_color;
+    font-family: 'Montserrat-Regular';
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    cursor: pointer;
+}
+
+.footer_subscribe{
+   text-align: left;
+   width: 30%;
+}
+
+.footer_subscribe h2{
+    color: $text_color;
+    font-family: 'Montserrat-Regular';
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.113rem;
+}
+
+.footer_subscribe p{
+    width: 63%;
+    color: $main_color;
+    font-family: 'Montserrat-Regular';
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.375rem;
+}
+.footer_subscribe input{
+    width: 55%;
+    height: 48px;
+    border: 1px solid $border_color;
+    background-color: $background-color_2;
+    position: relative;
+    text-indent: 10px;
+}
+
+.contacts-button{
+    width: 48px;
+    height: 52px;
+    border: 1px solid $border_color;
+    background-image: url('../../img/Footer/tele.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $background-color_2;
+    position: absolute;
+    cursor: pointer;
+}
+
+.footer_copyright{
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+}
+
+.footer_copyright{
+    color: $text_color;
+    font-family: 'Montserrat-Regular';
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 2rem;
+}
+
+
+
