@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 
 import './Footer.scss'
 import '../../styles/App.scss'
-
 import Social_link from '../../img/Footer/social-links.jpg'
-
 
 export default class Footer extends Component {
     render() {
@@ -16,8 +14,6 @@ export default class Footer extends Component {
             'Careers',
             'Exchanges & returns'
         ]
-
-
         return (
             <div className='footer'>
                 <div className='footer_wrapper'>
@@ -25,7 +21,6 @@ export default class Footer extends Component {
                         <h2>Contact Us</h2>
                         <p>132A Bridge Road Richmond VIC Australia.</p>
                         <p>Talk to us on 1300 132 <a href='/'>info@interior.com</a></p>
-
                     </div>
 
                     <div className='footer_info'>
@@ -35,17 +30,15 @@ export default class Footer extends Component {
                                 return <li key={index} className='info_items'>
                                       <Link label={item} />
                                 </li>
-
                             })}
                         </ul>
-
                     </div>
 
                     <div className='footer_subscribe'>
                         <h2>Let’s Stay in Touch!</h2>
                         <p>Suscribe to know about our latest news, products and special offers just for suscribers</p>
                         <input type="mail" placeholder='your email address'></input>
-                        <button type="submit" class="contacts-button"></button>
+                        <button type="submit" className="contacts-button"></button>
                     </div>
                 </div>
 
@@ -54,13 +47,10 @@ export default class Footer extends Component {
                     <a href='/'><img src={Social_link} alt='#'></img></a>
                     <div>Terms & Conditions  /  Privacy policy & Cookies</div>
                 </div>  
-
             </div>
         )
     }
 }
-
-
 class Link extends Component {
     render() {
        return <a href='/'>{this.props.label}</a>
