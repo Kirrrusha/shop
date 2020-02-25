@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import Logo from '../../img/Header/logo.png'
-import Search from '../../img/Header/search.svg'
-import './Header.scss'
-import '../../styles/App.scss'
 
+import Logo from '../../styles/img/logo.png'
+import '../../styles/css/Header.scss'
+import '../..//styles/css/App.scss'
 import Menu from './Menu'
 
 export default class Header extends Component {
@@ -13,8 +12,8 @@ export default class Header extends Component {
             <div className='header_wrapper'>
                 <a href='/'><img src ={Logo} alt='#' className='header_logo'></img></a>
                 <Menu />
-                <img src ={Search} alt='#' className='header_search'></img>
             </div>
         )
     }
 }
+

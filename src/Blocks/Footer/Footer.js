@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 
-import './Footer.scss'
-import '../../styles/App.scss'
-import Social_link from '../../img/Footer/social-links.jpg'
+// import PropTypes from 'prop-types';
+import '../../styles/css/Footer.scss'
+import '../../styles/css/App.scss'
+import Social_link from '../../styles/img/social-links.jpg'
 
-export default class Footer extends Component {
+class Footer extends Component {
     render() {
         const info = [
             'Sales terms',
@@ -51,8 +52,16 @@ export default class Footer extends Component {
         )
     }
 }
+
 class Link extends Component {
     render() {
-       return <a href='/'>{this.props.label}</a>
+      
+        return <div><a href='/'>{this.props.label}</a></div>
     }
  }
+
+ Footer.defaultProps = {
+    label: ''    
+};
+
+export default Footer;

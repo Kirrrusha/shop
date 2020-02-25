@@ -1,4 +1,16 @@
-@import '../../styles/App.scss';
+ @import './App.scss';
+
+ .footer_wrapper, .footer_copyright, .footer_list {
+    @include row-flex();
+    @include md(justify-content, center);
+ 
+    .footer_contact, .footer_info, .footer_subscribe  {
+        @include col();
+        @include size(3);
+        @include size-md(6);
+        @include size-xs(12);
+    }
+}
 
 .footer{
     background-color: $background_color;
@@ -54,7 +66,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     align-self: left;
-    max-height: 40%;
+    height: 40%;
     margin: 0;
     padding: 0;
 }
@@ -93,7 +105,7 @@
 }
 
 .footer_subscribe p{
-    width: 63%;
+    width: 100%;
     color: $main_color;
     font-family: 'Montserrat-Regular';
     font-size: 0.875rem;
@@ -101,19 +113,29 @@
     line-height: 1.375rem;
 }
 .footer_subscribe input{
-    width: 55%;
-    height: 48px;
+    width: 85%;
+    height: 3rem;
     border: 1px solid $border_color;
     background-color: $background-color_2;
     position: relative;
-    text-indent: 10px;
+    text-indent: 0.625rem;
+}
+.footer_subscribe input::placeholder{
+    max-width: 8rem;
+    color: $text_color;
+    font-family: 'Montserrat-Regular';
+    font-size: 0.875rem;
+    font-weight: 300;
+}
+.footer_subscribe input:focus {
+    outline: none
 }
 
 .contacts-button{
-    width: 48px;
-    height: 52px;
+    width: 3rem;
+    height: 3.25rem;
     border: 1px solid $border_color;
-    background-image: url('../../img/Footer/tele.png');
+    background-image: url('../img/tele.png');
     background-repeat: no-repeat;
     background-position: center;
     background-color: $background-color_2;
@@ -121,10 +143,15 @@
     cursor: pointer;
 }
 
+.contacts-button:focus {
+    outline: none
+}
+
 .footer_copyright{
     display: flex;
-    width: 85%;
+    width: 95%;
     justify-content: space-between;
+   
 }
 
 .footer_copyright{

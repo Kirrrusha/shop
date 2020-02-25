@@ -1,0 +1,67 @@
+@import '../../styles/css/App.scss';
+@import './smart-grid.scss';
+
+.header_menu{
+    @include row-flex();
+    @include md(justify-content, center);
+ 
+    .menu_items, .header_logo,.header_search, .header_logo {
+        @include col();
+        @include size(2);
+        @include size-md(6);
+        @include size-xs(12);
+    }
+}
+
+.header_wrapper{
+    display: flex;
+    max-width: 100%;
+    justify-content: space-around;
+    align-content: center;
+    flex-grow: 1;
+}
+
+.header_logo{
+    width: 11.563rem;
+    height: 1.375rem;
+    margin-top: 0.625rem;    
+}
+.header_logo:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.header_menu{
+    width: 55%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.menu_items{
+    font-family: 'Montserrat-Light';
+    width: 16%;
+    list-style: none;
+    font-size: 0.875rem;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    color: $text_color_2;
+    border-bottom: 4px rgba(111,108,110,0.003) solid;
+    
+}
+.menu_items:hover{
+    font-family: 'Montserrat-Bold';
+    color:$main_color;
+    font-weight: 700;
+    border-bottom: 4px solid $main_color;
+    cursor: pointer;
+}
+.header_search{
+    width: 1.438rem;
+    height: 1.438rem;    
+}
+
+
