@@ -7,10 +7,10 @@ class Featured extends Component {
         super(props);
         this.state = {
             imgArray: [
-          '../../img/Featured/product1.png',
-          '../../img/Featured/product2.png',
-          '../../img/Featured/product1.png',
-          '../../img/Featured/product1.png',
+          require('../../img/Featured/product1.png'),
+          require('../../img/Featured/product2.png'),
+          require('../../img/Featured/product3.png'),
+          require('../../img/Featured/product4.png'),
             ]
         };
     }
