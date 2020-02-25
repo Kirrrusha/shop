@@ -24,7 +24,7 @@ render () {
     )
 
     return (
-        <div className='items'>
+        <div className='items_wrapper'>
             {images}
         </div>
     );

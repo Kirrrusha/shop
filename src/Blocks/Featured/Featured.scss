@@ -3,6 +3,7 @@
 .items{
     @include row-flex();
     @include md(justify-content, center);
+    width: 80%;
     
  
     .item{
@@ -19,4 +20,9 @@
     max-width: 100%;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.item:hover {
+    background-image: url(../../img/Featured/hover.png);
+    opacity: 0.3;
 }
