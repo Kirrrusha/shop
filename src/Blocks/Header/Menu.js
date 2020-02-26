@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import '../../styles/css/Header.scss'
-import Search from '../../styles/svg/search.svg'
+import '../../assets/css/Header.scss'
+import Search from '../../assets/svg/search.svg'
 import PropTypes from 'prop-types';
 
 
@@ -20,7 +20,7 @@ export default class Menu extends Component {
                     return <li key={index} className='menu_items'>{item}</li>
                 })} 
                 <img src ={Search} alt='#' className='header_search'></img> 
-                          
+                        
             </ul>
         )
     }
