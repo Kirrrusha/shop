@@ -4,6 +4,7 @@ import '../../assets/css/Footer.scss'
 import '../../assets/css/App.scss'
 import Social_link from '../../assets/img/social-links.jpg'
 
+
 class Footer extends Component {
     render() {
         const info = [
@@ -24,6 +25,7 @@ class Footer extends Component {
                                 <p>Talk to us on 1300 132<br /> <a href='/'>info@interior.com</a></p>
                             </div>
 
+
                             <div className='footer-info'>
                                 <h2>Useful Information</h2>
                                 <ul className='footer-info-links'>
@@ -32,6 +34,7 @@ class Footer extends Component {
                                     })}
                                 </ul>
                             </div>
+
 
                             <div className='footer-subscribe'>
                                 <h2>Let’s Stay in Touch!</h2>
@@ -43,6 +46,7 @@ class Footer extends Component {
                             </div>
                         </div>
 
+
                         <div className='footer-copyright'>
                             <p>© Copyright - INTERIOR 2016. All Rights Reserved.</p>
                             <a href='/'><img src={Social_link} alt='#'></img></a>
@@ -50,12 +54,9 @@ class Footer extends Component {
                         </div>  
                     </div>
             </footer>
+
         )
     }
 }
-
- Footer.defaultProps = {
-    label: ''    
-};
 
 export default Footer;

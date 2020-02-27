@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../../assets/css/Header.scss';
 import Search from '../../assets/svg/search.svg';
-import PropTypes from 'prop-types';
+
 
 
 export default class Menu extends Component {
@@ -29,7 +29,4 @@ export default class Menu extends Component {
   }
 }
 
-Menu.propTypes = {
-  menu: PropTypes.array
 
-};
