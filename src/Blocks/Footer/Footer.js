@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import '../../assets/css/Footer.scss'
 import '../../assets/css/App.scss'
 import Social_link from '../../assets/img/social-links.jpg'
+import PropTypes from 'prop-types';
 
 class Footer extends Component {
     render() {
@@ -30,7 +31,7 @@ class Footer extends Component {
                             <ul className='footer_list'>
                                 {info.map( (item, index) => {
                                     return <li key={index} className='info_items'>
-                                        <Link label={item} />
+                                        <a href='/'>{this.props.label}</a>
                                     </li>
                                 })}
                             </ul>
@@ -50,21 +51,19 @@ class Footer extends Component {
                         <div>© Copyright - INTERIOR 2016. All Rights Reserved.</div>
                         <a href='/'><img src={Social_link} alt='#'></img></a>
                         <div>Terms & Conditions  /  Privacy policy & Cookies</div>
-                    </div>  
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-class Link extends Component {
-    render() {
-      return <a href='/'>{this.props.label}</a>
-    }
- }
-
  Footer.defaultProps = {
-    label: ''    
+    label: ''
 };
+
+Footer.propTypes = {
+    label: PropTypes.string
+}
 
 export default Footer;
