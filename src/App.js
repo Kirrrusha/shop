@@ -6,7 +6,7 @@ import Footer from './Blocks/Footer/Footer'
 
 function App() {
   return (
-    <div className="App">
+    <div className="wrapper">
       <Header />
      
       <Footer />
