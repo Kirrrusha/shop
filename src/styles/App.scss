@@ -1,3 +1,5 @@
+@import 'smart-grid.scss';
+
 .App {
   text-align: center;
 }
@@ -15,4 +17,54 @@
 
 .App-link {
   color: #61dafb;
+}
+
+$main_color: #212121;
+$text_color:#6c6c6c;
+$text_color_2: #8c8c8c;
+$text_color_3: #9c9c9c;
+$background_color:  #f7f7f7;
+$background-color_2: #ffffff;
+$background_color_3: #f9f9f9;
+$border_color: #d9dee1;
+$green:#43a047;
+$blue:#1e88e5;
+$red:#e53935;
+$black:#000000;
+$white: #ffff;
+
+
+@font-face {
+  font-family: 'Montserrat-Light';
+  src: url('./webfont/Montserrat-Light.eot') format('embedded-opentype'), 
+	url('./webfont/Montserrat-Light.woff') format('woff'), 
+  url('./webfont/Montserrat-Light.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('./webfont/Montserrat-Bold.eot') format('embedded-opentype'), 
+	url('./webfont/Montserrat-Bold.woff') format('woff'), 
+  url('./webfont/Montserrat-Bold.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat-Thin';
+  src: url('./webfont/Montserrat-Thin.eot') format('embedded-opentype'), 
+	url('./webfont/Montserrat-Thin.woff') format('woff'), 
+  url('./webfont/Montserrat-Thin.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('./webfont/Montserrat-Regular.eot') format('embedded-opentype'), 
+	url('./webfont/Montserrat-Regular.woff') format('woff'), 
+  url('./webfont/Montserrat-Regular.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
 }

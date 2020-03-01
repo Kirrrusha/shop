@@ -4,12 +4,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './redux/store';
 import history from './constants/history';
 
-import Contact from './Components/Contact';
-import History from './Components/History';
-import Home from './Components/Home';
-import Product from './Components/Product';
-import Products from './Components/Products';
-import ShowRoom from './Components/ShowRoom';
+import Contact from './Components/Pages/Contact';
+import History from './Components/Pages/History';
+import Home from './Components/Pages/Home';
+import Product from './Components/Pages/Product';
+import Products from './Components/Pages/Products';
+import ShowRoom from './Components/Pages/ShowRoom';
 
 import './styles/App.scss';
 
