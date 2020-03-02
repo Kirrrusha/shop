@@ -8,6 +8,7 @@
         @include md(justify-content, center);
         h1 {
             @include col();
+            font-family: 'Montserrat-Bold';
         }
         a {
             @include col();
@@ -33,15 +34,6 @@
                 width: 33.33%;
                 @include md(width, 50%);
                 @include xs(width, 100%);
-                /*
-                margin: 0;
-                &:first-child {
-                    margin-left: auto;
-                }
-                &:last-child {
-                    margin-right: auto;
-                }
-                */
         }
 
         .slider {

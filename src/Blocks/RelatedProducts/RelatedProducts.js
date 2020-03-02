@@ -33,7 +33,10 @@ export default function RelatedProducts({relatedIds = []}) {
                 {products.length < 4 ?
                     products :
                     (<Slider 
-                        visibleCount={3}>{products}
+                        visibleCount={3}
+                        showDots={false}
+                     >
+                            {products}
                     </Slider>)
                 }
             </div>
