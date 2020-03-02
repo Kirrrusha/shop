@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Exclusive.scss';
-import '../../../styles/App.scss';
+import '../../styles/App.scss';
 
 class Exclusive extends Component {
     constructor(props) {
@@ -11,37 +11,37 @@ class Exclusive extends Component {
                     id: 1,
                     slug: 'url-prod-1',
                     name: 'name 1',
-                    image: require('../../../img/exclusive/product1.png'),
+                    image: require('../../img/exclusive/product1.png'),
                 },
                 {
                     id: 2,
                     slug: 'url-prod-2',
                     name: 'name 2',
-                    image: require('../../../img/exclusive/product2.png'),
+                    image: require('../../img/exclusive/product2.png'),
                 },
                 {
                     id: 3,
                     slug: 'url-prod-3',
                     name: 'name 3',
-                    image: require('../../../img/exclusive/product3.png'),
+                    image: require('../../img/exclusive/product3.png'),
                 },
                 {
                     id: 4,
                     slug: 'url-prod-4',
                     name: 'name 4',
-                    image: require('../../../img/exclusive/product4.png'),
+                    image: require('../../img/exclusive/product4.png'),
                 },
                 {
                     id: 1,
                     slug: 'url-prod-5',
                     name: 'name 5',
-                    image: require('../../../img/exclusive/product1.png'),
+                    image: require('../../img/exclusive/product1.png'),
                 },
                 {
                     id: 2,
                     slug: 'url-prod-6',
                     name: 'name 6',
-                    image: require('../../../img/exclusive/product2.png'),
+                    image: require('../../img/exclusive/product2.png'),
                 },
             ]
         };

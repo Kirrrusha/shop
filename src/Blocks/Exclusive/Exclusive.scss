@@ -1,4 +1,4 @@
-@import '../../../styles/App.scss';
+@import '../../styles/App.scss';
 
 .exclusive {
   .container {
@@ -63,7 +63,6 @@
     }
 
     .product:hover {
-      background-image: url(../../img/hover.png);
       opacity: 0.3;
     }
   }
