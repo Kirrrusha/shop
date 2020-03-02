@@ -1,0 +1,76 @@
+@import '../../../styles/App.scss';
+
+.exclusive {
+  .container {
+    @include wrapper();
+    padding: 1rem 2rem;
+  }
+
+  .head {
+    display: flex;
+    @include md(justify-content, space-between);
+    h1 {
+      @include col();
+    }
+    a {
+      @include col();
+      flex-grow: 1;
+      text-align-last: end;
+      align-self: center;
+      font-size: 2rem;
+      text-decoration: none;
+      color: #000000;
+
+      &::after {
+        content: " ›";
+        font-size: 3rem;
+      }
+    }
+  }
+
+  .block {
+    @include row-flex();
+    padding: 0 1rem;
+
+    .product {
+      width: calc(33.33% - 2rem);
+      @include md(width, calc(50% - 2rem));
+      @include xs(width, 100%);
+      padding-right: 3rem;
+      padding-bottom: 3rem;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+
+      &:nth-child(3n) {
+        padding-right: 0rem;
+        @include md(padding-right, 3rem);
+        @include xs(padding-right, 0rem);
+      }
+      &:nth-child(2n) {
+        padding-right: 3rem;
+        @include md(padding-right, 0rem);
+        @include xs(padding-right, 0rem);
+      }
+      &:nth-child(1n) {
+        @include xs(padding-right, 0rem);
+      }
+      &:last-child {
+        padding-right: 0rem;
+      }
+    }
+
+    .product:hover {
+      background-image: url(../../../img/hover.png);
+      opacity: 0.3;
+    }
+  }
+}
+
+
+
+
+
+
