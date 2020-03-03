@@ -1,11 +1,11 @@
 @import '../../assets/css/App.scss';
 
 
-.header_menu, .header_logo {
+.header-menu, .header-logo {
   @include row-flex();
   @include md(justify-content, center);
 
-  .menu_items, .header_search {
+  .header-links {
     @include col();
     @include size(2);
     @include size-md(6);
@@ -41,11 +41,15 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    @include xs(display, none);
+    @include md(display, none);
   }
 
   &-search {
     width: 1.438rem;
     height: 1.438rem;
+    @include xs(display, none);
+    @include md(display, none);
   }
 }
 

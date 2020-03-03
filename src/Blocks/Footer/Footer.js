@@ -49,7 +49,7 @@ class Footer extends Component {
 
                         <div className='footer-copyright'>
                             <p>© Copyright - INTERIOR 2016. All Rights Reserved.</p>
-                            <a href='/'><img src={Social_link} alt='#'></img></a>
+                            <a href='/'><img src={Social_link} alt='#' /></a>
                             <p>Terms & Conditions  /  Privacy policy & Cookies</p>
                         </div>  
                     </div>

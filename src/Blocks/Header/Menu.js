@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import '../../assets/css/Header.scss';
 import Search from '../../assets/svg/search.svg';
 
-
-
 export default class Menu extends Component {
 
   render() {
