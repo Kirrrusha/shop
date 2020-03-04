@@ -16,6 +16,7 @@ export default class Header extends Component {
             <a href='/'>
               <img className='header-logo' src={Logo} alt='#' />
             </a>
+            
             <Menu />
             <BurgerMenu />
           </div>

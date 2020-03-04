@@ -40,8 +40,8 @@ class Footer extends Component {
                                 <h2>Let’s Stay in Touch!</h2>
                                 <p>Suscribe to know about our latest news, products and special offers just for suscribers</p>
                                 <div className='footer-input'>
-                                    <input type="text" placeholder='your email address'></input>
-                                    <button type="submit" className="btn"></button>
+                                    <input type="mail" placeholder='your email address' />
+                                    <button type="submit" className="btn" />
                                 </div>
                             </div>
                         </div>

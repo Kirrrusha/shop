@@ -14,6 +14,7 @@ import ShowRoom from './Components/ShowRoom';
 import Header from './Blocks/Header/Header'
 import Footer from './Blocks/Footer/Footer'
 
+
 import './assets/css/App.scss'
 
 class App extends Component {
@@ -34,7 +35,7 @@ class App extends Component {
                             <Route exact path="/show-room" component={ShowRoom}/>
                         </Switch>
                     </BrowserRouter>
-                  <Footer />
+                   <Footer />
                 </Provider>
             </div>
         );
