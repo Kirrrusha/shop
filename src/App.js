@@ -11,15 +11,20 @@ import Product from './Components/Product';
 import Products from './Components/Products';
 import ShowRoom from './Components/ShowRoom';
 
-import './styles/App.scss';
+import Header from './Blocks/Header/Header'
+import Footer from './Blocks/Footer/Footer'
+
+
+import './assets/css/App.scss'
 
 class App extends Component {
 
+
     render(){
         return (
-            <div className="App">
-                <h2>Template</h2>
-                <Provider store={store}>
+            <div className="wrapper">
+              <Provider store={store}>
+                <Header />
                     <BrowserRouter history={history}>
                         <Switch>
                             <Route exact path="/" component={Home}/>
@@ -30,6 +35,7 @@ class App extends Component {
                             <Route exact path="/show-room" component={ShowRoom}/>
                         </Switch>
                     </BrowserRouter>
+                   <Footer />
                 </Provider>
             </div>
         );
