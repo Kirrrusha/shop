@@ -9,7 +9,6 @@ import Modal from '../Modal/Modal'
 
 export default class Header extends Component {
 
-
   checkIfModalShow = () => {
     let localDate =  localStorage.getItem('xusha')
     let compareDate = Date.now() - (1000*3600*24) // minus 24h
@@ -29,7 +28,7 @@ export default class Header extends Component {
     if (this.checkIfModalShow()) {			
         modal = <Modal />;
     }   
-    
+
     return (
       <header>
         <div className='wrapper'>
