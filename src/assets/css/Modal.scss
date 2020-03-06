@@ -1,0 +1,101 @@
+@import './App.scss';
+
+.mobile{
+    display:none;
+    @include md(display, block); 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;  
+
+    &-container{
+        padding: 1.5rem 3rem 4rem;      
+        background-image: url(../img/back-img-m.png);
+        background-repeat: no-repeat;
+        width: 18rem;
+        height: 10rem;  
+    }
+        & .delete-img{
+            position: fixed;
+            right: 1.125rem;
+            top: 0.625rem;
+            width: 10px;
+            height:10px;
+        }       
+        
+        &-text p{
+            font-family: 'Montserrat-Bold';
+            font-size: 0.8rem;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 2.67;
+            letter-spacing: 1.8px;
+            text-align: left;
+            color:$color-gray;
+            text-transform: uppercase;
+        }
+
+        &-text h1{
+            font-family:'Montserrat-Thin';
+            font-size: 1.5rem;
+            font-weight: 100;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.16;
+            letter-spacing: normal;
+            text-align: left;
+            color: $color-main;
+            text-transform: uppercase;
+        }
+
+        &-text h2{
+            font-family: 'Montserrat-Light';
+            font-size: 0.8rem;
+            font-weight: 300;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.09;
+            letter-spacing: normal;
+            text-align: left;
+            color: $color-gray;
+            text-transform: uppercase;
+        }
+
+        &-btns{
+            text-align: left;
+            margin-top: 0.3rem;
+
+            & a:hover{
+                    cursor: pointer;
+                    opacity: 0.8;
+                }
+
+            & img{
+                text-align: left;
+                width: 105px;
+                padding-right: 5px;
+                padding-top: 5px;
+            }        
+        }
+    }
+    .mobile.delete{
+        display: none;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

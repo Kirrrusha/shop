@@ -13,6 +13,7 @@ import ShowRoom from './Components/ShowRoom';
 
 import Header from './Blocks/Header/Header'
 import Footer from './Blocks/Footer/Footer'
+import Backdrop from './Blocks/Modal/Backdrop'
 
 
 import './assets/css/App.scss'
@@ -36,6 +37,7 @@ class App extends Component {
                         </Switch>
                     </BrowserRouter>
                    <Footer />
+                   <Backdrop />
                 </Provider>
             </div>
         );
