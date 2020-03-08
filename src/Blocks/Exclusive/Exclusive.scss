@@ -1,4 +1,4 @@
-@import '../../styles/App.scss';
+@import '../../assets/css/App.scss';
 
 .exclusive {
   .container {
@@ -36,21 +36,23 @@
       width: calc(33.33% - 2rem);
       @include md(width, calc(50% - 2rem));
       @include xs(width, 100%);
-      padding-right: 3rem;
-      padding-bottom: 3rem;
+      margin-right: 3rem;
+      margin-bottom: 3rem;
+      display: block;
+      position: relative;
 
-      img {
+      &-img {
         height: 100%;
         width: 100%;
       }
 
       &:nth-child(3n) {
-        padding-right: 0rem;
+        margin-right: 0rem;
         @include md(padding-right, 3rem);
         @include xs(padding-right, 0rem);
       }
       &:nth-child(2n) {
-        padding-right: 3rem;
+        margin-right: 3rem;
         @include md(padding-right, 0rem);
         @include xs(padding-right, 0rem);
       }
@@ -58,11 +60,51 @@
         @include xs(padding-right, 0rem);
       }
       &:last-child {
-        padding-right: 0rem;
+        margin-right: 0rem;
       }
     }
 
-    .product:hover {
+    .hover {
+      position: absolute;
+      display: none;
+      width: 100%;
+      bottom: 50%;
+      transform: translate(0, 50%);
+
+      font-family: Montserrat;
+      font-stretch: normal;
+      font-style: normal;
+      letter-spacing: normal;
+
+      //transition: opacity 1s ease-in-out;
+      //opacity: 1;
+
+      &-img {
+        width: 48px;
+        height: 48px;
+        padding-bottom: 19px;
+      }
+      h6 {
+        color: #212121;
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 1.36;
+        margin: 0px;
+        padding-bottom: 23px;
+      }
+      span {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1.57;
+        color: #6c6c6c;
+        padding-bottom: 23px;
+      }
+    }
+
+    .product:hover .hover {
+      display: block;
+    }
+    .product:hover .product-img {
       opacity: 0.3;
     }
   }
