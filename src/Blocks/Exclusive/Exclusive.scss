@@ -30,37 +30,22 @@
 
   .block {
     @include row-flex();
-    padding: 0 1rem;
+    justify-content: space-between;
 
     .product {
-      width: calc(33.33% - 2rem);
-      @include md(width, calc(50% - 2rem));
-      @include xs(width, 100%);
-      margin-right: 3rem;
-      margin-bottom: 3rem;
       display: block;
       position: relative;
+      width: calc(33.33% - 1rem);
+      margin-bottom: 1rem;
+
+      @include md(width, calc(50% - 1rem));
+      @include xs(width, 100%);
+      @include md(margin-bottom, 2rem);
+      @include xs(margin-bottom, 2rem);
 
       &-img {
         height: 100%;
         width: 100%;
-      }
-
-      &:nth-child(3n) {
-        margin-right: 0rem;
-        @include md(padding-right, 3rem);
-        @include xs(padding-right, 0rem);
-      }
-      &:nth-child(2n) {
-        margin-right: 3rem;
-        @include md(padding-right, 0rem);
-        @include xs(padding-right, 0rem);
-      }
-      &:nth-child(1n) {
-        @include xs(padding-right, 0rem);
-      }
-      &:last-child {
-        margin-right: 0rem;
       }
     }
 
@@ -76,13 +61,14 @@
       font-style: normal;
       letter-spacing: normal;
 
-      //transition: opacity 1s ease-in-out;
-      //opacity: 1;
-
       &-img {
-        width: 48px;
+        width: 100%;
         height: 48px;
         padding-bottom: 19px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 48px 48px;
+        background-image: url("../../assets/img/exclusive/hover.png");
       }
       h6 {
         color: #212121;
@@ -92,7 +78,7 @@
         margin: 0px;
         padding-bottom: 23px;
       }
-      span {
+      span.description {
         font-size: 14px;
         font-weight: 300;
         line-height: 1.57;

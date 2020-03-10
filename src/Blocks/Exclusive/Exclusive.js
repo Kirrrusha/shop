@@ -47,20 +47,20 @@ class Exclusive extends Component {
                 shortDescription: 'text about product 6',
                 image: require('../../assets/img/exclusive/product2.png'),
             },
-        ],
-        hoverImg: require('../../assets/img/exclusive/hover.png'),
+        ]
     };
 
     render () {
+
         const { exclusive } = this.state;
         const htmlProd = exclusive.map((prod, index) => {
             return (
-                <a className='product' href={`/product/${prod.slug}`}>
-                    <img className='product-img' src={prod.image} key={index} alt='product' />
+                <a className='product' key={index} href={`/product/${prod.slug}`}>
+                    <img className='product-img' src={prod.image} alt='product' />
                     <div className='hover'>
-                        <img className='hover-img' src={this.state.hoverImg} />
+                        <div className='hover-img' />
                         <h6>{prod.name}</h6>
-                        <span>{prod.shortDescription}</span>
+                        <span className='description'>{prod.shortDescription}</span>
                     </div>
                 </a>
             )}
