@@ -46,8 +46,8 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.18.3",
+    "husky": "^4.0.6",
     "smart-grid": "^2.1.2",
-    "husky": "^4.0.6"
+    "eslint-plugin-react": "^7.18.3"    
   }
 }

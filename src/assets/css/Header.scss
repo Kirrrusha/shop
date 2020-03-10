@@ -1,0 +1,94 @@
+@import '../../assets/css/App.scss';
+
+
+.header-menu, .header-logo {
+  @include row-flex();
+  @include md(justify-content, center);
+
+  .header-links {
+    @include col();
+    @include size(2);
+    @include size-md(6);
+    @include size-xs(12);
+  }
+}
+
+.header {
+  &-blocks {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 2rem 0;
+  }
+
+  &-logo {
+    width: 11.563rem;
+    height: 1.375rem;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
+  &-links {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    @include xs(display, none);
+    @include md(display, none);
+  }
+
+  &-search {
+    width: 1.438rem;
+    height: 1.438rem;
+    @include xs(display, none);
+    @include md(display, none);
+  }
+}
+
+.menu {
+  &-items {
+    font-family: 'Montserrat-Bold';
+    list-style: none;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: $color-gray-dark;
+    border-bottom: 3px rgba(111, 108, 110, 0.003) solid;
+    letter-spacing: 1.4px;
+    margin: 0 15px;
+    padding: 0;
+    font-weight: 300;
+
+
+    &:last-child {
+      margin-right: 25px;
+    }
+
+    &:hover {
+      font-family: 'Montserrat-Bold';
+      color: $color-main;
+      border-bottom: 3px solid $color-main;
+      cursor: pointer;
+    }
+          &:last-child {
+            margin-right: 25px;
+          }
+          
+          &:hover {
+            font-family: 'Montserrat-Bold';
+            color: $color-main;
+            border-bottom: 3px solid $color-main;
+            cursor: pointer;
+          }
+  }
+}
+
+
+  

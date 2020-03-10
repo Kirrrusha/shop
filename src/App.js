@@ -11,29 +11,36 @@ import Product from './Pages/Product';
 import Products from './Pages/Products';
 import ShowRoom from './Pages/ShowRoom';
 
-import './styles/App.scss';
+import Header from './Blocks/Header/Header'
+import Footer from './Blocks/Footer/Footer'
+import Mobile from './Blocks/Mobile/Mobile'
+
+import './assets/css/App.scss'
 
 class App extends Component {
 
-  render() {
-    return (
-      <div className="App">
-        <h2>Template</h2>
-        <Provider store={store}>
-          <BrowserRouter history={history}>
-            <Switch>
-              <Route exact path="/" component={Home}/>
-              <Route exact path="/history" component={History}/>
-              <Route exact path="/contact" component={Contact}/>
-              <Route exact path="/product" component={Product}/>
-              <Route exact path="/products" component={Products}/>
-              <Route exact path="/show-room" component={ShowRoom}/>
-            </Switch>
-          </BrowserRouter>
-        </Provider>
-      </div>
-    );
-  }
+
+    render(){
+        return (
+            <div className="wrapper">
+              <Provider store={store}>
+                <Header />
+                    <BrowserRouter history={history}>
+                        <Switch>
+                            <Route exact path="/" component={Home}/>
+                            <Route exact path="/history" component={History}/>
+                            <Route exact path="/contact" component={Contact}/>
+                            <Route exact path="/product" component={Product}/>
+                            <Route exact path="/products" component={Products}/>
+                            <Route exact path="/show-room" component={ShowRoom}/>
+                        </Switch>
+                    </BrowserRouter>
+                    <Mobile />
+                   <Footer />
+                </Provider>
+            </div>
+        );
+    }
 }
 
 export default App;
