@@ -13,8 +13,7 @@ import ShowRoom from './Components/ShowRoom';
 
 import Header from './Blocks/Header/Header'
 import Footer from './Blocks/Footer/Footer'
-import Backdrop from './Blocks/Modal/Backdrop'
-
+import Mobile from './Blocks/Mobile/Mobile'
 
 import './assets/css/App.scss'
 
@@ -36,8 +35,8 @@ class App extends Component {
                             <Route exact path="/show-room" component={ShowRoom}/>
                         </Switch>
                     </BrowserRouter>
+                    <Mobile />
                    <Footer />
-                   <Backdrop />
                 </Provider>
             </div>
         );

@@ -5,29 +5,29 @@ import '../../assets/css/Header.scss';
 import '../../assets/css/App.scss';
 import Menu from './Menu';
 import BurgerMenu from './BurgerMenu'
-import Modal from '../Modal/Modal'
+
 
 export default class Header extends Component {
 
-  checkIfModalShow = () => {
-    let localDate =  localStorage.getItem('xusha')
-    let compareDate = Date.now() - (1000*3600*24) // minus 24h
-    let result = true;    
+//   checkIfModalShow = () => {
+//     let localDate =  localStorage.getItem('xusha')
+//     let compareDate = Date.now() - (1000*3600*24) // minus 24h
+//     let result = true;    
   
-  if (typeof localDate === 'string') {
-    localDate = parseInt(localDate)
-      if (localDate > compareDate) {
-        result = false; 
-    } 
-  }
-   return result;
- }
+//   if (typeof localDate === 'string') {
+//     localDate = parseInt(localDate)
+//       if (localDate > compareDate) {
+//         result = false; 
+//     } 
+//   }
+//    return result;
+//  }
 
   render() {
-    let modal = '';   
-    if (this.checkIfModalShow()) {			
-        modal = <Modal />;
-    }   
+    // let modal = '';   
+    // if (this.checkIfModalShow()) {			
+    //     modal = <Modal />;
+    // }   
 
     return (
       <header>
@@ -37,8 +37,7 @@ export default class Header extends Component {
             <a href='/'>
               <img className='header-logo' src={Logo} alt='#' />
             </a>
-
-            {modal}
+           
             <Menu />
             <BurgerMenu />
           </div>
