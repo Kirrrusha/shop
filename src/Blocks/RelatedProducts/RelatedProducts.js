@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './RelatedProducts.scss'
 import Card from '../../Components/Card/Card'
 import Slider from '../../Components/Slider/Slider'
 
@@ -13,7 +12,7 @@ export default function RelatedProducts({relatedIds = []}) {
 
     function loadProducts(ids) {
         //TODO: add redux to load products and remove samples
-        return ids.map(id => ({ 
+        return ids.map(id => ({
             id,
             imageUrl: 'https://i.pinimg.com/564x/6f/5a/b1/6f5ab1b470beeeeaf285bb451c63ac8f.jpg',
             title: 'Flower Embroidery Hoop Art',
@@ -32,7 +31,7 @@ export default function RelatedProducts({relatedIds = []}) {
             <div className="relatedProducts">
                 {products.length < 4 ?
                     products :
-                    (<Slider 
+                    (<Slider
                         visibleCount={3}
                         showDots={false}
                      >

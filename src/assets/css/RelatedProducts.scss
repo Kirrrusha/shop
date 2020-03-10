@@ -1,4 +1,4 @@
-@import "../../styles/smart-grid.scss";
+@import "/smart-grid.scss";
 
 .relatedProductsWrapper {
     @include wrapper();
@@ -24,7 +24,7 @@
                 content: " ›";
                 font-size: 3rem;
             }
-            
+
         }
     }
     .relatedProducts {
@@ -42,6 +42,6 @@
                 width: 100%;
             }
         }
-        
+
     }
 }
