@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
-import '../../assets/css/Mobile.scss'
-import AppStoreBtn from '../../assets/img/app-store.png'
-import GooglePlayBtn from '../../assets/img/google-play.png'
+import '../../../assets/styles/Mobile.scss'
+import AppStoreBtn from '../../../assets/img/app-store.png'
+import GooglePlayBtn from '../../../assets/img/google-play.png'
 
 
 export default class Mobile extends Component {
      render() {
         return (
         <div className='mobile-container'>
-            <div className='wrapper'>  
+            <div className='wrapper'>
                     <div className='mobile-text'>
                         <p>mobile app</p>
                         <h1>find. follow. favorite. </h1>
@@ -19,7 +19,7 @@ export default class Mobile extends Component {
                      <div className='mobile-btns'>
                         <a href='/'><img src={AppStoreBtn} alt='#' /></a>
                         <a href='/'><img src={GooglePlayBtn} alt='#' /></a>
-                    </div> 
+                    </div>
                 </div>
             </div>
         )

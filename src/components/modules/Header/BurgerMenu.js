@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import '../../assets/css/BurgerMenu.scss';
-import OpenMenu from '../../assets/svg/burger-menu.svg';
+import OpenMenu from '../../../assets/svg/burger-menu.svg';
 import Menu from './Menu';
-import DelMenu from '../../assets/svg/delete.svg';
+import DelMenu from '../../../assets/svg/delete.svg';
 
 export default class BurgerMenu extends Component {
 

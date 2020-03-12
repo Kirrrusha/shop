@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 
-import Logo from '../../assets/img/logo.png';
-import '../../assets/css/Header.scss';
-import '../../assets/css/App.scss';
+import Logo from '../../../assets/img/logo.png';
 import Menu from './Menu';
-import BurgerMenu from './BurgerMenu'
 
 
 export default class Header extends Component {
@@ -21,7 +18,6 @@ export default class Header extends Component {
             </a>
 
             <Menu />
-            <BurgerMenu />
           </div>
         </div>
       </header>
