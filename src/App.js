@@ -22,7 +22,7 @@ class App extends Component {
 
     render(){
         return (
-            <div className="wrapper">
+            <div>
               <Provider store={store}>
                 <Header />
                     <BrowserRouter history={history}>
@@ -30,7 +30,7 @@ class App extends Component {
                             <Route exact path="/" component={Home}/>
                             <Route exact path="/history" component={History}/>
                             <Route exact path="/contact" component={Contact}/>
-                            <Route exact path="/product" component={Product}/>
+                            <Route exact path="/product/:alias" component={Product}/>
                             <Route exact path="/products" component={Products}/>
                             <Route exact path="/show-room" component={ShowRoom}/>
                         </Switch>

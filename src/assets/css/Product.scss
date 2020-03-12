@@ -1,0 +1,56 @@
+@import '../../assets/css/App.scss';
+
+body {
+  background: #fff !important;
+}
+
+.product {
+  .container {
+    @include wrapper();
+  }
+
+  .head {
+    display: flex;
+    justify-content: center;
+    background:  #f4f4f4;
+    padding: 28px 0;
+
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: Montserrat;
+      font-size: 18px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 1.8px;
+      color: #6c6c6c;
+
+      .active {
+        color: #212121;
+      }
+    }
+    a:hover {
+      color: #212121;
+    }
+    a + a {
+      padding-left: 1.5rem;
+    }
+  }
+
+  .block {
+    display: flex;
+    justify-content: space-between;
+
+    .images {
+      @include col();
+      width: calc(50% - 50px);
+    }
+    .about {
+      @include col();
+      width: calc(50% + 50px);
+    }
+  }
+
+}

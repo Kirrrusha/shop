@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Exclusive.scss';
 
 class Exclusive extends Component {
@@ -55,14 +56,14 @@ class Exclusive extends Component {
         const { exclusive } = this.state;
         const htmlProd = exclusive.map((prod, index) => {
             return (
-                <a className='product' key={index} href={`/product/${prod.slug}`}>
+                <Link className='product' key={index} to={`/product/${prod.slug}`}>
                     <img className='product-img' src={prod.image} alt='product' />
                     <div className='hover'>
                         <div className='hover-img' />
                         <h6>{prod.name}</h6>
                         <span className='description'>{prod.shortDescription}</span>
                     </div>
-                </a>
+                </Link>
             )}
         )
 
