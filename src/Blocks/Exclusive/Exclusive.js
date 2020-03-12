@@ -71,7 +71,7 @@ class Exclusive extends Component {
                 <div className="container">
                     <div className="head">
                         <h1>Exclusive Products</h1>
-                        <a href="/">EXPLORE ALL</a>
+                        <a href="#">EXPLORE ALL</a>
                     </div>
                     <div className="block">
                         {htmlProd}

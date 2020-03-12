@@ -83,7 +83,7 @@ class PromoProducts extends Component {
                 <>                                    
                     <ProductItem
                         className = 'product'
-                        key = {index}
+                        key = {`product-${index}`}
                         name = {prod.name}
                         title = {prod.title}
                         href = {`/product/${prod.link}`}
@@ -98,7 +98,7 @@ class PromoProducts extends Component {
             <div className='promo'>
                 <div className='promo-head'>
                     <h1>Trending Products</h1>
-                    <a href='/'>explore all</a>
+                    <a href='#'>explore all</a>
                 </div>
                 <div className='promo-block'>
                     { htmlProducts }
