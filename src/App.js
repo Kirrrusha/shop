@@ -10,6 +10,7 @@ import Home from './Components/Home';
 import Product from './Components/Product';
 import Products from './Components/Products';
 import ShowRoom from './Components/ShowRoom';
+import Cart from './Blocks/Cart/Cart';
 
 import Header from './Blocks/Header/Header'
 import Footer from './Blocks/Footer/Footer'
@@ -33,6 +34,7 @@ class App extends Component {
                             <Route exact path="/product" component={Product}/>
                             <Route exact path="/products" component={Products}/>
                             <Route exact path="/show-room" component={ShowRoom}/>
+                            <Route exact path="/cart" component={Cart} />
                         </Switch>
                     </BrowserRouter>
                    <Footer />
