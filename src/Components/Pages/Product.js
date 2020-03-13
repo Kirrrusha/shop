@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../../assets/css/Product.scss';
+import AboutBtn from '../../assets/img/product/btn.png'
+import BigCard from '../../assets/img/product/big.png'
 
 class Product extends Component {
 
@@ -10,11 +12,11 @@ class Product extends Component {
             id: 1,
             alias: '',
             name: 'Fishnet Chair',
-            description: 'The majesty of Mountains - Ugmonk style.\n' +
+            description: 'The majesty of Mountains - Ugmonk style.\n ' +
                 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n' +
-                ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \n' +
-                'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.\n' +
-                ' sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.',
+                'et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n' +
+                'lorem et dolore magna aliqua. Ut enim ad minim veniam, quis nt, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n' +
+                'et dolore magna aliqua. Ut enim ad minim laboris nisi',
             price: 36.70,
             images:[
                 {
@@ -27,7 +29,7 @@ class Product extends Component {
                 },
                 {
                     medium: require('../../assets/img/product/big.png'),
-                    small: require('../../assets/img/product/small1.png'),
+                    small: require('../../assets/img/product/small3.png'),
                 },
             ],
             offers: [
@@ -39,13 +41,34 @@ class Product extends Component {
     };
 
     render() {
-
         const { alias } = this.props.match.params;
-        const current = false;
-        console.log('alias ', alias);
+        const current = false;     
+        const { product } = this.state;
+        
+       
+        const aboutproduct = (
+            <div>                            
+                <h2>{product.name}</h2>                            
+                <div className='block-about-offer'>{product.offers.map( (elem, index)=>{ 
+                    return <div>{elem.name}</div>
+                })}</div>
+                <div className='block-about-price'>$<span>{product.price}</span>/sc</div>  
+                <img className='block-about-btn' src={AboutBtn} alt='button' />
+                <p className='block-about-description'>{product.description}</p>  
+            </div>
+        ) 
+        
+        const card = product.images.map( (card, index) =>{
+            return  <img                       
+                        src={card.small}
+                        alt='card'
+                        key={`card-${index}`}
+                    />
+        })
+        
 
         return(
-            <div className='product'>
+            <div className='products'>
                 <div className='head'>
                     <div className='container'>
                         <Link className={'active'} to={``}>all</Link>
@@ -58,10 +81,13 @@ class Product extends Component {
                 </div>
                 <div className='container'>
                     <div className='block'>
-                        <div className='images'>
-                            <img src='' />
+                        <div className='block-card'>
+                            <img src={BigCard} alt='card' />
+                            {card}                      
                         </div>
-                        <div className='about'>2</div>
+                        <div  className='block-about'>
+                            {aboutproduct}
+                        </div >                        
                     </div>
                 </div>
             </div>

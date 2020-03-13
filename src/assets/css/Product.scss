@@ -1,38 +1,35 @@
 @import '../../assets/css/App.scss';
 
 body {
-  background: #fff !important;
+  background: $background-color-white !important;
 }
-
-.product {
-  .container {
-    @include wrapper();
-  }
+.products {
+  @include wrapper();
 
   .head {
     display: flex;
     justify-content: center;
-    background:  #f4f4f4;
+    background:  $background-color-main;
     padding: 28px 0;
 
     a {
       text-decoration: none;
       text-transform: uppercase;
-      font-family: Montserrat;
-      font-size: 18px;
+      font-family:'Montserrat-Bold';
+      font-size: 1.125rem;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
       line-height: normal;
       letter-spacing: 1.8px;
-      color: #6c6c6c;
+      color: $color-gray;
 
       .active {
-        color: #212121;
+        color: $color-main;
       }
     }
     a:hover {
-      color: #212121;
+      color: $color-main;
     }
     a + a {
       padding-left: 1.5rem;
@@ -42,15 +39,81 @@ body {
   .block {
     display: flex;
     justify-content: space-between;
+    padding: 4rem 0;
 
-    .images {
+    &-card {
       @include col();
       width: calc(50% - 50px);
+      
     }
-    .about {
+    &-about {
       @include col();
       width: calc(50% + 50px);
+      padding-left: 2rem;
+      
+      
+      & h2{
+        font-family: 'Montserrat-Bold';
+        font-size: 2.25rem;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color:$color-main;
+        margin-bottom: 0;
+      }
+      &-offer{        
+        font-family: 'Montserrat-Bold';
+        font-size: 1.125rem;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2.67;
+        letter-spacing: 1.8px;
+        text-align: center;
+        color: $red;
+        text-transform: uppercase; 
+        padding: 1rem 0;             
+      }
+      &-price{ 
+        font-size: 2.5rem;
+        font-family: 'Montserrat-Light';
+        font-weight: 300;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 0.67;
+        letter-spacing: normal;
+        text-align: center;
+        color: $color-main;
+
+        & span{               
+          font-size: 4.5rem;         
+        }
+      }
+
+      &-btn{
+        padding: 2rem 0;
+
+        &:hover{
+          opacity: 0.7;
+          cursor: pointer;
+        }
+      }
+      &-description{
+        width: 500px;
+        font-family: 'Montserrat-Light';
+        font-size: 1rem;
+        font-weight: 300;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: 0.4px;
+        text-align: left;
+        color:$color-main;
+        text-align: left;
+      }
     }
   }
-
 }

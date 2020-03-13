@@ -1,6 +1,7 @@
 @import './App.scss';
 
 .mobile-container{
+        @include wrapper();
         padding: 2rem 0 0;     
         background-image: url(../img/back-img-mobile.png);
         background-repeat: no-repeat;
