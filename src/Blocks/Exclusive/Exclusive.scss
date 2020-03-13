@@ -1,0 +1,103 @@
+@import '../../assets/css/App.scss';
+
+.exclusive {
+  .container {
+    @include wrapper();
+    padding: 1rem 2rem;
+  }
+
+  .head {
+    display: flex;
+    @include md(justify-content, space-between);
+    h1 {
+      @include col();
+    }
+    a {
+      @include col();
+      flex-grow: 1;
+      text-align-last: end;
+      align-self: center;
+      font-size: 2rem;
+      text-decoration: none;
+      color: #000000;
+
+      &::after {
+        content: " ›";
+        font-size: 3rem;
+      }
+    }
+  }
+
+  .block {
+    @include row-flex();
+    justify-content: space-between;
+
+    .product {
+      display: block;
+      position: relative;
+      width: calc(33.33% - 1rem);
+      margin-bottom: 1rem;
+
+      @include md(width, calc(50% - 1rem));
+      @include xs(width, 100%);
+      @include md(margin-bottom, 2rem);
+      @include xs(margin-bottom, 2rem);
+
+      &-img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .hover {
+      position: absolute;
+      display: none;
+      width: 100%;
+      bottom: 50%;
+      transform: translate(0, 50%);
+
+      font-family: Montserrat;
+      font-stretch: normal;
+      font-style: normal;
+      letter-spacing: normal;
+
+      &-img {
+        width: 100%;
+        height: 48px;
+        padding-bottom: 19px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 48px 48px;
+        background-image: url("../../assets/img/exclusive/hover.png");
+      }
+      h6 {
+        color: #212121;
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 1.36;
+        margin: 0px;
+        padding-bottom: 23px;
+      }
+      span.description {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 1.57;
+        color: #6c6c6c;
+        padding-bottom: 23px;
+      }
+    }
+
+    .product:hover .hover {
+      display: block;
+    }
+    .product:hover .product-img {
+      opacity: 0.3;
+    }
+  }
+}
+
+
+
+
+
+

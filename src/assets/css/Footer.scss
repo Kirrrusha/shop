@@ -16,9 +16,9 @@
 }
 
 footer{
+    @include wrapper();
     background-color: $background-color-main;
     padding: 2rem 0;
-
 }
 
 .footer-blocks{
