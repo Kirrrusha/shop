@@ -5,7 +5,9 @@ class Products extends Component {
     render() {
 
         return(
-            <div>Products</div>
+            <div>
+                <h1>Products</h1>
+            </div>
         );
     }
 }
