@@ -8,7 +8,7 @@ export default function Cart() {
     const products = [] //TODO: add redux
     let total = 0
     const rows = products.map(({name, quantity, imgUrl, price, info}) => {
-        const infoRows = Object.entries(info).map(([key, value]) => <p key>{`${key}: ${value}`}</p>)
+        const infoRows = Object.entries(info).map(([key, value]) => <p key={key}>{`${key}: ${value}`}</p>)
         total += price * quantity;
         return (
             <div className="productCard row" key={name}>

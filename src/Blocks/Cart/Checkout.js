@@ -1,10 +1,10 @@
 import React from 'react'
 import './Checkout.scss'
-import Steps from '../../Components/Steps/Steps'
+import Steps from '../../Components/Steps'
 
 export default function Checkout() {
     function handleDone (event) {
-        console.log('SOLD!')
+        /*Add redux handler here */
     }
     return (
         <form className="checkout">

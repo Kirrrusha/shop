@@ -12,14 +12,6 @@
     & h1 {
         padding: 1rem 0;
     }
-    
-    /*
-    .productsHeader{
-        //TODO: fix border for first column
-        div:nth-child(n + 1){
-            border-left: 1px solid #0f0f0f;
-        }
-    }*/
 
     .row {
         @include row-flex();
