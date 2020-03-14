@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
 import {ConnectedRouter} from 'connected-react-router';
 import {Route, Switch} from 'react-router-dom';
@@ -10,22 +10,15 @@ import AdminPanel from './components/pages/AdminPanel';
 import UserPanel from './components/pages/UserPanel';
 import PrivateRoute from './components/common/PrivateRoute';
 
-class App extends Component {
-
-
-  render() {
-    return (
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Switch>
-            <Route exact path="/" component={UserPanel}/>
-            <Route path="/login" component={Login}/>
-            <PrivateRoute path="/admin" component={AdminPanel}/>
-          </Switch>
-        </ConnectedRouter>
-      </Provider>
-    );
-  }
-}
+const App = () =>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <Switch>
+        <Route exact path="/" component={UserPanel}/>
+        <Route path="/login" component={Login}/>
+        <PrivateRoute path="/admin" component={AdminPanel}/>
+      </Switch>
+    </ConnectedRouter>
+  </Provider>;
 
 export default App;

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import Social_link from '../../../assets/img/social-links.jpg';
 
 

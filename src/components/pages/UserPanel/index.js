@@ -9,7 +9,7 @@ import Home from './Home';
 import Header from '../../modules/Header/Header';
 import Footer from '../../modules/Footer/Footer';
 
-export default () => {
+const UserPanel = () => {
   return (
     <>
       <Header/>
@@ -23,3 +23,5 @@ export default () => {
     </>
   );
 };
+
+export default UserPanel;

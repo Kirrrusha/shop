@@ -1,13 +1,17 @@
-import React from 'react'
+import React, {useEffect} from 'react';
 import { Route, Redirect } from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux';
+import {checkUser} from '../../redux/modules/auth';
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 
-function PrivateRoute ({ component: Component, auth, ...rest }) {
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  useEffect(() => dispatch(checkUser()), [dispatch]);
   return (
     <Route
       {...rest}
-      render={props => auth.isAuthenticated === true ? (
+      render={props => isAuthenticated ? (
           <Component {...props} />
         ) :
         (
@@ -15,13 +19,10 @@ function PrivateRoute ({ component: Component, auth, ...rest }) {
         )}
     />
   )
-}
+};
 
 PrivateRoute.propTypes = {
-  auth: PropTypes.object.isRequired,
+  component: PropTypes.func
 };
-const mapStateToProps  = (state) => ({
-  auth: state.auth,
-});
-export default connect(mapStateToProps)(PrivateRoute)
 
+export default PrivateRoute;
