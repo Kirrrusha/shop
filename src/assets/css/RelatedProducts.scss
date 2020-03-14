@@ -1,0 +1,47 @@
+@import "/smart-grid.scss";
+
+.relatedProductsWrapper {
+    @include wrapper();
+    padding: 1rem 2rem;
+    .blockHeader {
+        @include row-flex();
+        @include md(justify-content, center);
+        h1 {
+            @include col();
+            font-family: 'Montserrat-Bold';
+        }
+        a {
+            @include col();
+            flex-grow: 1;
+            text-align-last: end;
+            align-self: center;
+            font-size: 2rem;
+            text-decoration: none;
+            color: #000000;
+            font-family: unset; //TODO: find nesessary font
+
+            &::after {
+                content: " ›";
+                font-size: 3rem;
+            }
+
+        }
+    }
+    .relatedProducts {
+        @include row-flex();
+        padding: 0 1rem;
+        .product {
+                width: 33.33%;
+                @include md(width, 50%);
+                @include xs(width, 100%);
+        }
+
+        .slider {
+            width: 100%;
+            .product {
+                width: 100%;
+            }
+        }
+
+    }
+}

@@ -1,6 +1,6 @@
-import React, { Component }  from 'react';
-import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Provider} from 'react-redux';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import store from './redux/store';
 import history from './constants/history';
 
@@ -12,15 +12,13 @@ import Products from './Components/Pages/Products';
 import ShowRoom from './Components/Pages/ShowRoom';
 import Cart from './Blocks/Cart/Cart';
 
-import Header from './Blocks/Header/Header'
-import Footer from './Blocks/Footer/Footer'
-import Mobile from './Blocks/Mobile/Mobile'
+import Header from './Blocks/Header/Header';
+import Footer from './Blocks/Footer/Footer';
+import Mobile from './Blocks/Mobile/Mobile';
 
-import './assets/css/App.scss'
+import './assets/css/App.scss';
 
 class App extends Component {
-
-
     render(){
         return (
             <div className="wrapper">
