@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import parseHtml from 'html-react-parser';
 
 import '../../assets/css/Product.scss';
-import AboutBtn from '../../assets/img/product/btn.png'
-import BigCard from '../../assets/img/product/big.png'
 
 class Product extends Component {
 
@@ -12,11 +11,11 @@ class Product extends Component {
             id: 1,
             alias: '',
             name: 'Fishnet Chair',
-            description: 'The majesty of Mountains - Ugmonk style.\n ' +
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n' +
-                'et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n' +
-                'lorem et dolore magna aliqua. Ut enim ad minim veniam, quis nt, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n' +
-                'et dolore magna aliqua. Ut enim ad minim laboris nisi',
+            description: '<p>The majesty of Mountains - Ugmonk style.</p>' +
+                '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore' +
+                'et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
+                'lorem et dolore magna aliqua. Ut enim ad minim veniam, quis nt, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore' +
+                'et dolore magna aliqua.</p><p>Ut enim ad minim laboris nisi</p>',
             price: 36.70,
             images:[
                 {
@@ -37,52 +36,58 @@ class Product extends Component {
                     name: 'hot deal'
                 }
             ],
-        }
+        },
+        sliderIndex: 0,
+    };
+
+    changeSlider = (index) => {
+        this.setState({sliderIndex: index});
     };
 
     render() {
         const { alias } = this.props.match.params;
-        const current = false;     
-        const { product } = this.state;
-        
+        const current = false;
+
+        const { product, sliderIndex } = this.state;
        
         const aboutproduct = (
             <div>                            
                 <h2>{product.name}</h2>                            
                 <div className='block-about-offer'>{product.offers.map( (elem, index)=>{ 
-                    return <div>{elem.name}</div>
+                    return <div key={index}>{elem.name}</div>
                 })}</div>
                 <div className='block-about-price'>$<span>{product.price}</span>/sc</div>  
-                <img className='block-about-btn' src={AboutBtn} alt='button' />
-                <p className='block-about-description'>{product.description}</p>  
+                <button className='block-about-btn'>Order Us</button>
+                <div className='block-about-description'>{parseHtml(product.description)}</div>
             </div>
         ) 
         
         const card = product.images.map( (card, index) =>{
-            return  <img                       
+            return  <img
+                        className={`${index === sliderIndex ? 'active' : 'pointer'}`}
                         src={card.small}
+                        onClick={() => this.changeSlider(index)}
                         alt='card'
                         key={`card-${index}`}
                     />
         })
-        
 
         return(
-            <div className='products'>
+            <div className='product'>
                 <div className='head'>
                     <div className='container'>
-                        <Link className={'active'} to={``}>all</Link>
-                        <Link className={ current ? 'active' : '' } to={``}>home</Link>
-                        <Link className={ current ? 'active' : '' }>office</Link>
-                        <Link className={ current ? 'active' : '' }>furniture</Link>
-                        <Link className={ current ? 'active' : '' }>modern</Link>
-                        <Link className={ current ? 'active' : '' }>classic</Link>
+                        <Link className={'active'} to={`/`}>all</Link>
+                        <Link className={ current ? 'active' : '' } to={`/`}>home</Link>
+                        <Link className={ current ? 'active' : '' } to={`/`}>office</Link>
+                        <Link className={ current ? 'active' : '' } to={`/`}>furniture</Link>
+                        <Link className={ current ? 'active' : '' } to={`/`}>modern</Link>
+                        <Link className={ current ? 'active' : '' } to={`/`}>classic</Link>
                     </div>
                 </div>
                 <div className='container'>
                     <div className='block'>
                         <div className='block-card'>
-                            <img src={BigCard} alt='card' />
+                            <img src={product.images[sliderIndex].medium} alt='card' />
                             {card}                      
                         </div>
                         <div  className='block-about'>

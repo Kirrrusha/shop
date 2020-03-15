@@ -3,8 +3,10 @@
 body {
   background: $background-color-white !important;
 }
-.products {
-  @include wrapper();
+.product {
+  .container {
+    @include wrapper();
+  }
 
   .head {
     display: flex;
@@ -44,8 +46,12 @@ body {
     &-card {
       @include col();
       width: calc(50% - 50px);
-      
+
+      .active {
+        opacity: 0.5;
+      }
     }
+
     &-about {
       @include col();
       width: calc(50% + 50px);
@@ -94,7 +100,29 @@ body {
       }
 
       &-btn{
-        padding: 2rem 0;
+        // padding: 2rem 0;
+        padding: 24px 204px 24px 160px;
+        border-radius: 50px;
+        margin-top: 31px;
+        margin-bottom: 25px;
+        border: none;
+        outline: none;
+        background-color: #f44336;
+        font-family: Montserrat;
+        font-size: 22px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.09;
+        letter-spacing: 4.4px;
+        text-align: center;
+        color: #ffffff;
+        text-transform: uppercase;
+
+        background-repeat: no-repeat;
+        background-position: 333px 50%;
+        background-size: 16px 24px;
+        background-image: url("../../assets/img/product/arrow.png");
 
         &:hover{
           opacity: 0.7;
@@ -115,5 +143,9 @@ body {
         text-align: left;
       }
     }
+  }
+
+  .pointer {
+    cursor: pointer;
   }
 }
