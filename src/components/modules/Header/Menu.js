@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import '../../../assets/styles/Header.scss';
 import Search from '../../../assets/svg/search.svg';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+
 
 export default class Menu extends Component {
 
@@ -28,5 +30,10 @@ export default class Menu extends Component {
     );
   }
 }
+
+Menu.propTypes = {
+  menu: PropTypes.string,
+}
+
 
 

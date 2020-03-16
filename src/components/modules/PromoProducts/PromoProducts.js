@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import '../../../assets/styles/PromoProducts.scss';
 import ProductItem from './ProductItem'
 
-class PromoProducts extends Component {
+export default class PromoProducts extends Component {
 
     constructor(props) {
         super(props)
@@ -108,5 +109,9 @@ class PromoProducts extends Component {
     }
 }
 
-export default  PromoProducts;
+PromoProducts.propTypes = {
+    product: PropTypes.array,    
+  }
+  
+
 
