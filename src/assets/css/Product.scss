@@ -1,0 +1,151 @@
+@import '../../assets/css/App.scss';
+
+body {
+  background: $background-color-white !important;
+}
+.product {
+  .container {
+    @include wrapper();
+  }
+
+  .head {
+    display: flex;
+    justify-content: center;
+    background:  $background-color-main;
+    padding: 28px 0;
+
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family:'Montserrat-Bold';
+      font-size: 1.125rem;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: 1.8px;
+      color: $color-gray;
+
+      .active {
+        color: $color-main;
+      }
+    }
+    a:hover {
+      color: $color-main;
+    }
+    a + a {
+      padding-left: 1.5rem;
+    }
+  }
+
+  .block {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem 0;
+
+    &-card {
+      @include col();
+      width: calc(50% - 50px);
+
+      .active {
+        opacity: 0.5;
+      }
+    }
+
+    &-about {
+      @include col();
+      width: calc(50% + 50px);
+      padding-left: 2rem;
+      
+      
+      & h2{
+        font-family: 'Montserrat-Bold';
+        font-size: 2.25rem;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color:$color-main;
+        margin-bottom: 0;
+      }
+      &-offer{        
+        font-family: 'Montserrat-Bold';
+        font-size: 1.125rem;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2.67;
+        letter-spacing: 1.8px;
+        text-align: center;
+        color: $red;
+        text-transform: uppercase; 
+        padding: 1rem 0;             
+      }
+      &-price{ 
+        font-size: 2.5rem;
+        font-family: 'Montserrat-Light';
+        font-weight: 300;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 0.67;
+        letter-spacing: normal;
+        text-align: center;
+        color: $color-main;
+
+        & span{               
+          font-size: 4.5rem;         
+        }
+      }
+
+      &-btn{
+        // padding: 2rem 0;
+        padding: 24px 204px 24px 160px;
+        border-radius: 50px;
+        margin-top: 31px;
+        margin-bottom: 25px;
+        border: none;
+        outline: none;
+        background-color: #f44336;
+        font-family: Montserrat;
+        font-size: 22px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.09;
+        letter-spacing: 4.4px;
+        text-align: center;
+        color: #ffffff;
+        text-transform: uppercase;
+
+        background-repeat: no-repeat;
+        background-position: 333px 50%;
+        background-size: 16px 24px;
+        background-image: url("../../assets/img/product/arrow.png");
+
+        &:hover{
+          opacity: 0.7;
+          cursor: pointer;
+        }
+      }
+      &-description{
+        width: 500px;
+        font-family: 'Montserrat-Light';
+        font-size: 1rem;
+        font-weight: 300;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: 0.4px;
+        text-align: left;
+        color:$color-main;
+        text-align: left;
+      }
+    }
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+}
