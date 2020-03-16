@@ -1,5 +1,7 @@
+@import 'smart-grid.scss';
 
 .exclusive {
+  background-color: white;
   .container {
     @include wrapper();
     padding: 1rem 2rem;
@@ -8,7 +10,7 @@
   .head {
     display: flex;
     @include md(justify-content, space-between);
-    h1 {
+    h2 {
       @include col();
     }
     a {
@@ -51,22 +53,24 @@
     .hover {
       position: absolute;
       display: none;
+      flex-direction: column;
+      align-items: center;
       width: 100%;
       bottom: 50%;
       transform: translate(0, 50%);
 
-      font-family: Montserrat;
+      font-family: 'Montserrat-Regular';
       font-stretch: normal;
       font-style: normal;
       letter-spacing: normal;
 
       &-img {
-        width: 100%;
+        width: 48px;
         height: 48px;
-        padding-bottom: 19px;
+        margin-bottom: 19px;
         background-repeat: no-repeat;
         background-position: center;
-        background-size: 48px 48px;
+        background-size: contain;
         background-image: url("../img/exclusive/hover.png");
       }
       h6 {
@@ -74,7 +78,7 @@
         font-size: 22px;
         font-weight: bold;
         line-height: 1.36;
-        margin: 0px;
+        margin: 0;
         padding-bottom: 23px;
       }
       span.description {
@@ -87,7 +91,7 @@
     }
 
     .product:hover .hover {
-      display: block;
+      display: flex;
     }
     .product:hover .product-img {
       opacity: 0.3;

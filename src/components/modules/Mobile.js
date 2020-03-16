@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import '../../../assets/styles/Mobile.scss'
+import '../../assets/styles/Mobile.scss'
 import AppStoreBtn from '../../../assets/img/app-store.png'
 import GooglePlayBtn from '../../../assets/img/google-play.png'
 

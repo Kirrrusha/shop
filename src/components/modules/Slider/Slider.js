@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types';
-import './Slider.scss'
+import '../../../assets/styles/Slider.scss'
 
 const ERROR_MESSAGE = 'SOME PROPS ARE INVALID! PLEASE CHECK SLIDER PROPS AND FIX THEM'
 /**
@@ -46,14 +46,14 @@ export default function Slider (props) {
 
     const { items, dots } = children.reduce(({items, dots}, child, index) => {
         items.push(
-            <div key={index} className="slider__item" style={({maxWidth: `${visCoeff}%`})}> 
+            <div key={index} className="slider__item" style={({maxWidth: `${visCoeff}%`})}>
                 {child}
             </div>
         )
         dots.push(
-            <span 
-                key={index} 
-                className={(index >= slideIndex &&  index < slideIndex + visibleCount ? 'dot dot_active' : 'dot')} 
+            <span
+                key={index}
+                className={(index >= slideIndex &&  index < slideIndex + visibleCount ? 'dot dot_active' : 'dot')}
                 onClick={()=>setSlide(index)}>
             </span>
         )
@@ -63,25 +63,25 @@ export default function Slider (props) {
     let leftControlShow = (infinite || (slideIndex > 0))  ? 'slider__control_show' : ''
     let rightControlShow = (infinite || (slideIndex < children.length - visibleCount))  ? 'slider__control_show' : ''
 
-    return isValid ? 
+    return isValid ?
         (<div className="slider" data-testid="slider" style={style}>
-            <div 
-                className="slider__wrapper" 
+            <div
+                className="slider__wrapper"
                 data-testid="wrapper"
                 style={({transform: `translateX(${-slideIndex * visCoeff}%)`})}
             >
                 {items}
             </div>
-            <button 
-                className={(`slider__control slider__control_left ${leftControlShow}`)} 
+            <button
+                className={(`slider__control slider__control_left ${leftControlShow}`)}
                 onClick={()=>plusSlides(-1)}>
             </button>
-            <button 
+            <button
                 className={(`slider__control slider__control_right ${rightControlShow}`)}
                 onClick={()=>plusSlides(1)}>
             </button>
-            <div 
-                className="dots__container" 
+            <div
+                className="dots__container"
                 style={(dotsPosition!== 'left' && dotsPosition !== 'right' ? {left: '10vw', right: '10vw'} : {[dotsPosition]: '10vw'})}>
                     {showDots && dots}
             </div>

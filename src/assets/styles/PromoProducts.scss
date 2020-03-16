@@ -1,0 +1,130 @@
+@import 'colors';
+
+.promo{
+    @include wrapper();
+    padding: 2rem 2rem;
+    background: $background-color-white;
+
+    &-head{
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem 0;
+
+        & h1{
+            font-family: 'Montserrat-Bold';
+            font-size: 2.25rem;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: left;
+            color: $color-main;
+            margin: 0;
+            padding: 0;
+        }
+
+        & a{
+            color: $color-main;
+            font-family: 'Montserrat-Bold';
+            font-size: 1.125rem;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.33;
+            letter-spacing: 3.6px;
+            text-align: bottom;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+
+            &::after {
+                content: " ›";
+                font-size: 2rem;
+            }
+            &:hover{
+                opacity: 0.8;
+            }
+        }
+    }
+    &-block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        & img{
+            padding: 0.27rem 0.27rem;
+        }
+        .product-block{
+            position: relative;
+
+            .product-info{
+                padding: 5rem 3rem;
+                position: absolute;
+                z-index: 90;
+                display: none;
+                top: 0;
+                left:0;
+
+                & h2{
+                    font-family: 'Montserrat-Bold';
+                    font-size: 1.125rem;
+                    font-weight: bold;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 2.67;
+                    letter-spacing: 1.8px;
+                    text-align: left;
+                    color: $blue;
+                    text-transform: uppercase;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                & h3{
+                    font-family: 'Montserrat-Bold';
+                    font-size: 2rem;
+                    font-weight: bold;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: $color-main;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                & p{
+                    font-family: 'Montserrat-Light';
+                    font-size: 0.875rem;
+                    font-weight: 300;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.71;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: $color-gray;
+                }
+
+                & .btn{
+                    margin-left: -95px;
+
+                    &:hover{
+                        opacity: 0.8;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .product-block:hover>.product-info {
+            cursor: pointer;
+            display: block;
+        }
+        .product-block:hover>.product-item img {
+            opacity: 0.2;
+        }
+    }
+}
+
+

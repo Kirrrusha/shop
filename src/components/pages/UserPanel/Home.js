@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Exclusive from '../../modules/Exclusive/Exclusive';
+import Exclusive from '../../modules/Exclusive';
 
 class Home extends Component {
 

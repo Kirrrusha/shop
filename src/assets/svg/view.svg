@@ -1,0 +1,17 @@
+<svg width="19.999999999999996" height="19.999999999999996" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="22" width="22" y="0" x="0"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="background">
+   <rect stroke="null" x="0" y="0" id="svg_1" width="19.993307" height="19.953877" fill="none"/>
+  </g>
+  <g stroke="null" id="view">
+   <circle stroke="null" id="svg_2" r="3.725158" cy="10.008417" cx="9.996617" fill="#FFFFFF"/>
+   <path stroke="null" id="svg_3" fill="#FFFFFF" d="m9.996617,3.799821c-6.208597,0 -9.933755,6.170103 -9.933755,6.170103s3.725158,6.24709 9.933755,6.24709s9.933755,-6.208597 9.933755,-6.208597s-3.725158,-6.208597 -9.933755,-6.208597zm0,11.175474c-5.432522,0 -8.381606,-4.966877 -8.381606,-4.966877s2.949083,-4.966877 8.381606,-4.966877s8.381606,4.966877 8.381606,4.966877s-2.949083,4.966877 -8.381606,4.966877z"/>
+  </g>
+ </g>
+</svg>

@@ -14,7 +14,7 @@ const App = () =>
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={UserPanel}/>
+        <Route path="/" component={UserPanel}/>
         <Route path="/login" component={Login}/>
         <PrivateRoute path="/admin" component={AdminPanel}/>
       </Switch>

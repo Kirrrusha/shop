@@ -11,7 +11,8 @@ export default class Menu extends Component {
       'products',
       'history',
       'showroom',
-      'contact'
+      'contact',
+      'cart'
     ];
     return (
       <div className="header-links">

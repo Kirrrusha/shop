@@ -1,10 +1,11 @@
-@import './App.scss';
+@import 'colors';
 
 .mobile-container{
-        padding: 2rem 0 0;     
+        @include wrapper();
+        padding: 2rem 0 0;
         background-image: url(../img/back-img-mobile.png);
         background-repeat: no-repeat;
-        height: 484px;        
+        height: 484px;
 
     .mobile-text{
         width: 546px;
@@ -60,9 +61,9 @@
                 }
 
             & img{
-                text-align: left;               
+                text-align: left;
                 padding-right: 10px;
-            }        
+            }
         }
     }
 
