@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-// import parseHtml from 'html-react-parser';
 import BlockProduct from '../../Blocks/Product/Product';
 
 import '../../assets/css/Product.scss';
