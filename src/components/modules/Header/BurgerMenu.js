@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import OpenMenu from '../../../assets/svg/burger-menu.svg';
 import Menu from './Menu';
+import PropTypes from 'prop-types';
 import DelMenu from '../../../assets/svg/delete.svg';
 
 export default class BurgerMenu extends Component {
@@ -45,4 +46,8 @@ export default class BurgerMenu extends Component {
       </div>
     );
   }
+}
+
+BurgerMenu.propTypes = {
+  isActive: PropTypes.boolean,  
 }

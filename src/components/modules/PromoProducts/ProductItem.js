@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import BtnImg from '../../../assets/img/promo/btn-hover.png'
+import BtnImg from '../../../assets/img/promo/btn-hover.png';
 
-class ProductItem extends Component {
+export default class ProductItem extends Component {
     render() {
         return (
             <div className='product-block'>
@@ -21,4 +21,4 @@ class ProductItem extends Component {
     }
 }
 
-export default  ProductItem;
+  
