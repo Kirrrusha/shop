@@ -50,7 +50,6 @@ class Exclusive extends Component {
   };
 
   render() {
-
     const {exclusive} = this.state;
     const htmlProd = exclusive.map((prod, index) => {
         return (
@@ -69,7 +68,7 @@ class Exclusive extends Component {
     return (
       <div className="exclusive">
         <div className="container">
-          <div className="head">
+          <div className="exclusive-head">
             <h2>Exclusive Products</h2>
             <a href="/">EXPLORE ALL</a>
           </div>
