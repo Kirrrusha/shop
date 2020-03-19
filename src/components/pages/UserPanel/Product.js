@@ -5,9 +5,50 @@ import parseHtml from 'html-react-parser';
 
 class Product extends Component {
 
+    state = {
+        product: {
+            id: 1,
+            alias: '',
+            name: 'Fishnet Chair',
+            description: '<p>The majesty of Mountains - Ugmonk style.</p>' +
+                '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore' +
+                'et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
+                'lorem et dolore magna aliqua. Ut enim ad minim veniam, quis nt, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore' +
+                'et dolore magna aliqua.</p><p>Ut enim ad minim laboris nisi</p>',
+            price: 36.70,
+            images:[
+                {
+                    medium: require('../../../assets/img/product/big.png'),
+                    small: require('../../../assets/img/product/small1.png'),
+                },
+                {
+                    medium: require('../../../assets/img/product/big.png'),
+                    small: require('../../../assets/img/product/small2.png'),
+                },
+                {
+                    medium: require('../../../assets/img/product/big.png'),
+                    small: require('../../../assets/img/product/small3.png'),
+                },
+            ],
+            offers: [
+                {
+                    name: 'hot deal'
+                }
+            ],
+        },
+        sliderIndex: 0,
+        current: '',
+    };
+
+    changeSlider = (index) => {
+        this.setState({sliderIndex: index});
+    };
+
     render() {
 
-        const { current, product, sliderIndex, changeSlider } = this.props;
+        // const { current, product } = this.props;
+        const { alias } = this.props.match.params;
+        const { current, product, sliderIndex } = this.state;
 
         const aboutProduct = (
             <div>
@@ -25,7 +66,7 @@ class Product extends Component {
             return  <img
                 className={`${index === sliderIndex ? 'active' : 'pointer'}`}
                 src={card.small}
-                onClick={() => changeSlider(index)}
+                onClick={() => this.changeSlider(index)}
                 alt='card'
                 key={`card-${index}`}
             />
@@ -34,7 +75,7 @@ class Product extends Component {
         return(
             <div className='product'>
                 <div className='head'>
-                    <div className='container'>
+                    <div className='container without-after'>
                         <Link className={ current === '' ? 'active' : '' } to={`/`}>all</Link>
                         <Link className={ current === 'home' ? 'active' : '' } to={`/`}>home</Link>
                         <Link className={ current === 'office' ? 'active' : '' } to={`/`}>office</Link>
