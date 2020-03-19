@@ -74,7 +74,7 @@ class Product extends Component {
 
         return(
             <div className='product'>
-                <div className='head'>
+                <div className='product-head'>
                     <div className='container without-after'>
                         <Link className={ current === '' ? 'active' : '' } to={`/`}>all</Link>
                         <Link className={ current === 'home' ? 'active' : '' } to={`/`}>home</Link>

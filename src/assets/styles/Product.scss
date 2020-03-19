@@ -1,6 +1,10 @@
 @import 'colors';
 @import 'smart-grid';
 
+header {
+  background: #fff;
+}
+
 .product {
   background-color: #fff;
 }
@@ -13,7 +17,7 @@
     content: none;
   }
 
-  .head {
+  &-head {
     display: flex;
     justify-content: center;
     background:  $background-color-main;
@@ -118,7 +122,7 @@
         border: none;
         outline: none;
         background-color: #f44336;
-        font-family: Montserrat;
+        font-family: 'Montserrat-Bold';
         font-size: 22px;
         font-weight: bold;
         font-stretch: normal;
