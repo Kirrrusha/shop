@@ -1,6 +1,9 @@
 @import 'colors';
 @import 'smart-grid';
 
+.product {
+  background-color: #fff;
+}
 
 .product {
   .container {
@@ -52,7 +55,12 @@
       .active {
         opacity: 0.5;
       }
+      &-slider {
+        display: flex;
+        justify-content: center;
+      }
     }
+
 
     &-about {
       @include col();

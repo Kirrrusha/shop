@@ -88,9 +88,11 @@ class Product extends Component {
                     <div className='block'>
                         <div className='block-card'>
                             <img src={product.images[sliderIndex].medium} alt='card' />
-                            {card}
+                            <div className='block-card-slider'>
+                                {card}
+                            </div>
                         </div>
-                        <div  className='block-about'>
+                        <div className='block-about'>
                             {aboutProduct}
                         </div >
                     </div>
