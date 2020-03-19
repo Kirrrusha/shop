@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import '../../../assets/styles/PromoProducts.scss';
-import ProductItem from './ProductItem'
+import ProductItem from '../../common/ProductItem'
 
 export default class PromoProducts extends Component {
 

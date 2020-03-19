@@ -5,7 +5,7 @@ class ShowRoom extends Component {
     render() {
 
         return(
-            <div>Show room</div>
+            <h1>Show room</h1>
         );
     }
 }

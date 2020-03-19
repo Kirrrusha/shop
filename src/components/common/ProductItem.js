@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import BtnImg from '../../../assets/img/promo/btn-hover.png';
+import BtnImg from '../../assets/img/promo/btn-hover.png';
 
 export default class ProductItem extends Component {
     render() {
