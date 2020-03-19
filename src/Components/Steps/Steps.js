@@ -12,7 +12,7 @@ export default function Steps(props) {
 
     const tabs = children.map((child, index) => (
         <div key={index} className="tabContainer">
-            <input id={`step_${index+1}`} type="radio" className="tabInput" onChange={()=> setChecked(index)} checked={index===checked}></input>
+            <input id={`step_${index+1}`} type="radio" className="tabInput" onChange={()=> setChecked(index)} checked={index===checked}/>
             <label htmlFor={`step_${index+1}`} className="tabLabel">Step {index+1}</label>
         </div>
     ))

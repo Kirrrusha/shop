@@ -33,7 +33,7 @@ export default function Card(props) {
     return (
         <div className="container" style={style}>
             <div className="overlay">
-                <div className = "items"></div>
+                <div className = "items"/>
                 <div className = "items head">
                     <p>{title}</p>
                     <hr/>

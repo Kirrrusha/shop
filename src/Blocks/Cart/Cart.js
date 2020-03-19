@@ -13,7 +13,7 @@ export default function Cart() {
         return (
             <div className="productCard row" key={name}>
                 <div className="info col">
-                    <img className="img" src={imgUrl} alt={name}></img>
+                    <img className="img" src={imgUrl} alt={name}/>
                     <div className="text">
                         {name}
                         {infoRows}
