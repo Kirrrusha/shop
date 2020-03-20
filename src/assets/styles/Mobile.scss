@@ -1,0 +1,82 @@
+@import 'colors';
+
+.mobile-container{
+        @include wrapper();
+        padding: 2rem 0 0;
+        background-image: url(../img/back-img-mobile.png);
+        background-repeat: no-repeat;
+        height: 484px;
+
+    .mobile-text{
+        width: 546px;
+
+        & p{
+            font-family: 'Montserrat-Bold';
+            font-size: 1.125rem;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 2.67;
+            letter-spacing: 1.8px;
+            text-align: left;
+            color:$color-gray;
+            text-transform: uppercase;
+        }
+
+        & h1{
+            font-family:'Montserrat-Thin';
+            font-size: 3.875rem;
+            font-weight: 100;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.16;
+            letter-spacing: normal;
+            text-align: left;
+            color: $color-main;
+            text-transform: uppercase;
+            margin:0;
+            padding:0;
+        }
+
+        & h2{
+            font-family: 'Montserrat-Light';
+            font-size: 1.375rem;
+            font-weight: 300;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.09;
+            letter-spacing: normal;
+            text-align: left;
+            color: $color-gray;
+            text-transform: uppercase;
+        }
+    }
+        .mobile-btns{
+            text-align: left;
+            margin-top: 1.8rem;
+
+            & a:hover{
+                    cursor: pointer;
+                    opacity: 0.8;
+                }
+
+            & img{
+                text-align: left;
+                padding-right: 10px;
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

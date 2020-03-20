@@ -1,0 +1,38 @@
+@import '../fonts/font.scss';
+@import 'colors.scss';
+@import 'Header.scss';
+@import 'Footer.scss';
+@import 'Exclusive.scss';
+@import 'Cart.scss';
+@import 'Card.scss';
+@import 'Step.scss';
+@import 'Steps.scss';
+@import 'Checkout.scss';
+@import 'Product.scss';
+@import 'PromoProducts.scss';
+@import 'RelatedProducts.scss';
+@import 'Slider.scss';
+@import 'Mobile.scss';
+
+body {
+  background: $background-color-secondary;
+  text-align: center;
+  margin: 0;
+}
+
+.wrapper {
+  @include wrapper();
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-link {
+  color: #61dafb;
+}

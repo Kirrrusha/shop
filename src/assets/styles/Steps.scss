@@ -1,0 +1,41 @@
+@import 'colors.scss';
+
+.stepsWrapper {
+    display: flex;
+
+    .stepsContainer {
+        background: $background-color-white;
+        color: $color-gray-dark;
+        text-align:left;
+        width: 100%;
+
+        & > div {
+        display: none;
+        padding: 2rem 3rem 0.5rem;
+        }
+    }
+
+    .tabInput {
+        display: none;
+    }
+    .tabContainer {
+    }
+    .tabsWrapper {
+    }
+    .tabLabel {
+        display: inline-block;
+        padding: 1rem 3rem;
+        font-weight: 600;
+        text-align: center;
+        border-top: 1px solid $color-gray-dark;
+
+        &:hover {
+            color: $color-gray-dark;
+            cursor: pointer;
+        }
+    }
+    .tabInput:checked + .tabLabel {
+        background: $color-main;
+         color: $background-color-white;
+    }
+}
