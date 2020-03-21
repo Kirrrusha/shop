@@ -8,7 +8,7 @@ import Header from '../../modules/Header/Header';
 import Footer from '../../modules/Footer';
 import Cart from './Cart';
 import Product from './Product';
-import Products from './Products';
+import Products from '../UserPanel/Products/index';
 
 const UserPanel = () => {
   return (
