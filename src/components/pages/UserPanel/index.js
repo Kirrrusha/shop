@@ -8,6 +8,7 @@ import Header from '../../modules/Header/Header';
 import Footer from '../../modules/Footer';
 import Cart from './Cart';
 import Product from './Product';
+import Products from '../UserPanel/Products/index';
 
 const UserPanel = () => {
   return (
@@ -17,6 +18,7 @@ const UserPanel = () => {
       <Route exact path="/history" component={History}/>
       <Route path="/contact" component={Contact}/>
       <Route path="/product/:alias" component={Product}/>
+      <Route path="/products" component={Products}/>
       <Route path="/show-room" component={ShowRoom}/>
       <Route path="/cart" component={Cart} />
       <Footer/>

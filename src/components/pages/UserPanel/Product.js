@@ -107,6 +107,7 @@ Product.propTypes = {
     product: PropTypes.object,
     sliderIndex: PropTypes.number,
     changeSlider: PropTypes.func,
+    alias: PropTypes.string,
 };
 
 Product.defaultProps = {
@@ -114,6 +115,7 @@ Product.defaultProps = {
     product: {},
     sliderIndex: 0,
     changeSlider: () => {},
+    alias: '',
 }
 
 export default Product;
