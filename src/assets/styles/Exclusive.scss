@@ -7,24 +7,28 @@
     padding: 1rem 2rem;
   }
 
-  .head {
+  &-head {
     display: flex;
+    font-family: 'Montserrat-Bold';
     @include md(justify-content, space-between);
     h2 {
       @include col();
+      font-size: 2.25rem;
     }
     a {
       @include col();
       flex-grow: 1;
       text-align-last: end;
       align-self: center;
-      font-size: 2rem;
+      font-size: 1.125rem;
       text-decoration: none;
       color: #000000;
 
       &::after {
         content: " ›";
-        font-size: 3rem;
+        position: relative;
+        font-size: 2rem;
+        top: 2px;
       }
     }
   }

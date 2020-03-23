@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 import ProductItem from '../../../common/ProductItem';
 import '../../../../assets/styles/Products.scss';
 import Tabs from './Tabs';
@@ -103,6 +104,7 @@ class Products extends Component {
               return <Tab
                         title={content.title}
                         name={`tab + ${index}`}
+                        key={index}
                       >
                 <div className='tabs-content'>
                   {htmlProducts[index]}
