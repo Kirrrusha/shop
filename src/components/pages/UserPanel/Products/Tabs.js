@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Tab from './Tab';
 
 export default function Tabs({ children, selectedTab, onChangeTab }) {
@@ -56,6 +58,21 @@ export default function Tabs({ children, selectedTab, onChangeTab }) {
         </ul>      
       );
     }
+
+    Tab.propTypes = {    
+      selectedTab: PropTypes.string,
+      children: PropTypes.string,
+      onChangeTab: PropTypes.func,
+      tabs:PropTypes.array,    
+     
+    }  
+      
+
+
+
+
+          
+  
 
   
  

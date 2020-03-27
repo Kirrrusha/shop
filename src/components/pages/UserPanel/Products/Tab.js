@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Tab({ name, children }) {
     return (
@@ -7,4 +8,9 @@ export default function Tab({ name, children }) {
         </div>
     );
 }
- 
+
+Tab.propTypes = {    
+    name: PropTypes.string,
+    children: PropTypes.string,
+
+}
