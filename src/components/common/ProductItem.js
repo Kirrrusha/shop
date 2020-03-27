@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import BtnImg from '../../../assets/img/promo/btn-hover.png';
+import BtnImg from '../../assets/img/promo/btn-hover.png';
 
 export default class ProductItem extends Component {
     render() {
@@ -21,4 +22,12 @@ export default class ProductItem extends Component {
     }
 }
 
+ProductItem.propTypes = {
+    title: PropTypes.string,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    img: PropTypes.element,
+    
+
+}
   
