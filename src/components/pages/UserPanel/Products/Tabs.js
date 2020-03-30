@@ -17,7 +17,7 @@ export default function Tabs({ children, selectedTab, onChangeTab }) {
     });
   
     const finalSelectedTab = selectedTab || 
-          (tabProps.length > 0 && tabProps[0].name)
+          (tabProps.length > 0 && tabProps[0].name)          
   
     return (
       <div className="tabs">
@@ -45,7 +45,7 @@ export default function Tabs({ children, selectedTab, onChangeTab }) {
             <li
               aria-selected={name === selectedTab}
               role="tab"
-              key={name}            
+              key={name}
             >            
               <span
               className={linkClass(name === selectedTab)}
@@ -61,7 +61,7 @@ export default function Tabs({ children, selectedTab, onChangeTab }) {
 
     Tab.propTypes = {    
       selectedTab: PropTypes.string,
-      children: PropTypes.string,
+      children: PropTypes.array,
       onChangeTab: PropTypes.func,
       tabs:PropTypes.array,    
      

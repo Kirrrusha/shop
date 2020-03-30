@@ -7,30 +7,31 @@ import Tab from './Tab';
 import {connect} from 'react-redux';
 import {getCategories} from '../../../../redux/modules/categories';
 
+
 class Products extends Component {
   state = {
-    categories: [
-      {
-        title: 'home',
-        id: 2
-      },
-      {
-        title: 'office',
-        id: 3
-      },
-      {
-        title: 'furniture',
-        id: 4
-      },
-      {
-        title: 'modern',
-        id: 5
-      },
-      {
-        title: 'classic',
-        id: 6
-      }
-    ],
+    // categories: [
+    //   {
+    //     title: 'home',
+    //     id: 2
+    //   },
+    //   {
+    //     title: 'office',
+    //     id: 3
+    //   },
+    //   {
+    //     title: 'furniture',
+    //     id: 4
+    //   },
+    //   {
+    //     title: 'modern',
+    //     id: 5
+    //   },
+    //   {
+    //     title: 'classic',
+    //     id: 6
+    //   }
+    // ],
 
     products: [
       {
@@ -75,47 +76,49 @@ class Products extends Component {
         description: 'product description 4',
         img: require('../../../../assets/img/promo/product-5.png')
       }
-    ]
+    ],    
   };
+
   componentDidMount() {
     this.props.getCategories();
   }
 
-  render() {
-    const {categories, products} = this.state;
-    const htmlProducts = products.map((prod, index) => {
+    render() {
+      const {products} = this.state;
+      const htmlProducts = products.map((prod, index) => {
+        return (
+          <>
+            <ProductItem
+              className='product'
+              key={`product-${index}`}
+              name={prod.name}
+              title={prod.title}
+              href={`/product/${prod.link}`}
+              img={<img src={prod.img} alt='product'/>}
+              description={prod.description}
+            />
+          </>
+        );
+      });
       return (
-        <>
-          <ProductItem
-            className='product'
-            key={`product-${index}`}
-            name={prod.name}
-            title={prod.title}
-            href={`/product/${prod.link}`}
-            img={<img src={prod.img} alt='product'/>}
-            description={prod.description}
-          />
-        </>
+        <Tabs
+          selectedTab={this.props.selectedTab}
+          onChangeTab={selectedTab => this.setState({selectedTab})} //не переключается вкладка 
+          className="tabs"
+        >
+          {this.props.categories.map((content, index) => {
+            return <Tab
+              key={index}
+              title={content.title}
+              name={`tab + ${index}`}
+            >
+              <div className='tabs-content'>
+                {htmlProducts[index]}
+              </div>
+            </Tab>;
+          })}
+        </Tabs>
       );
-    });
-    return (
-      <Tabs
-        selectedTab={this.state.selectedTab}
-        onChangeTab={selectedTab => this.setState({selectedTab})}
-        className="tabs"
-      >
-        {categories.map((content, index) => {
-          return <Tab
-            title={content.title}
-            name={`tab + ${index}`}
-          >
-            <div className='tabs-content'>
-              {htmlProducts[index]}
-            </div>
-          </Tab>;
-        })}
-      </Tabs>
-    );
   }
 }
 
