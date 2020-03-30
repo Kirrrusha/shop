@@ -8,7 +8,7 @@ const ActionTypesCategory = {
   CATEGORY_SUCCESS: 'CATEGORY_SUCCESS',
   CATEGORY_FAILURE: 'CATEGORY_FAILURE'
 };
-//начальное состояние 
+//начальное состояние
 const initialCategoriesState = {
   list: [],
   pending: {
@@ -59,17 +59,17 @@ export const getCategories = () => dispatch => {
   });
 
   axios
-    .get(`${API_HTTP}/categories`)
-    .then(({data}) => { 
+    .get(`${API_HTTP}/api/v1/categories`)
+    .then(({data}) => {
       data.forEach((category) => category.title = category.name);
      dispatch({
       type: ActionTypesCategory.CATEGORY_SUCCESS,
-      payload: data      
-    })    
+      payload: data
+    })
   })
     .catch((errors) =>
       dispatch({
         type: ActionTypesCategory.CATEGORY_FAILURE,
         errors
-      }));     
+      }));
 };
