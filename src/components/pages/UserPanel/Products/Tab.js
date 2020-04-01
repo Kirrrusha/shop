@@ -8,6 +8,7 @@ export default function Tab({ name, children }) {
         </div>
     );
 }
+
 Tab.propTypes = {    
     name: PropTypes.string,
     children: PropTypes.array,

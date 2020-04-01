@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import ProductItem from '../../../common/ProductItem';
 import '../../../../assets/styles/Products.scss';
@@ -106,7 +107,16 @@ const mapStateToProps = state => ({
   products: state.products.list,
 });
 
-export default connect(mapStateToProps, {getCategories, onChangeTab,getProductsByCategory})(Products);
+export default connect(mapStateToProps, {getCategories, onChangeTab, getProductsByCategory})(Products);
+
+Products.propTypes = {
+  getCategories: PropTypes.func, 
+  onChangeTab: PropTypes.func,
+  getProductsByCategory:PropTypes.func,
+  products: PropTypes.array,
+  selectedTab: PropTypes.string, 
+  categories: PropTypes.array,  
+} 
 
 
 

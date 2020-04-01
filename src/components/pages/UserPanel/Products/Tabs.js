@@ -66,14 +66,27 @@ export default function Tabs({ children, selectedTab, onChangeTab }) {
       );
     }
 
-    Tab.propTypes = {    
+    TabList.propTypes = {
+      selectedTab: PropTypes.string,
+      children: PropTypes.string,
+      onChangeTab: PropTypes.func,
+      tabs: PropTypes.array,
+    };
+    
+    Tab.propTypes = {
+      selectedTab: PropTypes.string,
+      children: PropTypes.string,
+      onChangeTab: PropTypes.func,
+      tabs: PropTypes.array,
+    };
+    
+    Tabs.propTypes = {
       selectedTab: PropTypes.string,
       children: PropTypes.array,
       onChangeTab: PropTypes.func,
-      tabs:PropTypes.array,   
-    }  
-      
-
+      tabs: PropTypes.array,
+    };
+    
 
 
 
