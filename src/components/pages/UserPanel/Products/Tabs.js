@@ -15,10 +15,13 @@ export default function Tabs({ children, selectedTab, onChangeTab }) {
       }
       return child
     });
-  
-    const finalSelectedTab = selectedTab || 
-          (tabProps.length > 0 && tabProps[0].name)          
-  
+
+    let finalSelectedTab = selectedTab; 
+    if(!finalSelectedTab && tabProps.length > 0 && tabProps[0].name) {
+      finalSelectedTab = tabProps[0].name    
+    }     
+          
+   
     return (
       <div className="tabs">
         <TabList
@@ -33,9 +36,12 @@ export default function Tabs({ children, selectedTab, onChangeTab }) {
     );
   }
 
+
+
+
   function TabList({ tabs, selectedTab, onChangeTab }) {
     const linkClass = selected => {
-      const c = 'tabs-tablist-link'
+      const c = 'tabs-tablist-link'      
       return selected ? `${c} ${c}-selected` : c
     }
     
@@ -45,6 +51,7 @@ export default function Tabs({ children, selectedTab, onChangeTab }) {
             <li
               aria-selected={name === selectedTab}
               role="tab"
+              data-name={name}
               key={name}
             >            
               <span
@@ -63,8 +70,7 @@ export default function Tabs({ children, selectedTab, onChangeTab }) {
       selectedTab: PropTypes.string,
       children: PropTypes.array,
       onChangeTab: PropTypes.func,
-      tabs:PropTypes.array,    
-     
+      tabs:PropTypes.array,   
     }  
       
 

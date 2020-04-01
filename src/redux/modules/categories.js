@@ -2,23 +2,25 @@ import axios from 'axios';
 import {API_HTTP} from '../../configs/environment';
 //import transitions from '@material-ui/core/styles/transitions';
 
-//задаем Actions для категорий
+
 const ActionTypesCategory = {
   CATEGORY_REQUEST: 'CATEGORY_REQUEST',
   CATEGORY_SUCCESS: 'CATEGORY_SUCCESS',
-  CATEGORY_FAILURE: 'CATEGORY_FAILURE'
+  CATEGORY_FAILURE: 'CATEGORY_FAILURE',
+  CHANGE_TAB: 'CHANGE_TAB',
 };
-//начальное состояние 
+
 const initialCategoriesState = {
   list: [],
   pending: {
     categoryList: false
   },
-  errors: null
+  errors: null,
+  selectedTab: '',
 };
-//reducer
+
 export default function (state = initialCategoriesState, action) {
-  const {CATEGORY_SUCCESS, CATEGORY_FAILURE, CATEGORY_REQUEST} = ActionTypesCategory;
+  const {CATEGORY_SUCCESS, CATEGORY_FAILURE, CATEGORY_REQUEST, CHANGE_TAB} = ActionTypesCategory;
   switch (action.type) {
 
     case CATEGORY_REQUEST:
@@ -48,11 +50,23 @@ export default function (state = initialCategoriesState, action) {
           categoryList: false
         }
       };
+    case CHANGE_TAB:
+      return {
+        ...state,
+        selectedTab: action.payload,
+      }
     default:
       return state;
   }
 }
-//get запрос
+
+export const onChangeTab = (name) => dispatch => { 
+  dispatch({
+    type: ActionTypesCategory.CHANGE_TAB,
+    payload: name,
+  });
+}
+
 export const getCategories = () => dispatch => {
   dispatch({
     type: ActionTypesCategory.CATEGORY_REQUEST
