@@ -8,7 +8,7 @@ export default class ProductItem extends Component {
         return (
             <div className='product-block'>
                 <div className='product-item'>
-                        {this.props.img}
+                        <img src={this.props.img} alt={this.props.title} />
                 </div>
 
                 <div className='product-info'>
@@ -26,8 +26,6 @@ ProductItem.propTypes = {
     title: PropTypes.string,
     name: PropTypes.string,
     description: PropTypes.string,
-    img: PropTypes.element,
-    
-
+    img: PropTypes.string,  
 }
   

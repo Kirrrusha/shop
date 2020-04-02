@@ -16,9 +16,10 @@ export default function Tabs({ children, selectedTab, onChangeTab }) {
       return child
     });
 
-    let finalSelectedTab = selectedTab; 
+    let finalSelectedTab = selectedTab;
+
     if(!finalSelectedTab && tabProps.length > 0 && tabProps[0].name) {
-      finalSelectedTab = tabProps[0].name    
+      finalSelectedTab = tabProps[0].name      
     }     
           
    
@@ -75,7 +76,7 @@ export default function Tabs({ children, selectedTab, onChangeTab }) {
     
     Tab.propTypes = {
       selectedTab: PropTypes.string,
-      children: PropTypes.string,
+      children: PropTypes.oneOfType([ PropTypes.object, PropTypes.array ]),
       onChangeTab: PropTypes.func,
       tabs: PropTypes.array,
     };

@@ -6,67 +6,46 @@ import '../../../../assets/styles/Products.scss';
 import Tabs from './Tabs';
 import Tab from './Tab';
 import {connect} from 'react-redux';
-import {getCategories, onChangeTab, } from '../../../../redux/modules/categories';
+import {getCategories} from '../../../../redux/modules/categories';
 import {getProductsByCategory} from '../../../../redux/modules/products'
 
 
 class Products extends Component {
-  // state = {  
-  //   // products: [
-  //   //   {
-  //   //     title: 'exclusive 1',
-  //   //     name: 'product name 1',
-  //   //     link: 'url-prod-1',
-  //   //     description: 'product description 1',
-  //   //     img: require('../../../../assets/img/promo/product-11.png')
-  //   //   },
-  //   //   {
-  //   //     title: 'exclusive 2',
-  //   //     name: 'product name 2',
-  //   //     link: 'url-prod-2',
-  //   //     description: 'product description 2',
-  //   //     img: require('../../../../assets/img/promo/product-21.png')
-  //   //   },
-  //   //   {
-  //   //     title: 'exclusive 3',
-  //   //     name: 'product name 3',
-  //   //     link: 'url-prod-3',
-  //   //     description: 'product description 3',
-  //   //     img: require('../../../../assets/img/promo/product-31.png')
-  //   //   },
-  //   //   {
-  //   //     title: 'exclusive 4',
-  //   //     name: 'product name 4',
-  //   //     link: 'url-prod-4',
-  //   //     description: 'product description 4',
-  //   //     img: require('../../../../assets/img/promo/product-41.png')
-  //   //   },
-  //   //   {
-  //   //     title: 'exclusive 4',
-  //   //     name: 'product name 4',
-  //   //     link: 'url-prod-4',
-  //   //     description: 'product description 4',
-  //   //     img: require('../../../../assets/img/promo/product-6.png')
-  //   //   },
-  //   //   {
-  //   //     title: 'exclusive 4',
-  //   //     name: 'product name 4',
-  //   //     link: 'url-prod-4',
-  //   //     description: 'product description 4',
-  //   //     img: require('../../../../assets/img/promo/product-5.png')
-  //   //   }
-  //   // ],    
-  // };
+
+  state = {  
+    selectedTab: null
+  };
 
   componentDidMount() {
-    this.props.getCategories();
-    this.props.getProductsByCategory();
+    this.props.getCategories();    
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const {selectedTab} = this.state;
+    const {selectedTab: prevSelectedTab} = prevState;
+    const {categories, getProductsByCategory} = this.props;
+  
+    if(categories.length) {
+      if(selectedTab !== prevSelectedTab  && selectedTab) {
+        const selectedCategory = categories.filter((category) => category.name === selectedTab)
+       
+        if(selectedCategory.length) {
+          getProductsByCategory(selectedCategory[0].id)
+        } 
+      }  else if(!selectedTab) {
+        getProductsByCategory(categories[0].id)        
+      }   
+    }
+  }
+
+  onChangeTab = selectedTab => {
+    this.setState({selectedTab})    
   }
 
     render() {
-      const htmlProducts = this.props.products.map((prod, index) => {
+      const {products} = this.props;
+      const htmlProducts = products.map((prod, index) => {
         return (
-          <>
             <ProductItem
               className='product'
               key={`product-${index}`}
@@ -76,13 +55,12 @@ class Products extends Component {
               img={<img src={prod.img} alt='product'/>}
               description={prod.description}
             />
-          </>
         );
       });
       return (
         <Tabs
-          selectedTab={this.props.selectedTab}
-          onChangeTab={selectedTab => this.props.onChangeTab(selectedTab)} 
+          selectedTab={this.state.selectedTab}
+          onChangeTab={selectedTab => this.onChangeTab(selectedTab)} 
           className="tabs"
         >
           {this.props.categories.map((content, index) => {
@@ -103,18 +81,15 @@ class Products extends Component {
 
 const mapStateToProps = state => ({
   categories: state.categories.list,
-  selectedTab: state.categories.selectedTab,
   products: state.products.list,
 });
 
-export default connect(mapStateToProps, {getCategories, onChangeTab, getProductsByCategory})(Products);
+export default connect(mapStateToProps, {getCategories, getProductsByCategory})(Products);
 
 Products.propTypes = {
-  getCategories: PropTypes.func, 
-  onChangeTab: PropTypes.func,
+  getCategories: PropTypes.func,  
   getProductsByCategory:PropTypes.func,
-  products: PropTypes.array,
-  selectedTab: PropTypes.string, 
+  products: PropTypes.array,  
   categories: PropTypes.array,  
 } 
 

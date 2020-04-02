@@ -7,7 +7,6 @@ const ActionTypesCategory = {
   CATEGORY_REQUEST: 'CATEGORY_REQUEST',
   CATEGORY_SUCCESS: 'CATEGORY_SUCCESS',
   CATEGORY_FAILURE: 'CATEGORY_FAILURE',
-  CHANGE_TAB: 'CHANGE_TAB',
 };
 
 const initialCategoriesState = {
@@ -16,11 +15,10 @@ const initialCategoriesState = {
     categoryList: false
   },
   errors: null,
-  selectedTab: '',
 };
 
 export default function (state = initialCategoriesState, action) {
-  const {CATEGORY_SUCCESS, CATEGORY_FAILURE, CATEGORY_REQUEST, CHANGE_TAB} = ActionTypesCategory;
+  const {CATEGORY_SUCCESS, CATEGORY_FAILURE, CATEGORY_REQUEST} = ActionTypesCategory;
   switch (action.type) {
 
     case CATEGORY_REQUEST:
@@ -50,21 +48,10 @@ export default function (state = initialCategoriesState, action) {
           categoryList: false
         }
       };
-    case CHANGE_TAB:
-      return {
-        ...state,
-        selectedTab: action.payload,
-      }
+   
     default:
       return state;
   }
-}
-
-export const onChangeTab = (name) => dispatch => { 
-  dispatch({
-    type: ActionTypesCategory.CHANGE_TAB,
-    payload: name,
-  });
 }
 
 export const getCategories = () => dispatch => {
@@ -73,7 +60,7 @@ export const getCategories = () => dispatch => {
   });
 
   axios
-    .get(`${API_HTTP}/categories`)
+    .get(`${API_HTTP}/api/v1/categories`)
     .then(({data}) => { 
       data.forEach((category) => category.title = category.name);
      dispatch({

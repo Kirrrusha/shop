@@ -12,7 +12,7 @@ const ActionTypesProductsByCategoryId = {
     pending: {
       productsList: false
     },
-    errors: null
+    errors: null,
   };
 
 
@@ -58,7 +58,7 @@ const ActionTypesProductsByCategoryId = {
     });
   
     axios
-      .get(`${API_HTTP}/products/byCategory/${categoryId}`)
+      .get(`${API_HTTP}/api/v1/products/byCategory/${categoryId}`)
       .then(({data}) => { 
         //console.log(data)
        dispatch({
