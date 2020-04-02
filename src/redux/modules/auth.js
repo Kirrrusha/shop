@@ -76,7 +76,7 @@ export const loginUser = (userData) => dispatch => {
       dispatch(setCurrentUser(decoded));
 
     })
-    .catch(e => dispatch({type: ActionTypesUser.FETCH_LOGIN_FAILURE, payload: e.response.data}));
+    .catch(e => dispatch({type: ActionTypesUser.FETCH_LOGIN_FAILURE, errors: (e.response && e.response.data) || e }));
 };
 
 // set current user
