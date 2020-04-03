@@ -1,35 +1,9 @@
 import React, { Component } from 'react';
-import '../../../assets/styles/Contact.scss'
+import '../../../assets/styles/Contact.scss';
+import { contacts } from '../../../constant/contacts';
 
 class Contact extends Component {
-    state = {
-        contacts: [
-            {
-                image: require('../../../assets/img/contacts.png'),
-                name: 'California',  
-                phone: '+1 342-885-8759',
-                email: 'info@interior.com',
-                address: '12 W 1st St, 90001 Los Angeles, California',
-            },
-            {
-                image: require('../../../assets/img/contacts.png'),
-                name: 'Chicago',  
-                phone: '+1 312-225-3121',
-                email: 'info@interior.com',
-                address: 'V948+W6, Chicago, Illinois',
-            },
-            {
-                image: require('../../../assets/img/contacts.png'),
-                name: 'Siattle',  
-                phone: '+1 206-623-0752',
-                email: 'info@interior.com',
-                address: '508 Maynard Ave S, Siattle, Washington',
-            },
-        ]
-    }
-
-    render() {
-        const {contacts} = this.state;
+      render() {        
         const htmlContacts = contacts.map((contact, index) => {
             return (
             <div className='contacts-item' key={`contact-${index}`}>
