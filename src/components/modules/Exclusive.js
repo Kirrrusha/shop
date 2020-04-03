@@ -42,7 +42,6 @@ class Exclusive extends Component {
       {
         id: 6,
         slug: 'url-prod-6',
-        name: 'name 6',
         shortDescription: 'text about product 6',
         image: require('../../assets/img/exclusive/product2.png')
       }
