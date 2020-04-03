@@ -11,7 +11,6 @@ import {getProductsByCategory} from '../../../../redux/modules/products'
 
 
 class Products extends Component {
-
   state = {  
     selectedTab: null
   };
