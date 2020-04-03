@@ -26,6 +26,6 @@ ProductItem.propTypes = {
     title: PropTypes.string,
     name: PropTypes.string,
     description: PropTypes.string,
-    img: PropTypes.string,  
+    img: PropTypes.object,  
 }
   
