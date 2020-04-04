@@ -20,7 +20,7 @@ deploy:
     on:
       branch: develop
   - provider: script
-      skip_cleanup: true
-      script: ssh web@188.225.18.51 "pm2 reload /home/web/ecosystem.config.js --only techlead-UI --env production && pm2 save"
-      on:
-        branch: develop
+    skip_cleanup: true
+    script: ssh web@188.225.18.51 "pm2 reload /home/web/ecosystem.config.js --only techlead-UI --env production && pm2 save"
+    on:
+      branch: develop
