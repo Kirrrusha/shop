@@ -47,7 +47,7 @@ class Product extends Component {
     render() {
 
         // const { current, product } = this.props;
-        // const { alias } = this.props.match.params;
+        //const { alias } = this.props.match.params;
         const { current, product, sliderIndex } = this.state;
 
         const aboutProduct = (

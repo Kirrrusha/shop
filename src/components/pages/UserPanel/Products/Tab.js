@@ -12,5 +12,4 @@ export default function Tab({ name, children }) {
 Tab.propTypes = {    
     name: PropTypes.string,
     children: PropTypes.string,
-
 }
