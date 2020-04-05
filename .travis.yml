@@ -1,9 +1,11 @@
 language: node_js
 node_js:
   - 10.19.0
-cache: npm
-install:
-  - npm ci
+cache:
+  directories:
+    - node_modules
+script:
+  - npm run build
 addons:
   ssh_known_hosts: 188.225.18.51
 before_install:
@@ -15,11 +17,12 @@ before_install:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/ web@188.225.18.51:/home/web/projects/shop
+    script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/ web@188.225.18.51:/home/web/projects/shop-UI
     on:
       branch: develop
-  - provider: script
+  - provider: pages
     skip_cleanup: true
-    script: ssh web@188.225.18.51 "pm2 reload /home/web/ecosystem.config.js --only techlead-UI --env production && pm2 save"
+    github_token: $GITHUB_TOKEN
+  -UI  local_dir: build
     on:
       branch: develop
