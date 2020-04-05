@@ -19,7 +19,7 @@ before_install:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/ web@188.225.18.51:/home/web/projects/shop
+    script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/ web@188.225.18.51:/home/web/projects/shop-UI
     on:
       branch: develop
   - provider: pages
