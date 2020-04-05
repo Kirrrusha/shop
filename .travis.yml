@@ -22,6 +22,6 @@ deploy:
       branch: develop
   - provider: script
     skip_cleanup: true
-    script: ssh web@188.225.18.51 "pm2 pm2 deploy ecosystem.config.js staging setup && pm2 deploy ecosystem.config.js staging && pm2 save"
+    script: ssh web@188.225.18.51 "pm2 deploy ecosystem.config.js staging setup && pm2 deploy ecosystem.config.js staging && pm2 save"
     on:
       branch: develop
