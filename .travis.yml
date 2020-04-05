@@ -17,6 +17,12 @@ before_install:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/ web@188.225.18.51:/home/web/projects/shop-UI
+    script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/ web@188.225.18.51:/home/web/projects/shop
+    on:
+      branch: develop
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: build
     on:
       branch: develop
