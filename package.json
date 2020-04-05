@@ -34,7 +34,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint --fix --ext .js,.jsx .",
     "smart-grid": "node smart-grid-config",
-    "DEV-api": "REACT_APP_API_HTTP=https://sleepy-oasis-78295.herokuapp.com npm start"
+    "DEV-api": "REACT_APP_API_HTTP=http://188.225.18.51:8080 npm start"
   },
   "eslintConfig": {
     "extends": "react-app"
