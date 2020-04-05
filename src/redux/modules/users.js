@@ -7,9 +7,9 @@ const ActionTypesUsers = {
     CHANGE_USER_REQUEST: 'ADMIN/CHANGE_USER_REQUEST',
     CHANGE_USER_SUCCESS: 'ADMIN/CHANGE_USER_SUCCESS',
     CHANGE_USER_FAILURE: 'ADMIN/CHANGE_USER_FAILURE',
-    DELETE_USERS_REQUEST: 'ADMIN/DELETE_USERS_REQUEST',
-    DELETE_USERS_SUCCESS: 'ADMIN/DELETE_USERS_SUCCESS',
-    DELETE_USERS_FAILURE: 'ADMIN/DELETE_USERS_FAILURE',
+    DELETE_USER_REQUEST: 'ADMIN/DELETE_USERS_REQUEST',
+    DELETE_USER_SUCCESS: 'ADMIN/DELETE_USERS_SUCCESS',
+    DELETE_USER_FAILURE: 'ADMIN/DELETE_USERS_FAILURE',
 }
 
 const initialState = {
@@ -91,9 +91,6 @@ export const updateUser = (user) => dispatch => {
     axios
       .put(`${API_HTTP}/api/v1/users`, user)
       .then(() => {
-          getAllUsers()
-      })
-      .then(() => {
           dispatch({
             type: ActionTypesUsers.CHANGE_USER_SUCCESS,
             payload: `User ${user.username} updated successfully!`
@@ -104,9 +101,37 @@ export const updateUser = (user) => dispatch => {
           type: ActionTypesUsers.CHANGE_USER_FAILURE,
           payload: e.data
         });
+      })
+      .finally(() => {
+        dispatch(getAllUsers());
       });
 };
 
 const updatingUserStarted = () => ({
     type: ActionTypesUsers.CHANGE_USER_REQUEST
+});
+
+export const deleteUser = (user) => dispatch => {
+    dispatch(deletingUserStarted());
+    axios
+      .delete(`${API_HTTP}/api/v1/users`, {data: {id: user.id}})
+      .then(() => {
+          dispatch({
+            type: ActionTypesUsers.DELETE_USER_SUCCESS,
+            payload: `User ${user.username} deleted successfully!`
+          });
+      })
+      .catch(e => {
+        dispatch({
+          type: ActionTypesUsers.DELETE_USER_FAILURE,
+          payload: e.data
+        });
+      })
+      .finally(() => {
+        dispatch(getAllUsers());
+      });
+};
+
+const deletingUserStarted = () => ({
+    type: ActionTypesUsers.DELETE_USER_REQUEST
 });
