@@ -4,7 +4,7 @@ node_js:
 cache:
   directories:
     - "node_modules"
-install: npm install
+install: npm ci
 addons:
   ssh_known_hosts: 188.225.18.51
 before_install:
