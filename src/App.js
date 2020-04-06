@@ -10,6 +10,8 @@ import AdminPanel from './components/pages/AdminPanel';
 import UserPanel from './components/pages/UserPanel';
 import PrivateRoute from './components/common/PrivateRoute';
 
+
+
 const App = () =>
   <Provider store={store}>
     <ConnectedRouter history={history}>
