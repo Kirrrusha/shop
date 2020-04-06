@@ -2,7 +2,7 @@
 
 ## Environment
 
- - node >=10.19.0
+ - node >=10.15.0
  - npm >=6.10.0
 
 ## Deployment instructions
