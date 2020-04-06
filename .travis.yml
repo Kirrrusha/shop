@@ -25,10 +25,8 @@ deploy:
     script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/ web@188.225.18.51:/home/web/projects/shop
     on:
       branch: develop
-  - provider: pages
+  - provider: script
     skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    local_dir: build
+    script: npm run deploy
     on:
-      branch: develop
-
+      branch: master
