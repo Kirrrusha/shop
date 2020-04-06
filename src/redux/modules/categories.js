@@ -4,24 +4,31 @@ import {API_HTTP} from '../../configs/environment';
 
 
 const ActionTypesCategory = {
-  CATEGORY_REQUEST: 'CATEGORY_REQUEST',
-  CATEGORY_SUCCESS: 'CATEGORY_SUCCESS',
-  CATEGORY_FAILURE: 'CATEGORY_FAILURE',
+  GET_CATEGORIES_REQUEST: 'GET_CATEGORIES_REQUEST',
+  GET_CATEGORIES_SUCCESS: 'GET_CATEGORIES_SUCCESS',
+  GET_CATEGORIES_FAILURE: 'GET_CATEGORIES_FAILURE',
+  EDIT_CATEGORY_REQUEST: 'EDIT_CATEGORY_REQUEST',
+  EDIT_CATEGORY_SUCCESS: 'EDIT_CATEGORY_SUCCESS',
+  EDIT_CATEGORY_FAILURE: 'EDIT_CATEGORY_FAILURE',
 };
 
 const initialCategoriesState = {
   list: [],
   pending: {
-    categoryList: false
+    categoryList: false,
+    editCategory: false,
   },
   errors: null,
 };
 
 export default function (state = initialCategoriesState, action) {
-  const {CATEGORY_SUCCESS, CATEGORY_FAILURE, CATEGORY_REQUEST} = ActionTypesCategory;
+  const {
+    GET_CATEGORIES_REQUEST, GET_CATEGORIES_SUCCESS, GET_CATEGORIES_FAILURE,
+    EDIT_CATEGORY_REQUEST, EDIT_CATEGORY_SUCCESS, EDIT_CATEGORY_FAILURE
+  } = ActionTypesCategory;
   switch (action.type) {
 
-    case CATEGORY_REQUEST:
+    case GET_CATEGORIES_REQUEST:
       return {
         ...state,
         pending: {
@@ -30,7 +37,7 @@ export default function (state = initialCategoriesState, action) {
         }
       };
 
-    case CATEGORY_SUCCESS:
+    case GET_CATEGORIES_SUCCESS:
       return {
         ...state,
         list: action.payload,
@@ -39,7 +46,7 @@ export default function (state = initialCategoriesState, action) {
           categoryList: false
         }
       };
-    case CATEGORY_FAILURE:
+    case GET_CATEGORIES_FAILURE:
       return {
         ...state,
         errors: action.errors,
@@ -48,7 +55,26 @@ export default function (state = initialCategoriesState, action) {
           categoryList: false
         }
       };
-   
+
+    case EDIT_CATEGORY_REQUEST:
+      return {
+        ...state,
+        pending: {
+          ...state.pending,
+          editCategory: true
+        }
+      };
+
+    case EDIT_CATEGORY_SUCCESS:
+    case EDIT_CATEGORY_FAILURE:
+      return {
+        ...state,
+        pending: {
+          ...state.pending,
+          editCategory: false
+        }
+      };
+
     default:
       return state;
   }
@@ -56,21 +82,42 @@ export default function (state = initialCategoriesState, action) {
 
 export const getCategories = () => dispatch => {
   dispatch({
-    type: ActionTypesCategory.CATEGORY_REQUEST
+    type: ActionTypesCategory.GET_CATEGORIES_REQUEST
   });
 
   axios
     .get(`${API_HTTP}/api/v1/categories`)
-    .then(({data}) => { 
+    .then(({data}) => {
       data.forEach((category) => category.title = category.name);
      dispatch({
-      type: ActionTypesCategory.CATEGORY_SUCCESS,
-      payload: data      
-    })    
+      type: ActionTypesCategory.GET_CATEGORIES_SUCCESS,
+      payload: data
+    })
   })
     .catch((errors) =>
       dispatch({
-        type: ActionTypesCategory.CATEGORY_FAILURE,
+        type: ActionTypesCategory.GET_CATEGORIES_FAILURE,
         errors
-      }));     
+      }));
+};
+
+export const editCategory = () => dispatch => {
+  dispatch({
+    type: ActionTypesCategory.EDIT_CATEGORY_REQUEST
+  });
+
+  // axios
+  //   .get(`${API_HTTP}/api/v1/categories`)
+  //   .then(({data}) => {
+  //     data.forEach((category) => category.title = category.name);
+  //    dispatch({
+  //     type: ActionTypesCategory.GET_CATEGORIES_SUCCESS,
+  //     payload: data
+  //   })
+  // })
+  //   .catch((errors) =>
+  //     dispatch({
+  //       type: ActionTypesCategory.GET_CATEGORIES_FAILURE,
+  //       errors
+  //     }));
 };
