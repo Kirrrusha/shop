@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Redirect, Route} from 'react-router-dom';
 import History from './History';
 import Contact from './Contact';
 import ShowRoom from './ShowRoom';
@@ -10,7 +10,6 @@ import Cart from './Cart';
 import Product from './Product';
 import Products from '../UserPanel/Products/index';
 import Accounts from './FooterLinks/Accounts';
-
 import Delivery from './FooterLinks/Delivery';
 import Sales from './FooterLinks/Sales';
 import Careers from './FooterLinks/Careers';
@@ -36,6 +35,7 @@ const UserPanel = () => {
       <Route path="/careers" component={Careers} />
       <Route path="/exchanges-returns" component={Returns} />
       <Route path="/registration" component={RegistrationForm} />
+      <Redirect to="/"/>
       <Footer/>
     </>
   );
