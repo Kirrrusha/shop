@@ -55,7 +55,6 @@ footer{
 .footer-info{
     text-align: left;
 
-
     & h2{
         color: $color-gray;
         font-family: 'Montserrat-Bold';
@@ -74,9 +73,11 @@ footer{
         height: 40%;
         column-count: 2;
         padding:0;
+        list-style: none;
 
-        &-item{
-            list-style: none;
+
+        &-item a{
+           
             text-align: left;
             font-family: 'Montserrat-Bold';
             font-size: 0.875rem;
@@ -85,7 +86,13 @@ footer{
             text-transform: uppercase;
             letter-spacing: 0.7px;
             padding-right: 1rem;
-            cursor: pointer;
+            text-decoration: none;
+            color:$color-main;
+            
+            &:hover{
+                cursor: pointer;
+                opacity: 0.6;
+            }
         }
     }
 
