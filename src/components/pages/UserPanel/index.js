@@ -22,10 +22,10 @@ const UserPanel = () => {
     <>
       <Header/>
       <Route exact path="/" component={Home}/>
-      <Route exact path="/history" component={History}/>
+      <Route path="/history" component={History}/>
       <Route path="/contact" component={Contact}/>
       <Route path="/product/:alias" component={Product}/>
-      <Route path="/products" component={Products}/>
+      <Route exact path="/products" component={Products}/>
       <Route path="/show-room" component={ShowRoom}/>
       <Route path="/cart" component={Cart} />
       <Route path="/architect-accounts" component={Accounts} />

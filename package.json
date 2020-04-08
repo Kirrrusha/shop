@@ -30,9 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "start:production": "npm run build && npm run start:prod",
-    "start:prod": "REACT_APP_API_HTTP=http://188.225.18.51:8080",
+    "build": "set \"REACT_APP_API_HTTP=http://188.225.18.51:8080\" && react-scripts build -prod",
     "eject": "react-scripts eject",
     "lint": "eslint --fix --ext .js,.jsx .",
     "smart-grid": "node smart-grid-config",
