@@ -7,7 +7,7 @@ cache:
   directories:
   - node_modules
 script:
-- npm run build
+- npm run prod
 addons:
   ssh_known_hosts: 188.225.18.51
 env:
@@ -26,6 +26,6 @@ deploy:
     branch: develop
 - provider: script
   skip_cleanup: true
-  script: npm run build
+  script: npm run prod
   on:
     branch: develop
