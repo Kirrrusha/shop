@@ -12,15 +12,15 @@ const Category = () => {
   const categories = useSelector(state => state.categories.list);
   const getPending = useSelector(state => state.categories.categoryListPending);
   const editPending = useSelector(state => state.categories.editCategoryPending);
-  const [addUser, setAddUser] = useState();
+  const [category, setAddCategory] = useState();
   useEffect(dispatch(getAllCategories()), []);
 
-  const onOpenModal = (category) => setAddUser(category);
+  const onOpenModal = (category) => setAddCategory(category);
 
-  const handleCancelClick = () => setAddUser();
+  const handleCancelClick = () => setAddCategory();
 
   const onSubmitCategory = (category) => {
-    setAddUser()
+    setAddCategory()
     dispatch(addCategory(category));
   }
 
@@ -64,13 +64,13 @@ const Category = () => {
         actions={[
           {
             icon: 'add',
-            tooltip: 'Add User',
+            tooltip: 'Add Category',
             isFreeAction: true,
             onClick: onOpenModal
           }
         ]}
       />
-      {addUser ? <CategoryEdit open={!!addUser} onCancel={handleCancelClick} onSubmit={onSubmitCategory} /> : null}
+      {category ? <CategoryEdit open={!!category} onCancel={handleCancelClick} onSubmit={onSubmitCategory} /> : null}
     </div>
   );
 };
