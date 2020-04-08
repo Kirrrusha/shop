@@ -87,7 +87,7 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {getAllCategories, getProductsByCategory})(Products);
 
 Products.propTypes = {
-  getCategories: PropTypes.func,
+  getAllCategories: PropTypes.func,
   getProductsByCategory:PropTypes.func,
   products: PropTypes.array,
   categories: PropTypes.array,

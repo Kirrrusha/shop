@@ -1,18 +1,28 @@
-import React, {useEffect} from 'react';
-import TableComponent from '../../common/TableComponent';
+import React, {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
+import TableComponent from '../../../common/TableComponent';
 import {useDispatch, useSelector} from 'react-redux';
-import {editCategory, getAllCategories, removeCategory} from '../../../redux/modules/categories';
+import {addCategory, editCategory, getAllCategories, removeCategory} from '../../../../redux/modules/categories';
 import {Checkbox, CircularProgress} from '@material-ui/core';
 import moment from 'moment';
+import CategoryEdit from './CreateCategory';
 
 const Category = () => {
   const dispatch = useDispatch();
   const categories = useSelector(state => state.categories.list);
   const getPending = useSelector(state => state.categories.categoryListPending);
   const editPending = useSelector(state => state.categories.editCategoryPending);
-  useEffect(() => {
-    dispatch(getAllCategories());
-  }, []);
+  const [addUser, setAddUser] = useState();
+  useEffect(dispatch(getAllCategories()), []);
+
+  const onOpenModal = (category) => setAddUser(category);
+
+  const handleCancelClick = () => setAddUser();
+
+  const onSubmitCategory = (category) => {
+    setAddUser()
+    dispatch(addCategory(category));
+  }
 
   return (
     <div style={{position: 'relative'}}>
@@ -37,27 +47,17 @@ const Category = () => {
           },
           {
             title: 'Status', field: 'status',
-            render: ({status}) =>
-              <Checkbox
-                color="primary"
-                checked={status}
-              />,
-            editComponent: props => (
-              <Checkbox
-                color="primary"
-                checked={!!props.rowData.status}
-                onChange={e => props.onChange(e.target.checked)}
-              />
-            )
+            render: StatusViewComponent,
+            editComponent: StatusEditComponent
           }
         ]}
         editable={{
-          onRowUpdate: (newData, oldData) =>
+          onRowUpdate: (newData) =>
             new Promise((resolve) => {
               dispatch(editCategory(newData, resolve));
             }),
           onRowDelete: oldData =>
-            new Promise((resolve, reject) => {
+            new Promise((resolve) => {
               dispatch(removeCategory(oldData.id, resolve));
             })
         }}
@@ -66,12 +66,40 @@ const Category = () => {
             icon: 'add',
             tooltip: 'Add User',
             isFreeAction: true,
-            onClick: (event) => alert('You want to add a new row')
+            onClick: onOpenModal
           }
         ]}
       />
+      {addUser ? <CategoryEdit open={!!addUser} onCancel={handleCancelClick} onSubmit={onSubmitCategory} /> : null}
     </div>
   );
 };
 
 export default Category;
+
+const StatusEditComponent = ({rowData, onChange}) => (
+  <Checkbox
+    name="change"
+    color="primary"
+    checked={!!rowData.status}
+    onChange={e => onChange(e.target.checked)}
+  />
+);
+
+StatusEditComponent.propTypes = {
+  rowData: PropTypes.shape({
+    status: PropTypes.bool.isRequired
+  }),
+  onChange: PropTypes.func.isRequired
+}
+
+const StatusViewComponent = ({status}) =>
+  <Checkbox
+    color="primary"
+    name="visible"
+    checked={status}
+  />;
+
+StatusViewComponent.propTypes = {
+  status: PropTypes.bool.isRequired
+}

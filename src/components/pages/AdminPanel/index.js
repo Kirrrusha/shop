@@ -22,7 +22,7 @@ import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import ListIcon from '@material-ui/icons/List';
 import {useDispatch} from 'react-redux';
 import {push} from 'connected-react-router';
-import Category from './Category';
+import Index from './Category';
 import User from './User';
 import {Route} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -183,7 +183,7 @@ export default function AdminPanel() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar}/>
-        <Route exact path="/admin/category" component={Category}/>
+        <Route exact path="/admin/category" component={Index}/>
         <Route exact path="/admin/users" component={User}/>
       </main>
     </div>

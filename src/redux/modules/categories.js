@@ -12,6 +12,9 @@ const ActionTypesCategory = {
   REMOVE_CATEGORY_REQUEST: 'REMOVE_CATEGORY_REQUEST',
   REMOVE_CATEGORY_SUCCESS: 'REMOVE_CATEGORY_SUCCESS',
   REMOVE_CATEGORY_FAILURE: 'REMOVE_CATEGORY_FAILURE',
+  ADD_CATEGORY_REQUEST: 'ADD_CATEGORY_REQUEST',
+  ADD_CATEGORY_SUCCESS: 'ADD_CATEGORY_SUCCESS',
+  ADD_CATEGORY_FAILURE: 'ADD_CATEGORY_FAILURE',
 };
 
 const initialCategoriesState = {
@@ -20,6 +23,7 @@ const initialCategoriesState = {
     categoryListPending: false,
     editCategoryPending: false,
     removeCategoryPending: false,
+    addCategoryPending: false,
   },
   errors: null,
 };
@@ -29,6 +33,7 @@ export default function (state = initialCategoriesState, action) {
     GET_CATEGORIES_REQUEST, GET_CATEGORIES_SUCCESS, GET_CATEGORIES_FAILURE,
     EDIT_CATEGORY_REQUEST, EDIT_CATEGORY_SUCCESS, EDIT_CATEGORY_FAILURE,
     REMOVE_CATEGORY_REQUEST, REMOVE_CATEGORY_SUCCESS, REMOVE_CATEGORY_FAILURE,
+    ADD_CATEGORY_REQUEST, ADD_CATEGORY_SUCCESS, ADD_CATEGORY_FAILURE,
   } = ActionTypesCategory;
   switch (action.type) {
 
@@ -98,6 +103,25 @@ export default function (state = initialCategoriesState, action) {
         }
       };
 
+    case ADD_CATEGORY_REQUEST:
+      return {
+        ...state,
+        pending: {
+          ...state.pending,
+          addCategoryPending: true
+        }
+      };
+
+    case ADD_CATEGORY_SUCCESS:
+    case ADD_CATEGORY_FAILURE:
+      return {
+        ...state,
+        pending: {
+          ...state.pending,
+          addCategoryPending: false
+        }
+      };
+
     default:
       return state;
   }
@@ -124,27 +148,6 @@ export const getAllCategories = (callback = () => null) => dispatch => {
   callback();
 };
 
-export const editCategory = (category, callback) => dispatch => {
-  dispatch({
-    type: ActionTypesCategory.EDIT_CATEGORY_REQUEST
-  });
-  axios
-    .put(`${API_HTTP}/api/v1/categories`, category)
-    .then(() => {
-     dispatch({
-      type: ActionTypesCategory.EDIT_CATEGORY_SUCCESS
-    })
-  })
-    .catch((errors) =>
-      dispatch({
-        type: ActionTypesCategory.EDIT_CATEGORY_FAILURE,
-        errors
-      }))
-    .finally(() => {
-      dispatch(getAllCategories(callback));
-    });
-};
-
 export const removeCategory = (id, callback) => dispatch => {
   dispatch({
     type: ActionTypesCategory.REMOVE_CATEGORY_REQUEST
@@ -159,6 +162,48 @@ export const removeCategory = (id, callback) => dispatch => {
     .catch((errors) =>
       dispatch({
         type: ActionTypesCategory.REMOVE_CATEGORY_FAILURE,
+        errors
+      }))
+    .finally(() => {
+      dispatch(getAllCategories(callback));
+    });
+};
+
+export const editCategory = (category, callback) => dispatch => {
+  dispatch({
+    type: ActionTypesCategory.EDIT_CATEGORY_REQUEST
+  });
+  axios
+    .put(`${API_HTTP}/api/v1/categories`, category)
+    .then(() => {
+      dispatch({
+        type: ActionTypesCategory.EDIT_CATEGORY_SUCCESS
+      })
+    })
+    .catch((errors) =>
+      dispatch({
+        type: ActionTypesCategory.EDIT_CATEGORY_FAILURE,
+        errors
+      }))
+    .finally(() => {
+      dispatch(getAllCategories(callback));
+    });
+};
+
+export const addCategory = (category, callback) => dispatch => {
+  dispatch({
+    type: ActionTypesCategory.ADD_CATEGORY_REQUEST
+  });
+  axios
+    .post(`${API_HTTP}/api/v1/categories`, category)
+    .then(() => {
+      dispatch({
+        type: ActionTypesCategory.ADD_CATEGORY_SUCCESS
+      })
+    })
+    .catch((errors) =>
+      dispatch({
+        type: ActionTypesCategory.ADD_CATEGORY_FAILURE,
         errors
       }))
     .finally(() => {

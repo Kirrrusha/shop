@@ -11,9 +11,7 @@ export default function User() {
   const [editingUser, setEditingUser] = useState();
   const [deletingUser, setDeletingUser] = useState();
 
-  useEffect(() => {
-      dispatch(getAllUsers());
-  }, []);
+  useEffect(dispatch(getAllUsers()), []);
 
   const handleEditClick = (event, user) => {
     event.preventDefault();
