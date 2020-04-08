@@ -13,7 +13,7 @@ export default function User() {
 
   useEffect(() => {
       dispatch(getAllUsers());
-  }, [dispatch]);
+  }, []);
 
   const handleEditClick = (event, user) => {
     event.preventDefault();

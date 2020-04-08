@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {API_HTTP} from '../../configs/environment';
-//import transitions from '@material-ui/core/styles/transitions';
 
 
 const ActionTypesCategory = {
@@ -10,13 +9,17 @@ const ActionTypesCategory = {
   EDIT_CATEGORY_REQUEST: 'EDIT_CATEGORY_REQUEST',
   EDIT_CATEGORY_SUCCESS: 'EDIT_CATEGORY_SUCCESS',
   EDIT_CATEGORY_FAILURE: 'EDIT_CATEGORY_FAILURE',
+  REMOVE_CATEGORY_REQUEST: 'REMOVE_CATEGORY_REQUEST',
+  REMOVE_CATEGORY_SUCCESS: 'REMOVE_CATEGORY_SUCCESS',
+  REMOVE_CATEGORY_FAILURE: 'REMOVE_CATEGORY_FAILURE',
 };
 
 const initialCategoriesState = {
   list: [],
   pending: {
-    categoryList: false,
-    editCategory: false,
+    categoryListPending: false,
+    editCategoryPending: false,
+    removeCategoryPending: false,
   },
   errors: null,
 };
@@ -24,7 +27,8 @@ const initialCategoriesState = {
 export default function (state = initialCategoriesState, action) {
   const {
     GET_CATEGORIES_REQUEST, GET_CATEGORIES_SUCCESS, GET_CATEGORIES_FAILURE,
-    EDIT_CATEGORY_REQUEST, EDIT_CATEGORY_SUCCESS, EDIT_CATEGORY_FAILURE
+    EDIT_CATEGORY_REQUEST, EDIT_CATEGORY_SUCCESS, EDIT_CATEGORY_FAILURE,
+    REMOVE_CATEGORY_REQUEST, REMOVE_CATEGORY_SUCCESS, REMOVE_CATEGORY_FAILURE,
   } = ActionTypesCategory;
   switch (action.type) {
 
@@ -33,7 +37,7 @@ export default function (state = initialCategoriesState, action) {
         ...state,
         pending: {
           ...state.pending,
-          categoryList: true
+          categoryListPending: true
         }
       };
 
@@ -43,7 +47,7 @@ export default function (state = initialCategoriesState, action) {
         list: action.payload,
         pending: {
           ...state.pending,
-          categoryList: false
+          categoryListPending: false
         }
       };
     case GET_CATEGORIES_FAILURE:
@@ -52,7 +56,7 @@ export default function (state = initialCategoriesState, action) {
         errors: action.errors,
         pending: {
           ...state.pending,
-          categoryList: false
+          categoryListPending: false
         }
       };
 
@@ -61,7 +65,7 @@ export default function (state = initialCategoriesState, action) {
         ...state,
         pending: {
           ...state.pending,
-          editCategory: true
+          editCategoryPending: true
         }
       };
 
@@ -71,7 +75,26 @@ export default function (state = initialCategoriesState, action) {
         ...state,
         pending: {
           ...state.pending,
-          editCategory: false
+          editCategoryPending: false
+        }
+      };
+
+    case REMOVE_CATEGORY_REQUEST:
+      return {
+        ...state,
+        pending: {
+          ...state.pending,
+          removeCategoryPending: true
+        }
+      };
+
+    case REMOVE_CATEGORY_SUCCESS:
+    case REMOVE_CATEGORY_FAILURE:
+      return {
+        ...state,
+        pending: {
+          ...state.pending,
+          removeCategoryPending: false
         }
       };
 
@@ -80,7 +103,7 @@ export default function (state = initialCategoriesState, action) {
   }
 }
 
-export const getCategories = () => dispatch => {
+export const getAllCategories = (callback = () => null) => dispatch => {
   dispatch({
     type: ActionTypesCategory.GET_CATEGORIES_REQUEST
   });
@@ -88,7 +111,6 @@ export const getCategories = () => dispatch => {
   axios
     .get(`${API_HTTP}/api/v1/categories`)
     .then(({data}) => {
-      data.forEach((category) => category.title = category.name);
      dispatch({
       type: ActionTypesCategory.GET_CATEGORIES_SUCCESS,
       payload: data
@@ -99,25 +121,47 @@ export const getCategories = () => dispatch => {
         type: ActionTypesCategory.GET_CATEGORIES_FAILURE,
         errors
       }));
+  callback();
 };
 
-export const editCategory = () => dispatch => {
+export const editCategory = (category, callback) => dispatch => {
   dispatch({
     type: ActionTypesCategory.EDIT_CATEGORY_REQUEST
   });
+  axios
+    .put(`${API_HTTP}/api/v1/categories`, category)
+    .then(() => {
+     dispatch({
+      type: ActionTypesCategory.EDIT_CATEGORY_SUCCESS
+    })
+  })
+    .catch((errors) =>
+      dispatch({
+        type: ActionTypesCategory.EDIT_CATEGORY_FAILURE,
+        errors
+      }))
+    .finally(() => {
+      dispatch(getAllCategories(callback));
+    });
+};
 
-  // axios
-  //   .get(`${API_HTTP}/api/v1/categories`)
-  //   .then(({data}) => {
-  //     data.forEach((category) => category.title = category.name);
-  //    dispatch({
-  //     type: ActionTypesCategory.GET_CATEGORIES_SUCCESS,
-  //     payload: data
-  //   })
-  // })
-  //   .catch((errors) =>
-  //     dispatch({
-  //       type: ActionTypesCategory.GET_CATEGORIES_FAILURE,
-  //       errors
-  //     }));
+export const removeCategory = (id, callback) => dispatch => {
+  dispatch({
+    type: ActionTypesCategory.REMOVE_CATEGORY_REQUEST
+  });
+  axios
+    .delete(`${API_HTTP}/api/v1/categories?id=${id}`)
+    .then(() => {
+     dispatch({
+      type: ActionTypesCategory.REMOVE_CATEGORY_SUCCESS
+    })
+  })
+    .catch((errors) =>
+      dispatch({
+        type: ActionTypesCategory.REMOVE_CATEGORY_FAILURE,
+        errors
+      }))
+    .finally(() => {
+      dispatch(getAllCategories(callback));
+    });
 };

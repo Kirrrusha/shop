@@ -6,39 +6,39 @@ import '../../../../assets/styles/Products.scss';
 import Tabs from './Tabs';
 import Tab from './Tab';
 import {connect} from 'react-redux';
-import {getCategories} from '../../../../redux/modules/categories';
+import {getAllCategories} from '../../../../redux/modules/categories';
 import {getProductsByCategory} from '../../../../redux/modules/products'
 
 
 class Products extends Component {
-  state = {  
+  state = {
     selectedTab: null
   };
 
   componentDidMount() {
-    this.props.getCategories();    
+    this.props.getAllCategories();
   }
 
   componentDidUpdate(prevProps, prevState) {
     const {selectedTab} = this.state;
     const {selectedTab: prevSelectedTab} = prevState;
     const {categories, getProductsByCategory} = this.props;
-  
+
     if(categories.length) {
-      if(selectedTab !== prevSelectedTab  && selectedTab) {
+      if(selectedTab && selectedTab !== prevSelectedTab) {
         const selectedCategory = categories.filter((category) => category.name === selectedTab)
-       
+
         if(selectedCategory.length) {
           getProductsByCategory(selectedCategory[0].id)
-        } 
+        }
       }  else if(!selectedTab) {
-        getProductsByCategory(categories[0].id)        
-      }   
+        getProductsByCategory(categories[0].id)
+      }
     }
   }
 
   onChangeTab = selectedTab => {
-    this.setState({selectedTab})    
+    this.setState({selectedTab})
   }
 
     render() {
@@ -56,16 +56,17 @@ class Products extends Component {
             />
         );
       });
+      console.log('categories', this.props.categories);
       return (
         <Tabs
           selectedTab={this.state.selectedTab}
-          onChangeTab={selectedTab => this.onChangeTab(selectedTab)} 
+          onChangeTab={selectedTab => this.onChangeTab(selectedTab)}
           className="tabs"
         >
           {this.props.categories.map((content, index) => {
             return <Tab
               key={index}
-              title={content.title}
+              title={content.name}
               name={content.name}
             >
               <div className='tabs-content'>
@@ -83,14 +84,14 @@ const mapStateToProps = state => ({
   products: state.products.list,
 });
 
-export default connect(mapStateToProps, {getCategories, getProductsByCategory})(Products);
+export default connect(mapStateToProps, {getAllCategories, getProductsByCategory})(Products);
 
 Products.propTypes = {
-  getCategories: PropTypes.func,  
+  getCategories: PropTypes.func,
   getProductsByCategory:PropTypes.func,
-  products: PropTypes.array,  
-  categories: PropTypes.array,  
-} 
+  products: PropTypes.array,
+  categories: PropTypes.array,
+}
 
 
 
