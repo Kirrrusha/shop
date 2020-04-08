@@ -1,17 +1,40 @@
 import React, {Component} from 'react';
 import Social_link from '../../assets/img/social-links.jpg';
+import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 
 class Footer extends Component {
+  state = {
+    info: [
+      {
+        name: 'Sales terms',
+        link: 'sales-terms'
+      },
+      {
+        name: 'Customer care',
+        link: 'customer-care'
+      },
+      {
+        name: 'Delivery',
+        link: 'delivery'
+      },
+      {
+        name: 'Architect accounts',
+        link: 'architect-accounts'
+      },
+      {
+        name: 'Careers',
+        link: 'careers'
+      },
+      {
+        name: 'Exchanges & returns',
+        link: 'exchanges-returns'
+      },  
+    ]
+  }
+
   render() {
-    const info = [
-      'Sales terms',
-      'Customer care',
-      'Delivery',
-      'Architect accounts',
-      'Careers',
-      'Exchanges & returns'
-    ];
     return (
       <footer>
         <div className='wrapper'>
@@ -26,9 +49,13 @@ class Footer extends Component {
             <div className='footer-info'>
               <h2>Useful Information</h2>
               <ul className='footer-info-links'>
-                {info.map((item, index) => {
-                  return <li key={index} className='footer-info-links-item'>{item}</li>;
-                })}
+              {this.state.info.map((item, index) => {
+                  return <li className='footer-info-links-item' key={index}>
+                    <Link to={`/${item.link}`}>
+                          {item.name}
+                    </Link>
+                  </li>;
+                })} 
               </ul>
             </div>
 
@@ -57,3 +84,7 @@ class Footer extends Component {
 }
 
 export default Footer;
+
+Footer.propTypes = {
+  info: PropTypes.array,
+}
