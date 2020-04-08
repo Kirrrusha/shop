@@ -7,7 +7,6 @@ cache:
   directories:
   - node_modules
 script:
-- npm cache clean --force
 - npm run build
 addons:
   ssh_known_hosts: 188.225.18.51
@@ -27,6 +26,6 @@ deploy:
     branch: develop
 - provider: script
   skip_cleanup: true
-  script: npm run deploy
+  script: npm run build
   on:
-    branch: master
+    branch: develop
