@@ -29,7 +29,6 @@ const UserPanel = () => {
       <Route path="/products" component={Products}/>
       <Route path="/show-room" component={ShowRoom}/>
       <Route path="/cart" component={Cart} />
-
       <Route path="/architect-accounts" component={Accounts} />
       <Route path="/sales-terms" component={Sales} />
       <Route path="/customer-care" component={Customer} />
