@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import TableComponent from '../../common/TableComponent';
 import {useDispatch, useSelector} from 'react-redux';
-import {getAllUsers, updateUser, deleteUser} from '../../../redux/modules/users'; 
+import {getAllUsers, updateUser, deleteUser} from '../../../redux/modules/users';
 import UserEdit from './UserEdit';
 import UserDelete from './UserDelete'
 
@@ -11,9 +11,7 @@ export default function User() {
   const [editingUser, setEditingUser] = useState();
   const [deletingUser, setDeletingUser] = useState();
 
-  useEffect(() => {
-      dispatch(getAllUsers());
-  }, []);
+  useEffect(dispatch(getAllUsers()), []);
 
   const handleEditClick = (event, user) => {
     event.preventDefault();
