@@ -96,7 +96,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function AdminPanel() {
+export default function AdminPanel(props) {
   const classes = useStyles();
   const theme = useTheme();
   const dispatch = useDispatch();
@@ -183,8 +183,10 @@ export default function AdminPanel() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar}/>
-        <Route exact path="/admin/category" component={Index}/>
-        <Route exact path="/admin/users" component={User}/>
+        {console.log('test', props.children)}
+        {props.children}
+        {/*<Route exact path="/admin/category" component={Index}/>*/}
+        {/*<Route exact path="/admin/users" component={User}/>*/}
       </main>
     </div>
   );

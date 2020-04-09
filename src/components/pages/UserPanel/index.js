@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect, Route} from 'react-router-dom';
+import {Redirect, Route, BrowserRouter as Router} from 'react-router-dom';
 import History from './History';
 import Contact from './Contact';
 import ShowRoom from './ShowRoom';
@@ -19,13 +19,13 @@ import RegistrationForm from '../../modules/AuthForm/RegistrationForm'
 
 const UserPanel = () => {
   return (
-    <>
+    <Router>
       <Header/>
       <Route exact path="/" component={Home}/>
       <Route path="/history" component={History}/>
       <Route path="/contact" component={Contact}/>
       <Route path="/product/:alias" component={Product}/>
-      <Route exact path="/products" component={Products}/>
+      <Route path="/products" component={Products}/>
       <Route path="/show-room" component={ShowRoom}/>
       <Route path="/cart" component={Cart} />
       <Route path="/architect-accounts" component={Accounts} />
@@ -37,7 +37,7 @@ const UserPanel = () => {
       <Route path="/registration" component={RegistrationForm} />
       <Redirect to="/"/>
       <Footer/>
-    </>
+    </Router>
   );
 };
 
