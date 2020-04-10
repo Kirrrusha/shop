@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
-
 import ProductItem from '../../../common/ProductItem';
 import '../../../../assets/styles/Products.scss';
-import Tabs from './Tabs';
-import Tab from './Tab';
 
 class Products extends Component {
       state = {
@@ -74,12 +71,17 @@ class Products extends Component {
               description: 'product description 4',
               img: require('../../../../assets/img/promo/product-5.png'),
           },
-        ]            
+        ],
+        activeTab: 0        
     }
+
+    ChangeTab = (event) => {            
+        this.setState({activeTab: parseInt(event.target.dataset.id)})
+      }
   
     render() {
-      const {categories, products} = this.state;
-      const htmlProducts  = products.map( (prod, index) => {
+    const {categories, products} = this.state;
+    const htmlProducts  = products.map( (prod, index) => {
         return (
             <>
                 <ProductItem
@@ -94,25 +96,26 @@ class Products extends Component {
             </>
         );
     })
-        return(                         
-          <Tabs 
-              selectedTab={this.state.selectedTab}
-              onChangeTab={selectedTab => this.setState({ selectedTab })}
-              className="tabs"
-          >              
-            {categories.map( (content, index) => {
-              return <Tab
-                        title={content.title}
-                        name={`tab + ${index}`}
-                        key={index}
-                      >
-                <div className='tabs-content'>
-                  {htmlProducts[index]}
+        return ( 
+            <>       
+                <div className='tabs'>
+                    {categories.map( (item, index) => {     
+                        return <div
+                        data-id={index}
+                        key={`tabs-${index}`}
+                        className={(this.state.activeTab === index) ? 'tabs-item activeTab' : 'tabs-item '}
+                        onClick={this.ChangeTab}       
+                        >
+                        {item.title}
+                        </div>
+                    })}
+                </div> 
+                
+                <div>
+                    {htmlProducts}
                 </div>
-              </Tab>
-            })}  
-          </Tabs>           
-        );
+            </>
+        ); 
     }
 }
 

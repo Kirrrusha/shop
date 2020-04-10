@@ -1,112 +1,118 @@
 @import 'colors';
 @import 'smart-grid';
 
-.tabs-tablist{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;    
-    
-    & li{
-        list-style: none;
-        padding-right: 1.5rem;
-        cursor: pointer;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-family:'Montserrat-Bold';
-        font-size: 1.125rem;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: 1.8px;
-        color: $color-gray;
-    }
-    
+.tabs{    
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin:  1.5rem  1.5rem ;
 
-    .tabs-tablist-link-selected{
-        color: $color-main;
-        border-bottom: 3px solid $color-main;
-    }
+  .tabs-item{
+    cursor: pointer; 
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family:'Montserrat-Bold';
+    font-size: 1.125rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1.8px;
+    color: $color-gray;
+    padding: 0.2rem 0.7rem;    
+  }
+
+  .activeTab{
+    color: $color-main;
+    border-bottom: 3px solid $color-main;
+  }
 }
 
-.tabs-content{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    height: 500px;
+.product-block {        
+  position: relative;
+  width: 390px;
+  margin: 0 auto;
 
-    .product-block {        
-        position: relative;
+  & img{
+      padding: 0.27rem 0.27rem;
+  }
+  
+  .product-info{      
+      padding: 3rem 3rem;
+      position: absolute;
+      z-index: 90;
+      display: none;
+      top: 0;      
+      left: 0;
 
-        & img{
-            padding: 0.27rem 0.27rem;
-        }
-        .product-info{
-            padding: 5rem 3rem;
-            position: absolute;
-            z-index: 90;
-            display: none;
-            top: 0;
-            left:0;
+      & h2{
+          font-family: 'Montserrat-Bold';
+          font-size: 1.125rem;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 2.67;
+          letter-spacing: 1.8px;
+          text-align: left;
+          color: $blue;
+          text-transform: uppercase;
+          margin: 0;
+          padding: 0;
+      }
 
-            & h2{
-                font-family: 'Montserrat-Bold';
-                font-size: 1.125rem;
-                font-weight: bold;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: 2.67;
-                letter-spacing: 1.8px;
-                text-align: left;
-                color: $blue;
-                text-transform: uppercase;
-                margin: 0;
-                padding: 0;
-            }
+      & h3{
+          font-family: 'Montserrat-Bold';
+          font-size: 2rem;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          text-align: left;
+          color: $color-main;
+          margin: 0;
+          padding: 0;
+      }
 
-            & h3{
-                font-family: 'Montserrat-Bold';
-                font-size: 2rem;
-                font-weight: bold;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: normal;
-                text-align: left;
-                color: $color-main;
-                margin: 0;
-                padding: 0;
-            }
+      & p{
+          font-family: 'Montserrat-Light';
+          font-size: 0.875rem;
+          font-weight: 300;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.71;
+          letter-spacing: normal;
+          text-align: left;
+          color: $color-gray;
+      }
 
-            & p{
-                font-family: 'Montserrat-Light';
-                font-size: 0.875rem;
-                font-weight: 300;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: 1.71;
-                letter-spacing: normal;
-                text-align: left;
-                color: $color-gray;
-            }
+      & .btn{
+          margin-left: -45px;
 
-            & .btn{
-                margin-left: -45px;
-
-                &:hover{
-                    opacity: 0.8;
-                    cursor: pointer;
-                }
-            }
-        }    
-    }
-    .product-block:hover>.product-info {
-        cursor: pointer;
-        display: block;
-    }
-    .product-block:hover>.product-item img {
-        opacity: 0.2;
-    }
+          &:hover{
+              opacity: 0.8;
+              cursor: pointer;
+          }
+      }
+  }    
+}
+.product-block:hover>.product-info {
+  cursor: pointer;
+  display: block;
+}
+.product-block:hover>.product-item img {
+  opacity: 0.2;
 }
 
 
+
+
+
+
+  
+
+  
+
+
+
+    
