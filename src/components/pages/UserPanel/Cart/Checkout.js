@@ -2,7 +2,7 @@ import React from 'react';
 import Steps from '../../../modules/Steps/Steps';
 
 export default function Checkout() {
-  function handleDone(event) {
+  function handleDone() {
     /*Add redux handler here */
   }
 
