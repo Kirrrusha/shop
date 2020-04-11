@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from '../../utils/setAuthToken';
-import {push} from 'connected-react-router';
+import {history} from '../history';
 import {isEmpty} from 'lodash';
 import {API_HTTP} from '../../configs/environment';
 
@@ -16,7 +16,7 @@ const ActionTypesUser = {
 
 
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: null,
   user: null,
   errors: null
 };
@@ -47,7 +47,7 @@ export const registerUser = (userData) => dispatch => {
 
   axios
     .post(`${API_HTTP}/api/v1/users/registration`, userData)
-    .then(() => push('/login'))
+    .then(() => history.push('/login'))
     .catch(e => {
       dispatch({
         type: ActionTypesUser.FETCH_REG_FAILURE,
@@ -107,7 +107,7 @@ export const checkUser = () => dispatch => {
     const currentTime = Date.now() / 1000;
     if (decoded.exp < currentTime) {
       dispatch(logoutUser());
-      dispatch(push('/login'));
+      dispatch(history.push('/login'));
     }
   }
 }
