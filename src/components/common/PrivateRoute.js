@@ -3,23 +3,33 @@ import {Route, Redirect} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {checkUser} from '../../redux/modules/auth';
 import PropTypes from 'prop-types';
-import {push} from 'connected-react-router';
+import {CircularProgress} from '@material-ui/core';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  useEffect(() => dispatch(checkUser()), [dispatch]);
-  console.log('isAuthenticated', isAuthenticated);
-  if (isAuthenticated) {
-    push('/login');
-  }
+  // eslint-disable-next-line
+  useEffect(() => dispatch(checkUser()), []);
   return (
-    <Route
-      {...rest}
-      render={props => <Component {...props}>
-        {rest.children}
-      </Component>}
-    />
+    <>
+      {isAuthenticated === null ? <CircularProgress
+          style={{
+            display: 'block',
+            position: 'absolute', zIndex: 5,
+            transform: 'translate(-50%, -50%)',
+            top: '50%', right: '50%'
+          }}/> :
+        <Route
+          {...rest}
+          render={props => isAuthenticated !== null && isAuthenticated ? (
+              <Component {...props} />
+            ) :
+            (
+              <Redirect to="/login"/>
+            )}
+        />
+      }
+    </>
   );
 };
 

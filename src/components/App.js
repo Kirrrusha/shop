@@ -1,13 +1,11 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {ConnectedRouter} from 'connected-react-router';
-import {Redirect, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
 import store from '../redux/store';
 import {history} from '../redux/history';
 import '../assets/styles/App.scss';
 import Login from './pages/Login';
 import AdminPanel from './pages/AdminPanel';
-import UserPanel from './pages/UserPanel';
 import PrivateRoute from './common/PrivateRoute';
 import Header from './modules/Header/Header';
 import Home from './pages/UserPanel/Home';
@@ -25,27 +23,16 @@ import Careers from './pages/UserPanel/FooterLinks/Careers';
 import Returns from './pages/UserPanel/FooterLinks/Returns';
 import RegistrationForm from './modules/AuthForm/RegistrationForm';
 import Footer from './modules/Footer';
-import Category from './pages/AdminPanel/Category';
-import User from './pages/AdminPanel/User';
-import Index from './pages/AdminPanel/Category';
 
 
 const App = () =>
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      {/*<Header/>*/}
+    <Router history={history}>
       <Switch>
         <Route path="/login" component={Login}/>
-        <Route path="/admin">
-          <Route exact path="/admin/category" component={Index}/>
-          <Route exact path="/admin/users" component={User}/>
-        </Route>
-          {/*<AdminPanel>*/}
-          {/*  <Route exact path="/admin/category" component={Index}/>*/}
-          {/*  <Route exact path="/admin/users" component={User}/>*/}
-          {/*</AdminPanel>*/}
-        {/*</PrivateRoute>*/}
+        <PrivateRoute path="/admin" component={AdminPanel}/>
         <Route path="/">
+          <Header/>
           <Route exact path="/" component={Home}/>
           <Route path="/history" component={History}/>
           <Route path="/contact" component={Contact}/>
@@ -60,10 +47,10 @@ const App = () =>
           <Route path="/careers" component={Careers}/>
           <Route path="/exchanges-returns" component={Returns}/>
           <Route path="/registration" component={RegistrationForm}/>
+          <Footer/>
         </Route>
       </Switch>
-      {/*<Footer/>*/}
-    </ConnectedRouter>
+    </Router>
   </Provider>;
 
 export default App;

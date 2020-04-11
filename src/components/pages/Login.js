@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {useDispatch, useSelector} from 'react-redux';
 import {loginUser} from '../../redux/modules/auth';
-import {push} from 'connected-react-router';
+import {history} from '../../redux/history';
 
 function Copyright() {
   return (
@@ -56,7 +56,7 @@ export default function SignIn() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(push('/admin'));
+      history.push('/admin')
     }
   });
 

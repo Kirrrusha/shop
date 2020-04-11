@@ -13,7 +13,8 @@ const Category = () => {
   const getPending = useSelector(state => state.categories.categoryListPending);
   const editPending = useSelector(state => state.categories.editCategoryPending);
   const [category, setAddCategory] = useState();
-  useEffect(dispatch(getAllCategories()), []);
+  // eslint-disable-next-line
+  useEffect(() => dispatch(getAllCategories()), []);
 
   const onOpenModal = (category) => setAddCategory(category);
 
