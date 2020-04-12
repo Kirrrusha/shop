@@ -9,8 +9,8 @@
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "classnames": "^2.2.6",
     "clsx": "^1.1.0",
-    "connected-react-router": "^6.7.0",
     "history": "^4.10.1",
     "html-react-parser": "^0.10.2",
     "jwt-decode": "^2.2.0",
@@ -26,16 +26,18 @@
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "validator": "^13.0.0",
+    "moment": "^2.24.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "prod": "REACT_APP_API_HTTP=http://188.225.18.51:8080 REACT_APP_STAGE=prod npm run build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --fix --ext .js,.jsx .",
     "smart-grid": "node smart-grid-config",
-    "DEV-api": "REACT_APP_API_HTTP=https://sleepy-oasis-78295.herokuapp.com npm start"
+    "DEV-api": "REACT_APP_API_HTTP=http://188.225.18.51:8080 npm start"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,8 +56,8 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.3",
     "husky": "^4.0.6",
-    "smart-grid": "^2.1.2",
-    "eslint-plugin-react": "^7.18.3"
+    "smart-grid": "^2.1.2"
   }
 }

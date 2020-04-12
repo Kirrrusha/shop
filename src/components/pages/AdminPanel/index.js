@@ -23,7 +23,8 @@ import ListIcon from '@material-ui/icons/List';
 import {useDispatch} from 'react-redux';
 import {push} from 'connected-react-router';
 import Category from './Category';
-import {Route} from 'react-router-dom';
+import User from './User';
+import {Route, Switch} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {logoutUser} from '../../../redux/modules/auth';
@@ -43,7 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
-    textAlign: 'start',
+    textAlign: 'start'
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -111,8 +112,7 @@ export default function AdminPanel() {
 
   const handleRedirect = (address) => {
     dispatch(push(address));
-  }
-
+  };
   return (
     <div className={classes.root}>
       <CssBaseline/>
@@ -140,7 +140,7 @@ export default function AdminPanel() {
           <Button
             variant="contained"
             color="secondary"
-            startIcon={<ExitToAppIcon />}
+            startIcon={<ExitToAppIcon/>}
             onClick={() => dispatch(logoutUser())}
           >Logout</Button>
         </Toolbar>
@@ -173,8 +173,8 @@ export default function AdminPanel() {
             {text: 'Comments', link: '/admin/comments', icon: <CommentIcon/>}
           ].map((item) => (
             <ListItem button key={item.text} onClick={() => handleRedirect(item.link)}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text}/>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text}/>
             </ListItem>
           ))}
         </List>
@@ -182,7 +182,10 @@ export default function AdminPanel() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar}/>
-        <Route exact path="/admin/category" component={Category}/>
+        <Switch>
+          <Route exact path="/admin/category" component={Category}/>
+          <Route exact path="/admin/users" component={User}/>
+        </Switch>
       </main>
     </div>
   );

@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import {connectRouter } from 'connected-react-router';
 import authReducer from '../modules/auth';
-
-import {history} from '../history';
+import categories from '../modules/categories';
+import products from '../modules/products';
+import users from '../modules/users';
 
 const rootReducer = combineReducers({
-    router: connectRouter(history),
     auth: authReducer,
+    categories,
+    products,
+    users,
 });
 
 export default rootReducer;
