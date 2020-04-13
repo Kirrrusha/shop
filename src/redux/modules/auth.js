@@ -11,7 +11,7 @@ const ActionTypesUser = {
   FETCH_LOGIN_FAILURE: 'FETCH_LOGIN_FAILURE',
   FETCH_REG_REQUEST: 'FETCH_REG_REQUEST',
   FETCH_REG_SUCCESS: 'FETCH_REG_SUCCESS',
-  FETCH_REG_FAILURE: 'FETCH_REG_FAILURE',
+  FETCH_REG_FAILURE: 'FETCH_REG_FAILURE'
 };
 
 
@@ -76,7 +76,7 @@ export const loginUser = (userData) => dispatch => {
       dispatch(setCurrentUser(decoded));
 
     })
-    .catch(e => dispatch({type: ActionTypesUser.FETCH_LOGIN_FAILURE, errors: (e.response && e.response.data) || e }));
+    .catch(e => dispatch({type: ActionTypesUser.FETCH_LOGIN_FAILURE, errors: (e.response && e.response.data) || e}));
 };
 
 // set current user
@@ -96,7 +96,7 @@ export const logoutUser = () => dispatch => {
 };
 
 export const checkUser = () => dispatch => {
-  if (localStorage.jwtToken) {
+  if (!!localStorage.jwtToken) {
     // set auth token
     setAuthToken(localStorage.jwtToken);
     // decode token
@@ -110,4 +110,4 @@ export const checkUser = () => dispatch => {
       dispatch(history.push('/login'));
     }
   }
-}
+};
