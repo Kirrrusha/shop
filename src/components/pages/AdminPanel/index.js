@@ -21,10 +21,9 @@ import CommentIcon from '@material-ui/icons/Comment';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import ListIcon from '@material-ui/icons/List';
 import {useDispatch} from 'react-redux';
-import {push} from 'connected-react-router';
 import Category from './Category';
 import User from './User';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {logoutUser} from '../../../redux/modules/auth';
@@ -110,9 +109,6 @@ export default function AdminPanel() {
     setOpen(false);
   };
 
-  const handleRedirect = (address) => {
-    dispatch(push(address));
-  };
   return (
     <div className={classes.root}>
       <CssBaseline/>
@@ -172,10 +168,12 @@ export default function AdminPanel() {
             {text: 'Products', link: '/admin/products', icon: <ListIcon/>},
             {text: 'Comments', link: '/admin/comments', icon: <CommentIcon/>}
           ].map((item) => (
-            <ListItem button key={item.text} onClick={() => handleRedirect(item.link)}>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text}/>
-            </ListItem>
+            <Link to={item.link} key={item.text}>
+              <ListItem button>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text}/>
+              </ListItem>
+            </Link>
           ))}
         </List>
         <Divider/>
