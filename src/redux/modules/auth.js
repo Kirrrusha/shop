@@ -96,7 +96,7 @@ export const logoutUser = () => dispatch => {
 };
 
 export const checkUser = () => dispatch => {
-  if (!!localStorage.jwtToken) {
+  if (localStorage.jwtToken) {
     // set auth token
     setAuthToken(localStorage.jwtToken);
     // decode token
