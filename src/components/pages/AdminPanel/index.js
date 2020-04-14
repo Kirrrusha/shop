@@ -21,7 +21,6 @@ import CommentIcon from '@material-ui/icons/Comment';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import ListIcon from '@material-ui/icons/List';
 import {useDispatch} from 'react-redux';
-//import {push} from 'connected-react-router';
 import Category from './Category';
 import User from './User';
 import {Route, Switch, Link} from 'react-router-dom';
@@ -110,9 +109,6 @@ export default function AdminPanel() {
     setOpen(false);
   };
 
-  // const handleRedirect = (address) => {
-  //   dispatch(push(address));
-  // };
   return (
     <div className={classes.root}>
       <CssBaseline/>
