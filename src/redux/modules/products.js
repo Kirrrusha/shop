@@ -60,7 +60,7 @@ const ActionTypesProductsByCategoryId = {
     axios
       .get(`${API_HTTP}/api/v1/products/byCategory/${categoryId}`)
       .then(({data}) => { 
-        //console.log(data)
+        console.log('data',data)
        dispatch({
         type: ActionTypesProductsByCategoryId.PRODUCTS_SUCCESS,
         payload: data      

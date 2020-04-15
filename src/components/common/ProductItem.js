@@ -13,7 +13,7 @@ export default class ProductItem extends Component {
 
                 <div className='product-info'>
                     <h2> {this.props.title} </h2>
-                    <h3> {this.props.name} </h3>
+                    <h3> {this.props.name} </h3>                    
                     <p className='description'> {this.props.description} </p>
                     <img className = 'btn' src={BtnImg}  alt='button'/>
                 </div>
@@ -26,6 +26,7 @@ ProductItem.propTypes = {
     title: PropTypes.string,
     name: PropTypes.string,
     description: PropTypes.string,
-    img: PropTypes.object,  
+    img: PropTypes.object, 
+    
 }
   
