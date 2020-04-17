@@ -13,9 +13,6 @@ header {
   .container {
     @include wrapper();
   }
-  .without-after.container::after {
-    content: none;
-  }
 
   &-head {
     display: flex;

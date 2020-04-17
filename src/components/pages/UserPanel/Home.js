@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Trending from '../../modules/Trending';
 import Exclusive from '../../modules/Exclusive';
 
 class Home extends Component {
@@ -6,9 +7,10 @@ class Home extends Component {
   render() {
 
     return (
-      <div>
-        <Exclusive/>
-      </div>
+      <>
+        <Trending/>
+        <Exclusive />
+      </>
     );
   }
 }
