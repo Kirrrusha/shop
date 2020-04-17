@@ -1,110 +1,84 @@
-@import 'smart-grid.scss';
+@import 'colors';
+@import 'smart-grid';
 
 .exclusive {
-  background-color: white;
-  .container {
-    @include wrapper();
-    padding: 1rem 2rem;
-  }
+  display: flex;
+  flex-wrap: nowrap;
 
-  &-head {
+  &-block {
     display: flex;
-    font-family: 'Montserrat-Bold';
-    @include md(justify-content, space-between);
-    h2 {
-      @include col();
-      font-size: 2.25rem;
-    }
-    a {
-      @include col();
-      flex-grow: 1;
-      text-align-last: end;
-      align-self: center;
-      font-size: 1.125rem;
-      text-decoration: none;
-      color: #000000;
+    position: relative;
+    width: 50%;
+    height: 500px;
+    overflow: hidden;
 
-      &::after {
-        content: " ›";
-        position: relative;
-        font-size: 2rem;
-        top: 2px;
-      }
+
+    &:first-child {
+      background-color: $trending-first;
+    }
+
+    &:last-child {
+      background-color: $trending-second;
     }
   }
 
-  .block {
-    @include row-flex();
-    justify-content: space-between;
+  &-background {
+    position: absolute;
+    right: -75%;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+  }
 
-    .product {
-      display: block;
-      position: relative;
-      width: calc(33.33% - 1rem);
-      margin-bottom: 1rem;
+  &-product {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 3rem;
+    font-family: 'Montserrat-Regular';
 
-      @include md(width, calc(50% - 1rem));
-      @include xs(width, 100%);
-      @include md(margin-bottom, 2rem);
-      @include xs(margin-bottom, 2rem);
-
-      &-img {
-        height: 100%;
-        width: 100%;
-      }
+    > div {
+      padding-bottom: 0.5rem;
     }
+  }
 
-    .hover {
-      position: absolute;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      bottom: 50%;
-      transform: translate(0, 50%);
+  &-label {
+    color: $exclusive;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
 
-      font-family: 'Montserrat-Regular';
-      font-stretch: normal;
-      font-style: normal;
-      letter-spacing: normal;
+  &-title {
+    font-family: 'Montserrat-Bold';
+    font-size: 2.25rem;
+  }
 
-      &-img {
-        width: 48px;
-        height: 48px;
-        margin-bottom: 19px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        background-image: url("../img/exclusive/hover.png");
-      }
-      h6 {
-        color: #212121;
-        font-size: 22px;
-        font-weight: bold;
-        line-height: 1.36;
-        margin: 0;
-        padding-bottom: 23px;
-      }
-      span.description {
-        font-size: 14px;
-        font-weight: 300;
-        line-height: 1.57;
-        color: #6c6c6c;
-        padding-bottom: 23px;
-      }
-    }
+  &-description {
+    text-align: left;
+    line-height: 1.71;
+    color: $color-gray;
+  }
 
-    .product:hover .hover {
-      display: flex;
-    }
-    .product:hover .product-img {
-      opacity: 0.3;
-    }
+  &-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0 0;
+    width: 212px;
+    height: 46px;
+    border-radius: 22.5px;
+    box-shadow: 0 2px 4.9px 0.2px rgba(33, 33, 33, 0.35);
+    background-color: $white;
+    text-decoration: none;
+    font-family: 'Montserrat-Bold';
+    color: $color-main;
+    font-size: 1.125rem;
+    line-height: 1.33;
+    letter-spacing: 3.6px;
   }
 }
-
-
-
-
-
-
