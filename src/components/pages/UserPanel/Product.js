@@ -103,19 +103,19 @@ class Product extends Component {
 }
 
 Product.propTypes = {
+    alias: PropTypes.string,
     current: PropTypes.string,
     product: PropTypes.object,
     sliderIndex: PropTypes.number,
     changeSlider: PropTypes.func,
-    alias: PropTypes.string,
 };
 
 Product.defaultProps = {
+    alias: '',
     current: '',
     product: {},
     sliderIndex: 0,
     changeSlider: () => {},
-    alias: '',
 }
 
 export default Product;

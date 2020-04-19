@@ -1,0 +1,135 @@
+@import 'colors';
+@import 'smart-grid';
+
+body {
+  background: #fff;
+}
+
+header {
+  background: transparent;
+  z-index: 99;
+}
+header {
+  .menu-items, .header-search, a {
+    z-index: 99;
+  }
+}
+
+.trending-slider {
+  background-color: $color-gray-home;
+  margin-top: -87px;
+  z-index: 90;
+}
+.trending-slider {
+
+  .container {
+    @include wrapper();
+  }
+  .container:after {
+    padding-bottom: 865px;
+  }
+
+  .slider {
+    @include col();
+    margin-right: 0px;
+    margin-left: 0px;
+    position: relative;
+  }
+  .slider {
+    .items {
+      padding-left: 0px;
+      letter-spacing: inherit;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      right: 0;
+
+    }
+    .item {
+      display: none;
+      height: 800px;
+      padding-top: 87px;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: right bottom;
+    }
+    .active {
+      display: block;
+    }
+
+    .slid-description {
+      position: absolute;
+      bottom: 200px;
+      left: 0;
+    }
+    .slid-description {
+      .head {
+        font-family: Montserrat-Bold;
+        text-align: left;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 2.67;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        color: $green;
+        margin-bottom: 22px;
+      }
+      .title {
+        font-family: Montserrat-Thin;
+        font-size: 62px;
+        font-weight: 100;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.16;
+        letter-spacing: normal;
+        text-transform: uppercase;
+        text-align: left;
+        color: $color-main;
+        margin-bottom: 34px;
+      }
+      .description {
+        font-family: Montserrat-Regular;
+        font-size: 14px;
+        font-weight: 300;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.71;
+        letter-spacing: normal;
+        text-align: left;
+        color: $color-gray;
+        max-width: 458px;
+        margin-bottom: 32px;
+      }
+      .btn-order {
+        background-color: $white;
+        font-family: Montserrat-Bold;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: 3.6px;
+        text-align: center;
+        text-transform: uppercase;
+        color: $color-main;
+        padding-left: 31px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-right: 48px;
+        border-radius: 22.5px;
+        border: 0px;
+        box-shadow: 0px 2px 4.9px 0.2px rgba(33, 33, 33, 0.35);
+        cursor: pointer;
+
+        background-image: url("../img/product/arrow.png");
+        background-repeat: no-repeat;
+        background-size: 16px 24px;
+        background-position: 170px 50%;
+      }
+    }
+  }
+
+}
