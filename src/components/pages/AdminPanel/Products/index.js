@@ -1,31 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
+import {CircularProgress} from '@material-ui/core';
 import TableComponent from '../../../common/TableComponent';
-import {useDispatch, useSelector} from 'react-redux';
-import {addCategory, editCategory, getAllCategories, removeCategory} from '../../../../redux/modules/categories';
-import {Checkbox, CircularProgress} from '@material-ui/core';
 import moment from 'moment';
-import CategoryEdit from './CreateCategory';
+import {editCategory, removeCategory} from '../../../../redux/modules/categories';
+import CategoryEdit from '../Category/CreateCategory';
+import {useDispatch, useSelector} from 'react-redux';
+import {getAllProducts} from '../../../../redux/modules/products';
 import {StatusEditComponent, StatusViewComponent} from '../../../common/StatusComponent';
 
-const Category = () => {
+const AdminProducts = () => {
   const dispatch = useDispatch();
   const categories = useSelector(state => state.categories.list);
   const getPending = useSelector(state => state.categories.categoryListPending);
   const editPending = useSelector(state => state.categories.editCategoryPending);
-  const [category, setAddCategory] = useState();
+  const [products, setAddProduct] = useState();
   // eslint-disable-next-line
-  useEffect(() => dispatch(getAllCategories()), []);
-
-  const onOpenModal = (category) => setAddCategory(category);
-
-  const handleCancelClick = () => setAddCategory();
-
-  const onSubmitCategory = (category) => {
-    setAddCategory()
-    dispatch(addCategory(category));
-  }
-
+  useEffect(() => dispatch(getAllProducts()), []);
   return (
     <div style={{position: 'relative'}}>
       {(getPending || editPending) && <CircularProgress
@@ -37,7 +27,7 @@ const Category = () => {
         }}
       />}
       <TableComponent
-        rows={categories}
+        rows={products}
         options={{
           paging: false
         }}
@@ -77,4 +67,7 @@ const Category = () => {
   );
 };
 
-export default Category;
+AdminProducts.propTypes = {};
+AdminProducts.defaultProps = {};
+
+export default AdminProducts;
