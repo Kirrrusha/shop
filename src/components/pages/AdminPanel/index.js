@@ -27,6 +27,8 @@ import {Route, Switch, Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {logoutUser} from '../../../redux/modules/auth';
+import AdminProducts from './Products';
+import AdminProduct from './Products/Product';
 
 const drawerWidth = 240;
 
@@ -183,6 +185,8 @@ export default function AdminPanel() {
         <Switch>
           <Route exact path="/admin/category" component={Category}/>
           <Route exact path="/admin/users" component={User}/>
+          <Route exact path="/admin/products" component={AdminProducts}/>
+          <Route exact path="/admin/products/:id" component={AdminProduct}/>
         </Switch>
       </main>
     </div>

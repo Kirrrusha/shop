@@ -1,12 +1,14 @@
 import React from 'react';
 
-const Order = () => {
+const AdminProduct = () => {
   return (
-    <div></div>
+    <div>
+
+    </div>
   );
 };
 
-Order.propTypes = {};
-Order.defaultProps = {};
+AdminProduct.propTypes = {};
+AdminProduct.defaultProps = {};
 
-export default Order;
+export default AdminProduct;

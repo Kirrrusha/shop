@@ -221,3 +221,9 @@ const selectProductsByCategoryId = createSelector(
   (products, productId) => products.filter(product => product.productId === productId)
 );
 
+export const selectShortProductList = createSelector(selectProducts,
+  (products) => products.map(({name, updatedAt, status, id, productId}) =>
+    ({name, updatedAt, status, id, productId})
+  )
+)
+

@@ -2,23 +2,21 @@ import React, {useEffect, useState} from 'react';
 import {CircularProgress} from '@material-ui/core';
 import TableComponent from '../../../common/TableComponent';
 import moment from 'moment';
-import {editCategory, removeCategory} from '../../../../redux/modules/categories';
-import CategoryEdit from '../Category/CreateCategory';
+import {history} from '../../../../redux/history';
 import {useDispatch, useSelector} from 'react-redux';
-import {getAllProducts} from '../../../../redux/modules/products';
-import {StatusEditComponent, StatusViewComponent} from '../../../common/StatusComponent';
+import {getAllProducts, selectShortProductList} from '../../../../redux/modules/products';
+import {StatusViewComponent} from '../../../common/StatusComponent';
 
 const AdminProducts = () => {
   const dispatch = useDispatch();
-  const categories = useSelector(state => state.categories.list);
-  const getPending = useSelector(state => state.categories.categoryListPending);
-  const editPending = useSelector(state => state.categories.editCategoryPending);
-  const [products, setAddProduct] = useState();
+  const products = useSelector(selectShortProductList);
+  const getPending = useSelector(state => state.products.pending.productsList);
+  // const [product, setAddProduct] = useState();
   // eslint-disable-next-line
   useEffect(() => dispatch(getAllProducts()), []);
   return (
     <div style={{position: 'relative'}}>
-      {(getPending || editPending) && <CircularProgress
+      {(getPending) && <CircularProgress
         style={{
           display: 'block',
           position: 'absolute', zIndex: 5,
@@ -39,30 +37,27 @@ const AdminProducts = () => {
           },
           {
             title: 'Status', field: 'status',
-            render: StatusViewComponent,
-            editComponent: StatusEditComponent
+            render: StatusViewComponent
           }
         ]}
-        editable={{
-          onRowUpdate: (newData) =>
-            new Promise((resolve) => {
-              dispatch(editCategory(newData, resolve));
-            }),
-          onRowDelete: oldData =>
-            new Promise((resolve) => {
-              dispatch(removeCategory(oldData.id, resolve));
-            })
-        }}
         actions={[
           {
             icon: 'add',
-            tooltip: 'Add Category',
+            tooltip: 'Add Product',
             isFreeAction: true,
-            onClick: onOpenModal
+            onClick: (event, rowData) => {
+              console.log('event', event)
+              console.log('rowData', rowData)
+            }
+          },
+          {
+            icon: 'edit',
+            tooltip: 'Edit Product',
+            onClick: (event, rowData) => history.push(`/admin/products/${rowData.productId}`)
           }
         ]}
       />
-      {category ? <CategoryEdit open={!!category} onCancel={handleCancelClick} onSubmit={onSubmitCategory} /> : null}
+      {/*{category ? <CategoryEdit open={!!category} onCancel={handleCancelClick} onSubmit={onSubmitCategory} /> : null}*/}
     </div>
   );
 };
