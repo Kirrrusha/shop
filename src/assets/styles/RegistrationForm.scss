@@ -56,6 +56,10 @@
             box-shadow: 0;
             cursor: pointer;
         }
+
+        &:disabled{
+          opacity: 0.6;
+      }
     } 
     & label{
       width: 8rem;
@@ -79,9 +83,26 @@
             font-size: 0.875rem;
             font-weight: 300;                
         }
+      }
+    .reg-errors{
+      font-family: 'Montserrat-Regular';
+      color: $red;
+      font-weight: 800;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      text-align: center;
     }
     .reg-input input{
       margin: 0.5rem 0;
+    }
+    .reg-link{      
+      text-decoration: none;
+      color:$color-main;
+      font-weight: 900;
+
+      &:hover{
+        opacity: 0.7;
+      }
     }
   }
 
@@ -91,17 +112,19 @@
       &-links{    
         list-style: none;
         text-align: left;
-        font-family: 'Montserrat-Bold';
+        font-family: 'Montserrat-Regular';
         font-size: 0.875rem;
         font-weight: 700;
         line-height: 1.625rem;
         text-transform: uppercase;
         letter-spacing: 0.7px;
         margin-bottom: 1.6rem;
+        
 
         &:hover{
-            cursor: pointer;
-            opacity: 0.8;
+          font-family: 'Montserrat-Bold';
+          color: $color-main;          
+          cursor: pointer
         }
         & a{
           text-decoration: none;
