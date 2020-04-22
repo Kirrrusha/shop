@@ -211,8 +211,7 @@ class RegistrationForm extends Component {
         return isValid && isRequiredFilled;
       };
     onSubmit = (event) => {
-      event.preventDefault();     
-        console.log('submit')     
+      event.preventDefault();
      };   
     render() {        
       const {formData: {name, surname, email, phone, password,confirmPassword}, formValidation, buttonEnabled} = this.state;
