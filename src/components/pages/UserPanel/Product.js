@@ -1,121 +1,82 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import parseHtml from 'html-react-parser';
+import {getAllProducts, selectProductsByCategoryId} from '../../../redux/modules/products';
+import {connect} from 'react-redux';
+import {history} from '../../../redux/history';
 
 class Product extends Component {
 
-    state = {
-        product: {
-            id: 1,
-            alias: '',
-            name: 'Fishnet Chair',
-            description: '<p>The majesty of Mountains - Ugmonk style.</p>' +
-                '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore' +
-                'et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
-                'lorem et dolore magna aliqua. Ut enim ad minim veniam, quis nt, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore' +
-                'et dolore magna aliqua.</p><p>Ut enim ad minim laboris nisi</p>',
-            price: 36.70,
-            images:[
-                {
-                    medium: require('../../../assets/img/product/big.png'),
-                    small: require('../../../assets/img/product/small1.png'),
-                },
-                {
-                    medium: require('../../../assets/img/product/big.png'),
-                    small: require('../../../assets/img/product/small2.png'),
-                },
-                {
-                    medium: require('../../../assets/img/product/big.png'),
-                    small: require('../../../assets/img/product/small3.png'),
-                },
-            ],
-            offers: [
-                {
-                    name: 'hot deal'
-                }
-            ],
-        },
-        sliderIndex: 0,
-        current: '',
-    };
+  state = {
+    sliderIndex: 0
+  };
 
-    changeSlider = (index) => {
-        this.setState({sliderIndex: index});
-    };
+  changeSlider = (index) => {
+    this.setState({sliderIndex: index});
+  };
 
-    render() {
+  componentDidMount() {
+    const {product, getAllProducts} = this.props;
+    !product && getAllProducts();
+  }
 
-        // const { current, product } = this.props;
-        //const { alias } = this.props.match.params;
-        const { current, product, sliderIndex } = this.state;
-
-        const aboutProduct = (
-            <div>
-                <h2>{product.name}</h2>
-                <div className='block-about-offer'>{product.offers.map( (elem, index)=>{
-                    return <div key={index}>{elem.name}</div>
-                })}</div>
-                <div className='block-about-price'>$<span>{product.price}</span>/sc</div>
-                <button className='block-about-btn'>Order Us</button>
-                <div className='block-about-description'>{parseHtml(product.description)}</div>
-            </div>
-        )
-
-        const card = product.images.map( (card, index) =>{
-            return  <img
-                className={`${index === sliderIndex ? 'active' : 'pointer'}`}
-                src={card.small}
-                onClick={() => this.changeSlider(index)}
-                alt='card'
-                key={`card-${index}`}
-            />
-        })
-
-        return(
-            <div className='product'>
-                <div className='product-head'>
-                    <div className='container without-after'>
-                        <Link className={ current === '' ? 'active' : '' } to={`/`}>all</Link>
-                        <Link className={ current === 'home' ? 'active' : '' } to={`/`}>home</Link>
-                        <Link className={ current === 'office' ? 'active' : '' } to={`/`}>office</Link>
-                        <Link className={ current === 'furniture' ? 'active' : '' } to={`/`}>furniture</Link>
-                        <Link className={ current === 'modern' ? 'active' : '' } to={`/`}>modern</Link>
-                        <Link className={ current === 'classic' ? 'active' : '' } to={`/`}>classic</Link>
-                    </div>
-                </div>
-                <div className='container'>
-                    <div className='block'>
-                        <div className='block-card'>
-                            <img src={product.images[sliderIndex].medium} alt='card' />
-                            <div className='block-card-slider'>
-                                {card}
-                            </div>
-                        </div>
-                        <div className='block-about'>
-                            {aboutProduct}
-                        </div >
-                    </div>
-                </div>
-            </div>
-        );
+  render() {
+    const {product, pending, isEmptyProducts} = this.props;
+    const {sliderIndex} = this.state;
+    if (pending === null || pending) {
+      return <>Loading...</>;
+    } else if (isEmptyProducts || !product) {
+      history.push('/');
+      return null;
     }
+    return (
+      <div className='product'>
+        <div className='wrapper'>
+          <div className='product-block'>
+            <div className='product-card'>
+              <div
+                className="product-image"
+                style={{backgroundImage: `url(${product.imagesPath[sliderIndex]})`}}
+              />
+              <div className='product-slider'>
+                {product.imagesPath.map((card, index) =>
+                  <div
+                    className={`product-image product-image__min ${index === sliderIndex ? 'active' : 'pointer'}`}
+                    onClick={() => this.changeSlider(index)}
+                    key={`card-${index}`}
+                    style={{backgroundImage: `url(${card})`}}
+                  />)}
+              </div>
+            </div>
+            <div className='product-about'>
+              <h2>{product.name}</h2>
+              <div className='product-price'>$<span>{product.price}</span>/sc</div>
+              <button className='product-btn'>Order Us</button>
+              <div className='product-description'>{parseHtml(product.description)}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 Product.propTypes = {
-    current: PropTypes.string,
-    product: PropTypes.object,
-    sliderIndex: PropTypes.number,
-    changeSlider: PropTypes.func,
-    alias: PropTypes.string,
+  product: PropTypes.shape({
+    imagesPath: PropTypes.arrayOf(PropTypes.string),
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired
+  }).isRequired,
+  getAllProducts: PropTypes.func.isRequired,
+  pending: PropTypes.bool.isRequired,
+  isEmptyProducts: PropTypes.bool.isRequired
 };
 
-Product.defaultProps = {
-    current: '',
-    product: {},
-    sliderIndex: 0,
-    changeSlider: () => {},
-    alias: '',
-}
+const mapStateToProps = (state, {match: {params}}) => ({
+  product: selectProductsByCategoryId(state, params.id),
+  pending: state.products.pending.productsList,
+  isEmptyProducts: !state.products.list.length
+});
 
-export default Product;
+export default connect(mapStateToProps, {getAllProducts})(Product);
