@@ -1,0 +1,27 @@
+@import 'smart-grid.scss';
+@import 'colors.scss';
+
+.error404{
+  height: 350px;
+  & h3{
+    font-family: 'Montserrat-Bold';
+    font-size: 2.875rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.36;
+    letter-spacing: normal;               
+    color:$color-main;
+    text-transform: uppercase;   
+  }
+  & p{
+    font-family: 'Montserrat-Light';
+    font-size: 1.575rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;                
+    color: $color-main;
+  }
+}
