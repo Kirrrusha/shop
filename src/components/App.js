@@ -1,6 +1,6 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {Router, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch, Redirect} from 'react-router-dom';
 import store from '../redux/store';
 import {history} from '../redux/history';
 import '../assets/styles/App.scss';
@@ -23,6 +23,7 @@ import Careers from './pages/UserPanel/FooterLinks/Careers';
 import Returns from './pages/UserPanel/FooterLinks/Returns';
 import RegistrationForm from './modules/AuthForm/RegistrationForm';
 import Footer from './modules/Footer';
+import Error404 from './modules/Error404';
 
 
 const App = () =>
@@ -47,6 +48,9 @@ const App = () =>
           <Route path="/careers" component={Careers}/>
           <Route path="/exchanges-returns" component={Returns}/>
           <Route path="/registration" component={RegistrationForm}/>
+          <Route exact path="*" component={Error404}/>
+          <Redirect to="/error" />         
+
           <Footer/>
         </Route>
       </Switch>
