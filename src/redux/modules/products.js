@@ -81,7 +81,7 @@ export const getAllProducts = () => dispatch => {
 const selectProducts = state => state.products.list;
 const selectProductId = (state, itemId) => itemId;
 
-export const selectProductsByCategoryId = createSelector(
+export const selectProductsByProductId = createSelector(
   [selectProducts, selectProductId],
   (products, productId) => products.find(product => product.status && product.productId === +productId)
 );

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import parseHtml from 'html-react-parser';
-import {getAllProducts, selectProductsByCategoryId} from '../../../redux/modules/products';
+import {getAllProducts, selectProductsByProductId} from '../../../redux/modules/products';
 import {connect} from 'react-redux';
 import {history} from '../../../redux/history';
 
@@ -67,14 +67,14 @@ Product.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired
-  }).isRequired,
+  }),
   getAllProducts: PropTypes.func.isRequired,
-  pending: PropTypes.bool.isRequired,
+  pending: PropTypes.bool,
   isEmptyProducts: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state, {match: {params}}) => ({
-  product: selectProductsByCategoryId(state, params.id),
+  product: selectProductsByProductId(state, params.id),
   pending: state.products.pending.productsList,
   isEmptyProducts: !state.products.list.length
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect, Route, BrowserRouter as Router} from 'react-router-dom';
+import {Route, BrowserRouter as Router} from 'react-router-dom';
 import History from './History';
 import Contact from './Contact';
 import ShowRoom from './ShowRoom';
@@ -25,8 +25,8 @@ const UserPanel = () => {
       <Route exact path="/" component={Home}/>
       <Route path="/history" component={History}/>
       <Route path="/contact" component={Contact}/>
-      <Route path="/product/:alias" component={Product}/>
-      <Route path="/products" component={Products}/>
+      <Route exact path="/products/:id" component={Product}/>
+      <Route exact path="/products" component={Products}/>
       <Route path="/show-room" component={ShowRoom}/>
       <Route path="/cart" component={Cart} />
       <Route path="/architect-accounts" component={Accounts} />
@@ -36,8 +36,7 @@ const UserPanel = () => {
       <Route path="/careers" component={Careers} />
       <Route path="/exchanges-returns" component={Returns} />
       <Route path="/registration" component={RegistrationForm} />
-      <Route path="/error" component={Error404}/>
-      <Redirect from="*" to="/error" />
+      <Route component={Error404}/>
       <Footer/>
     </Router>
   );
