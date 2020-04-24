@@ -107,7 +107,7 @@ export const checkUser = () => dispatch => {
     const currentTime = Date.now() / 1000;
     if (decoded.exp < currentTime) {
       dispatch(logoutUser());
-      dispatch(history.push('/login'));
+      history.push('/login');
     }
   }
 };
