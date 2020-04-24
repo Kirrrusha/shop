@@ -14,13 +14,13 @@ export default class Menu extends Component {
       'history',
       'showroom',
       'contact',
-      'cart',     
+      'cart',
     ];
     return (
       <div className="header-links">
         <div className='header-menu'>
           {menu.map((item, index) =>
-            <Link to={`${item === 'home' ? '/' : item}`} key={index} className='menu-items'>{item}</Link>
+            <Link to={`/${item === 'home' ? '' : item}`} key={index} className='menu-items'>{item}</Link>
           )}
         </div>
         <div className="header-search">
