@@ -2,12 +2,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import ProductItem from '../../../common/ProductItem';
-import '../../../../assets/styles/Products.scss';
+// import '../../../../assets/styles/Products.scss';
 import Tabs from './Tabs';
 import Tab from './Tab';
 import {connect} from 'react-redux';
 import {getAllCategories} from '../../../../redux/modules/categories';
-import {getProductsByCategory} from '../../../../redux/modules/products'
 
 
 class Products extends Component {
@@ -22,19 +21,19 @@ class Products extends Component {
   componentDidUpdate(prevProps, prevState) {
     const {selectedTab} = this.state;
     const {selectedTab: prevSelectedTab} = prevState;
-    const {categories, getProductsByCategory} = this.props;
-
-    if(categories.length) {
-      if(selectedTab && selectedTab !== prevSelectedTab) {
-        const selectedCategory = categories.filter((category) => category.name === selectedTab)
-
-        if(selectedCategory.length) {
-          getProductsByCategory(selectedCategory[0].id)
-        }
-      }  else if(!selectedTab) {
-        getProductsByCategory(categories[0].id)
-      }
-    }
+    // const {categories, getProductsByCategory} = this.props;
+    //
+    // if(categories.length) {
+    //   if(selectedTab && selectedTab !== prevSelectedTab) {
+    //     const selectedCategory = categories.filter((category) => category.name === selectedTab)
+    //
+    //     if(selectedCategory.length) {
+    //       getProductsByCategory(selectedCategory[0].id)
+    //     }
+    //   }  else if(!selectedTab) {
+    //     getProductsByCategory(categories[0].id)
+    //   }
+    // }
   }
 
   onChangeTab = selectedTab => {
@@ -84,7 +83,7 @@ const mapStateToProps = state => ({
   products: state.products.list,
 });
 
-export default connect(mapStateToProps, {getAllCategories, getProductsByCategory})(Products);
+export default connect(mapStateToProps, {getAllCategories})(Products);
 
 Products.propTypes = {
   getAllCategories: PropTypes.func,
