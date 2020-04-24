@@ -62,6 +62,7 @@ header {
       position: absolute;
       bottom: 200px;
       left: 0;
+      padding: inherit;
     }
     .slid-description {
       .head {
@@ -124,12 +125,199 @@ header {
         box-shadow: 0px 2px 4.9px 0.2px rgba(33, 33, 33, 0.35);
         cursor: pointer;
 
-        background-image: url("../img/product/arrow.png");
+        background-image: url("../img/home/arrow.png");
         background-repeat: no-repeat;
-        background-size: 16px 24px;
+        background-size:0.5625rem 0.8125rem;
         background-position: 170px 50%;
       }
     }
+
+    .dots {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      padding-bottom: 1.1875rem;
+    }
+    .dots {
+      .dot {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        transition: background-color 0.6s ease;
+        background-color: #C8C8C8;
+        align-self: center;
+      }
+      .dot:hover {
+        background-color: $color-main;
+      }
+      .dot + .dot {
+        margin-left: 5px;
+      }
+      .active {
+        height: 40px;
+        width: 40px;
+        background-color: $color-main;
+      }
+    }
+  }
+}
+
+.featured-new {
+
+}
+.featured-new {
+  .container {
+    @include wrapper();
+    padding-top: 7.5rem;
+  }
+  .container:after {
+    padding-bottom: 0px;
   }
 
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4.5rem;
+  }
+  .head {
+    .title {
+      text-align: left;
+    }
+    .title {
+      a {
+        font-family: Montserrat-Bold;
+        font-size: 2.25rem;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: $color-gray;
+        cursor: pointer;
+        border-bottom: 1px solid $color-main;
+        padding-bottom: 1.1875rem; // 19px
+        padding-right: 1rem;
+      }
+      a + a {
+        padding-left: 1rem;
+      }
+      a.active {
+        box-shadow: inset 0 -3px 0px $color-main;
+        color: $color-main;
+      }
+
+    }
+    .all {
+      text-align: center;
+    }
+    .all {
+      a {
+        font-family: Montserrat-Bold;
+        font-size: 1.125rem;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: 0.225rem;
+        text-align: center;
+        color: $color-main;
+        text-transform: uppercase;
+      }
+      a.arrow {
+        background-image: url("../img/home/arrow.png");
+        background-repeat: no-repeat;
+        background-size: 0.5625rem 0.8125rem;
+        background-position: 11.3125rem 50%;
+        padding-right: 2rem;
+      }
+    }
+  }
+  .products {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .products {
+    .product {
+      @include col();
+      width: 25%;
+      height: 16.875rem;
+      margin-left: 0px;
+      margin-right: 0px;
+      position: relative;
+      display: flex;
+      cursor: pointer;
+    }
+    .product + .product {
+      margin-left: 1.875rem;
+    }
+    .product:hover {
+      .img {
+        opacity: 0.5;
+      }
+      .hover {
+        visibility: visible;
+      }
+    }
+    .product {
+      .img {
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      .hover {
+        //transition: visibility 1s ease;
+        visibility: hidden;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        align-self: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+      .hover {
+        .btn {
+          height: 3rem;
+          width: 3rem;
+          background-image: url("../img/promo/hover.png");
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          background-color: transparent;
+        }
+        .title {
+          font-family: Montserrat-Bold;
+          font-size: 1.375rem;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.36;
+          letter-spacing: normal;
+          text-align: center;
+          color: $color-main;
+          padding: 0 2rem;
+        }
+        .description {
+          font-family: Montserrat-Regular;
+          font-size: 0.875rem;
+          font-weight: 300;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.57;
+          letter-spacing: normal;
+          text-align: center;
+          color: $color-gray;
+          padding: 1.4375rem 2rem 0;
+        }
+      }
+    }
+  }
 }
