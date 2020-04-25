@@ -16,7 +16,6 @@ import Careers from './FooterLinks/Careers';
 import Customer from './FooterLinks/Customer';
 import Returns from './FooterLinks/Returns';
 import RegistrationForm from '../../modules/AuthForm/RegistrationForm'
-import Error404 from '../../modules/Error404';
 
 const UserPanel = () => {
   return (
@@ -36,7 +35,6 @@ const UserPanel = () => {
       <Route path="/careers" component={Careers} />
       <Route path="/exchanges-returns" component={Returns} />
       <Route path="/registration" component={RegistrationForm} />
-      <Route component={Error404}/>
       <Footer/>
     </Router>
   );

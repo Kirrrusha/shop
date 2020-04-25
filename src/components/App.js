@@ -15,7 +15,7 @@ const App = () =>
     <Router history={history}>
       <Switch>
         <Route exact path="/login" component={Login}/>
-        <PrivateRoute exact path="/admin" component={AdminPanel}/>
+        <PrivateRoute path="/admin" component={AdminPanel}/>
         <Route path="/" component={UserPanel} />
       </Switch>
     </Router>
