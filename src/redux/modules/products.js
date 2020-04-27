@@ -1,10 +1,11 @@
 import axios from 'axios';
 import {API_HTTP} from '../../configs/environment';
+import {createSelector} from 'reselect';
 
-const ActionTypesProductsByCategoryId = {
-    PRODUCTS_REQUEST: 'PRODUCTS_BY_CATEGORY_REQUEST',
-    PRODUCTS_SUCCESS: 'PRODUCTS_BY_CATEGORY_SUCCESS',
-    PRODUCTS_FAILURE: 'PRODUCTS_BY_CATEGORY_FAILURE'
+const ActionTypesProducts = {
+    GET_PRODUCTS_REQUEST: 'PRODUCTS_BY_CATEGORY_REQUEST',
+    GET_PRODUCTS_SUCCESS: 'PRODUCTS_BY_CATEGORY_SUCCESS',
+    GET_PRODUCTS_FAILURE: 'PRODUCTS_BY_CATEGORY_FAILURE'
   };
   
   const initialProductsState = {
@@ -14,13 +15,11 @@ const ActionTypesProductsByCategoryId = {
     },
     errors: null,
   };
-
-
   export default function (state = initialProductsState, action) {
-    const {PRODUCTS_REQUEST, PRODUCTS_SUCCESS, PRODUCTS_FAILURE} = ActionTypesProductsByCategoryId;
+    const {GET_PRODUCTS_REQUEST, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_FAILURE} = ActionTypesProducts;
     switch (action.type) {
   
-      case PRODUCTS_REQUEST:
+      case GET_PRODUCTS_REQUEST:
         return {
           ...state,
           pending: {
@@ -29,7 +28,7 @@ const ActionTypesProductsByCategoryId = {
           }
         };
   
-      case PRODUCTS_SUCCESS:
+      case GET_PRODUCTS_SUCCESS:
         return {
           ...state,
           list: action.payload,
@@ -38,7 +37,7 @@ const ActionTypesProductsByCategoryId = {
             productsList: false
           }
         };
-      case PRODUCTS_FAILURE:
+      case GET_PRODUCTS_FAILURE:
         return {
           ...state,
           errors: action.errors,
@@ -50,25 +49,42 @@ const ActionTypesProductsByCategoryId = {
       default:
         return state;
     }
-  }
-  
-  export const getProductsByCategory = (categoryId) => dispatch => {
-    dispatch({
-      type: ActionTypesProductsByCategoryId.PRODUCTS_REQUEST
-    });
-  
-    axios
-      .get(`${API_HTTP}/api/v1/products/byCategory/${categoryId}`)
-      .then(({data}) => { 
-        console.log('data',data)
-       dispatch({
-        type: ActionTypesProductsByCategoryId.PRODUCTS_SUCCESS,
-        payload: data      
-      })    
-    })
-      .catch((errors) =>
-        dispatch({
-          type: ActionTypesProductsByCategoryId.PRODUCTS_FAILURE,
-          errors
-        }));     
   };
+    export const getAllProducts = () => dispatch => {
+      dispatch({
+        type: ActionTypesProducts.GET_PRODUCTS_REQUEST
+      });
+    
+      axios
+        .get(`${API_HTTP}/api/v1/products`)
+        //.get('https://sleepy-oasis-78295.herokuapp.com/api/v1/products')   
+        .then(({data}) => {         
+          dispatch({
+            type: ActionTypesProducts.GET_PRODUCTS_SUCCESS,
+            payload: data
+          });               
+        })
+        .catch((errors) =>
+          dispatch({
+            type: ActionTypesProducts.GET_PRODUCTS_FAILURE,
+            errors
+          }));
+    };
+  //selectors
+  const selectProducts = state => state.products.list;
+  const selectProductId = (state, itemId) => itemId;
+
+  export const selectProductsByProductId = createSelector(
+    [selectProducts, selectProductId],
+    (products, productId) => products.find(product => product.status && product.productId === +productId)
+  );
+
+  export const selectShortProductList = createSelector(selectProducts,
+    (products) => products.map(({name, updatedAt, status, id, productId}) =>
+      ({name, updatedAt, status, id, productId})
+    )
+  )
+  export const selectProductsByCategoryId = createSelector(selectProducts,
+    (products,categoryId ) =>
+      products.filter( product => product.status && product.categories.some((category) => category.id === +categoryId ))   
+  );

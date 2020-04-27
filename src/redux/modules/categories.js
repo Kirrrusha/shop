@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {API_HTTP} from '../../configs/environment';
+//import {createSelector} from 'reselect';
 
 
 const ActionTypesCategory = {
@@ -126,19 +127,20 @@ export default function (state = initialCategoriesState, action) {
       return state;
   }
 }
-
 export const getAllCategories = (callback = () => null) => dispatch => {
   dispatch({
     type: ActionTypesCategory.GET_CATEGORIES_REQUEST
   });
 
   axios
-    .get(`${API_HTTP}/api/v1/categories`)    
+   .get(`${API_HTTP}/api/v1/categories`) 
+    //.get('https://sleepy-oasis-78295.herokuapp.com/api/v1/categories')   
     .then(({data}) => {
      dispatch({
       type: ActionTypesCategory.GET_CATEGORIES_SUCCESS,
       payload: data
     })
+ 
   })
     .catch((errors) =>
       dispatch({
@@ -210,3 +212,6 @@ export const addCategory = (category, callback) => dispatch => {
       dispatch(getAllCategories(callback));
     });
 };
+ 
+  
+
