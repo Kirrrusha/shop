@@ -11,7 +11,7 @@ const ActionTypesUser = {
   FETCH_LOGIN_FAILURE: 'FETCH_LOGIN_FAILURE',
   FETCH_REG_REQUEST: 'FETCH_REG_REQUEST',
   FETCH_REG_SUCCESS: 'FETCH_REG_SUCCESS',
-  FETCH_REG_FAILURE: 'FETCH_REG_FAILURE',
+  FETCH_REG_FAILURE: 'FETCH_REG_FAILURE'
 };
 
 
@@ -76,7 +76,7 @@ export const loginUser = (userData) => dispatch => {
       dispatch(setCurrentUser(decoded));
 
     })
-    .catch(e => dispatch({type: ActionTypesUser.FETCH_LOGIN_FAILURE, errors: (e.response && e.response.data) || e }));
+    .catch(e => dispatch({type: ActionTypesUser.FETCH_LOGIN_FAILURE, errors: (e.response && e.response.data) || e}));
 };
 
 // set current user
@@ -107,7 +107,7 @@ export const checkUser = () => dispatch => {
     const currentTime = Date.now() / 1000;
     if (decoded.exp < currentTime) {
       dispatch(logoutUser());
-      dispatch(history.push('/login'));
+      history.push('/login');
     }
   }
-}
+};

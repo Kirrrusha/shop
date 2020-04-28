@@ -89,5 +89,6 @@ const ActionTypesProducts = {
       return  products.filter( product => {
         return  product.status && product.category.some(category => category.id === categoryId )
       })
-    })   
-  
+    }) 
+    
+ 
