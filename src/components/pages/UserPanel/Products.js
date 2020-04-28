@@ -9,20 +9,20 @@ import {getAllProducts, selectProductsByCategoryId} from '../../../redux/modules
 
 class Products extends Component {
       state = {       
-        activeTab: 0,
+        activeTab: null,
     }
     componentDidMount() {
         this.props.getAllCategories(); 
         this.props.getAllProducts();
       }  
-    ChangeTab = (event) => { 
-        this.setState({activeTab: parseInt(event.target.dataset.id)})
+    ChangeTab = (event) => {    
+        this.setState({activeTab: event.target.dataset.id})
       }     
     render() { 
     const {categories, products} = this.props;
-    const {activeTab}  = this.state;    
+    const {activeTab}  = this.state;
 
-    const htmlProducts  = products.map( (prod, index) => {        
+    const htmlProducts  = activeTab && selectProductsByCategoryId(products, activeTab).map( (prod, index) => {        
         return (           
                 <ProductItem                    
                     name = {prod.name} 
@@ -36,12 +36,11 @@ class Products extends Component {
         return ( 
             <>       
                 <div className='tabs'>                    
-                    {categories.map( (item, index) => {                        
+                    {categories.map( (item, index) => {                                             
                         return <div
-                            data-id={index}
-                            key={`tabs-${index}`}
-                            id={item.id}                           
-                            className={(activeTab === index) ? 'tabs-item activeTab' : 'tabs-item '}
+                            data-id={item.id}
+                            key={`tabs-${index}`}                                                     
+                            className={(activeTab === item.id) ? 'tabs-item activeTab' : 'tabs-item '}
                             onClick={this.ChangeTab}       
                             >                                
                             {item.name}                            
@@ -57,11 +56,9 @@ class Products extends Component {
     }
 }
 
-
-const mapStateToProps = (state, {match: {params}}) => ({
+const mapStateToProps = (state) => ({
     categories: state.categories.list,
-    products: state.products.list,
-    //products: selectProductsByCategoryId(state, params.id),    
+    products: state.products.list,        
 })
 
 export default connect(mapStateToProps, {getAllCategories, getAllProducts})(Products);
