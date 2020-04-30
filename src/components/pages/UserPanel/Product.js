@@ -79,4 +79,5 @@ const mapStateToProps = (state, {match: {params}}) => ({
   isEmptyProducts: !state.products.list.length
 });
 
+
 export default connect(mapStateToProps, {getAllProducts})(Product);
