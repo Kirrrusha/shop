@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import {isEmpty} from 'lodash';
 
-const useForm = (callback, validate) => {
+const useForm = (initialValues, callback, validate) => {
 
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState(initialValues || {});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -14,6 +15,11 @@ const useForm = (callback, validate) => {
     // eslint-disable-next-line
   }, [errors]);
 
+  useEffect(() => {
+    !isEmpty(values) && setErrors(validate(values));
+    // eslint-disable-next-line
+  }, [values]);
+
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
     setErrors(validate(values));
@@ -22,7 +28,7 @@ const useForm = (callback, validate) => {
 
   const handleChange = (event) => {
     event.persist();
-    setValues(values => ({ ...values, [event.target.name]: event.target.value || event.target.checked }));
+    setValues(values => ({ ...values, [event.target.name]: event.target.value || event.target.checked || '' }));
   };
 
   return {
