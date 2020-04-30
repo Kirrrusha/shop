@@ -4,6 +4,7 @@ import parseHtml from 'html-react-parser';
 import {getAllProducts, selectProductsByProductId} from '../../../redux/modules/products';
 import {connect} from 'react-redux';
 import {history} from '../../../redux/history';
+import {addProductInOrder} from '../../../redux/modules/checkout';
 
 class Product extends Component {
 
@@ -21,7 +22,7 @@ class Product extends Component {
   }
 
   render() {
-    const {product, pending, isEmptyProducts} = this.props;
+    const {product, pending, isEmptyProducts, addProductInOrder} = this.props;
     const {sliderIndex} = this.state;
     if (pending === null || pending) {
       return <>Loading...</>;
@@ -51,8 +52,18 @@ class Product extends Component {
             <div className='product-about'>
               <h2>{product.name}</h2>
               <div className='product-price'>$<span>{product.price}</span>/sc</div>
-              <button className='product-btn'>Order Us</button>
-              <div className='product-description'>{parseHtml(product.description)}</div>
+              <button
+                className='product-btn'
+                onClick={() => {
+                  addProductInOrder({
+                    product: product.id,
+                    name: product.name,
+                    quantity: 1,
+                    price: product.price
+                  })
+                }}>Order Us
+              </button>
+              <div className='product-description'>{product.description && parseHtml(product.description)}</div>
             </div>
           </div>
         </div>
@@ -66,9 +77,10 @@ Product.propTypes = {
     imagesPath: PropTypes.arrayOf(PropTypes.string),
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired
+    description: PropTypes.string
   }),
   getAllProducts: PropTypes.func.isRequired,
+  addProductInOrder: PropTypes.func.isRequired,
   pending: PropTypes.bool,
   isEmptyProducts: PropTypes.bool.isRequired
 };
@@ -79,5 +91,4 @@ const mapStateToProps = (state, {match: {params}}) => ({
   isEmptyProducts: !state.products.list.length
 });
 
-
-export default connect(mapStateToProps, {getAllProducts})(Product);
+export default connect(mapStateToProps, {getAllProducts, addProductInOrder})(Product);

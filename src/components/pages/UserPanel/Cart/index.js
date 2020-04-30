@@ -1,25 +1,40 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import Checkout from './Checkout';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchCheckout, removeProductInOrder} from '../../../../redux/modules/checkout';
 
 export default function Cart() {
-  const products = []; //TODO: add redux
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.checkout.list);
   let total = 0;
-  const rows = products.map(({name, quantity, imgUrl, price, info}) => {
-    const infoRows = Object.entries(info).map(([key, value]) => <p key={key}>{`${key}: ${value}`}</p>);
+  const [confirm, setConfirm] = useState(false);
+
+  const createCheckout = (values) => {
+    dispatch(fetchCheckout({
+      ...values, checkout: products
+    }))
+    setConfirm(false);
+  }
+
+  const rows = !!products.length && products.map(({id, name, quantity, imgUrl, price}) => {
+    // const infoRows = Object.entries(info).map(([key, value]) => <p key={key}>{`${key}: ${value}`}</p>);
     total += price * quantity;
     return (
       <div className="productCard row" key={name}>
         <div className="info col">
-          <img className="img" src={imgUrl} alt={name}/>
+          {/*<img className="img" src={imgUrl} alt={name}/>*/}
           <div className="text">
             {name}
-            {infoRows}
+            {/*{infoRows}*/}
           </div>
         </div>
         <div className="quantity col">{quantity}</div>
         <div className="price col">{price}</div>
         <div className="total col">{price * quantity}</div>
+        <div
+          className="col"
+          onClick={() => dispatch(removeProductInOrder({id, quantity, total: price * quantity}))}>Remove</div>
       </div>
     );
   });
@@ -38,10 +53,11 @@ export default function Cart() {
           {rows}
         </div>
         <div className="productsTotal row">
-          <div className="allTotal">{total}</div>
+          <div className="allTotal">{!!total && total}</div>
         </div>
       </div>
-      <Checkout/>
+      {!!products.length && <button className="stepButton" onClick={() => setConfirm(true)}>Confirm</button>}
+      {confirm && <Checkout onSubmit={createCheckout}/>}
     </div>
   );
 }

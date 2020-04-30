@@ -25,14 +25,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CreateCategory({open, onCancel, onSubmit}) {
   const classes = useStyles();
-  const login = () => onSubmit(values);
+  const createCategory = () => onSubmit(values);
 
   const {
     values,
     errors,
     handleChange,
     handleSubmit
-  } = useForm(login, validate);
+  } = useForm(createCategory, validate);
 
   return (
     <Modal
