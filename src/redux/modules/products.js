@@ -56,7 +56,7 @@ const ActionTypesProducts = {
       });
     
       axios
-        .get(`${API_HTTP}/api/v1/products`)        
+        .get(`${API_HTTP}/api/v1/products`)
         .then(({data}) => {         
           dispatch({
             type: ActionTypesProducts.GET_PRODUCTS_SUCCESS,

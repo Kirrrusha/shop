@@ -20,35 +20,41 @@ class Products extends Component {
       }     
     render() { 
     const {categories, products} = this.props;
-    const {activeTab}  = this.state;
+    let {activeTab}  = this.state;
+    
 
-    const htmlProducts  = activeTab && selectProductsByCategoryId(products, activeTab).map( (prod, index) => {        
+    if(!activeTab && typeof categories.length !== 'undefined' && categories.length) {       
+        activeTab = categories[0].id; 
+    }
+
+    const htmlProducts  = activeTab && selectProductsByCategoryId(products, activeTab).map( (prod, index) => { 
+        console.log('prod', prod)       
         return (           
                 <ProductItem                    
                     name = {prod.name} 
                     key = {`product-${index}`}                    
-                    href = {`/product/${prod.link}`}
-                    img = { < img src={prod.img} alt={prod.title} /> }
+                    href = {`/product/${prod.productId}`}
+                    img = { typeof prod.imagesPath[0] !== 'undefined' ? prod.imagesPath[0] : ''}                    
                     description = {prod.description}                    
                 />
         );        
     })    
         return ( 
             <>       
-                <div className='tabs'>                    
+                <div className='tabs'>                                       
                     {categories.map( (item, index) => {                                             
                         return <div
                             data-id={item.id}
                             key={`tabs-${index}`}                                                     
                             className={(activeTab === item.id) ? 'tabs-item activeTab' : 'tabs-item '}
                             onClick={this.ChangeTab}       
-                            >                                
+                            >                                                            
                             {item.name}                            
                         </div>
                     })}                    
                 </div> 
                 
-                <div>                   
+                <div className='products'>                   
                     {htmlProducts}
                 </div>
             </>

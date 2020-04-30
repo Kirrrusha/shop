@@ -28,13 +28,23 @@
   }
 }
 
+.products{
+  display:flex;
+  justify-content: space-around;
+  padding:  0 1rem;
+}
+
 .product-block {        
   position: relative;
   width: 390px;
   margin: 0 auto;
 
-  & img{
-      padding: 0.27rem 0.27rem;
+  & img{   
+    padding: 0.27rem 0.27rem;        
+  }
+  .product-item-img{    
+    width: 350px;
+    height: 350px; 
   }
   
   .product-info{      
@@ -43,8 +53,9 @@
       z-index: 90;
       display: none;
       top: 0;      
-      left: 0;
-
+      left: 0;      
+      margin-top: 7rem;
+            
       & h2{
           font-family: 'Montserrat-Bold';
           font-size: 1.125rem;
@@ -103,16 +114,3 @@
 .product-block:hover>.product-item img {
   opacity: 0.2;
 }
-
-
-
-
-
-
-  
-
-  
-
-
-
-    
