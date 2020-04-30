@@ -8,7 +8,7 @@ import Header from '../../modules/Header/Header';
 import Footer from '../../modules/Footer';
 import Cart from './Cart';
 import Product from './Product';
-import Products from '../UserPanel/Products/index';
+import Products from '../UserPanel/Products';
 import Accounts from './FooterLinks/Accounts';
 import Delivery from './FooterLinks/Delivery';
 import Sales from './FooterLinks/Sales';
